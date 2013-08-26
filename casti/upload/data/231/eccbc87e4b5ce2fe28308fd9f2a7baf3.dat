@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <title>towns - upload</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function popUp(URL) {
+day = new Date();
+id = day.getTime();
+eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=600,height=400');");
+}
+-->
+</script>
+<form enctype="multipart/form-data" method="post" action="">
+<b>Vyberte soubor:</b> <input id="filename" type="file" name="u_file" /><br>
+<b> nebo URL: </b><input id="url" type="text" name="url" size="35" /> <b>jméno: </b><input id="urlname" type="text" name="urlname" size="5" /><br><b>popis:</b><br>
+<textarea name="popis">(bez popisu)</textarea><br>
+<input type="submit" value="OK" />
+</form>
+
+
+<table width="500" border="0">
+  <tr>
+    <th>Jméno</th>
+    <th>Popis</th>
+    <th>Velikost</th>
+   <td></td>
+  </tr>
+<tr>
+    <td><A HREF="javascript:popUp('soubor.php?meno=BAR27e489_PHL_CC1_00000217_001.jpg&amp;hrac=231')"><b>BAR27e489_PHL_CC1_00000217_001.jpg</b></a></td>
+    <td>25</td>
+    <td> 41.097 KB</td>
+    <td></td>
+  </tr><tr>
+    <td><A HREF="javascript:popUp('soubor.php?meno=Default(01).spp&amp;hrac=231')"><b>Default(01).spp</b></a></td>
+    <td>hjklhk</td>
+    <td> 0.05 KB</td>
+    <td></td>
+  </tr><tr>
+    <td><A HREF="javascript:popUp('soubor.php?meno=douicovani_2.doc&amp;hrac=231')"><b>douicovani_2.doc</b></a></td>
+    <td>(bez popisu)</td>
+    <td> 19.456 KB</td>
+    <td></td>
+  </tr></table>
+<b>60.603 KB / 50000 KB</b>
+</body>
+</html>

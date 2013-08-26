@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html> <head>
+  <head>
+  <title>test</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <link rel="stylesheet" type="text/css" href="styl.css">
+  </head>
+  <body>
+
+<table border="1" bordercolor="#000000" bgcolor="#555555" width="500" height="300">
+<tr>
+<td class="bunka"><h2>1</h2></td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+<td rowspan="2" class="bunka2">&nbsp;</td>
+</tr>
+<tr>
+<td class="bunka"><h2>2</h2></td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+</tr>
+<tr>
+<td class="bunka"><h2>3</h2></td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+</tr>
+<tr>
+<td class="bunka"><h2>4</h2></td>
+<td colspan="2" class="bunka2">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+</tr>
+<tr>
+<td class="bunka"><h2>5</h2></td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+<td class="bunka">&nbsp;</td>
+</tr>
+</table>
+ </body>
+</html>

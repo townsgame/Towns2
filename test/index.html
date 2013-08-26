@@ -1,0 +1,171 @@
+<?php gv("?logof=1"); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <title>towns - m&#283;sta</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+  <!-- **** layout stylesheet **** -->
+  <link rel="stylesheet" type="text/css" href="style/style.css" />
+   <link rel="shortcut icon" href="favicon.ico">
+  <!-- **** colour scheme stylesheet **** -->
+  <link rel="stylesheet" type="text/css" href="style/green.css" />
+<style type="text/css"> 
+<!--
+.submenu {font-size: 15px; color:#283D82;}
+a.bzp:link  { text-decoration: none; color:#283D82;}
+a.bzp:visited  { text-decoration: none; color:#283D82;}
+a.bzp:hover  { text-decoration: underline; color:#283D82;}
+a.bzp:active  { text-decoration: none; color:#283D82;}
+--> 
+</style>
+</head>
+
+<body>
+<!--contentzprac-->
+  <div id="main">
+<?php
+if($_MYGET["glob_sc"]){
+$_SESSION["glob_sc"] = $_MYGET["glob_sc"];
+} 	  
+$glob_sc = $_SESSION["glob_sc"];
+if(!$glob_sc){
+$glob_sc="hovno";
+}
+if($glob_sc == "1"){ $glob_sc1 = "id=\"selected\""; }
+elseif($glob_sc == "2"){ $glob_sc2 = "id=\"selected\""; }
+elseif($glob_sc == "3"){ $glob_sc3 = "id=\"selected\""; }
+elseif($glob_sc == "4"){ $glob_sc4 = "id=\"selected\""; }
+elseif($glob_sc == "5"){ $glob_sc5 = "id=\"selected\""; }
+elseif($glob_sc == "6"){ $glob_sc6 = "id=\"selected\""; }
+elseif($glob_sc == "7"){ $glob_sc7 = "id=\"selected\""; }
+
+$typ_menu = hnet("towns2_uziv","SELECT typ_menu FROM towns2_uziv WHERE id = '".$_SESSION["id"]."'");
+if($typ_menu == 2){
+?>
+        <?php
+        $docastny_objekt = new index("towns2_zpr","SELECT COUNT(id) FROM towns2_zpr WHERE komu = '".$_SESSION["id"]."' AND precitane='0' AND ppp");
+        $docastna_premenna = $docastny_objekt->get("1");
+        $docastna_premenna = $docastna_premenna[0];
+        ?>
+    <div style=" padding-left: 10px">
+      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="760" height="85">
+          <param name="movie" value="style/logo.swf<?php if($_SESSION["id"]){ echo gv("?logof=1"); }else{ echo("?a=a"); } ?>&amp;user=<?php echo $_SESSION["id"]; ?>&amp;glob_sc=<?php echo($_SESSION["glob_sc"]); ?>&amp;zpravy=<?php echo $docastna_premenna; ?>" />
+          <param name="quality" value="high" /><param name="SCALE" value="exactfit" />
+          <embed src="style/logo.swf<?php if($_SESSION["id"]){ echo gv("?logof=1"); }else{ echo("?a=a"); } ?>&amp;user=<?php echo $_SESSION["id"]; ?>&amp;glob_sc=<?php echo($_SESSION["glob_sc"]); ?>&amp;zpravy=<?php echo $docastna_premenna; ?>" width="760" height="85" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" scale="exactfit"></embed>
+      </object>
+      
+
+    </div>
+<?php }else{ ?>
+<div id="logo" >
+<img src="style/logo.jpg" width="760" height="70" usemap="#MapL" />
+<map name="MapL" id="MapL"><area shape="rect" coords="736,3,755,22" href="<?php echo gv("?logof=1"); ?>" /></map>	
+</div>
+     <div id="menu">
+      <ul>
+        <?php if($_SESSION["id"]){ ?>
+        <?php
+        $docastny_objekt = new index("towns2_zpr","SELECT COUNT(id) FROM towns2_zpr WHERE komu = '".$_SESSION["id"]."' AND precitane='0' AND ppp");
+        $docastna_premenna = $docastny_objekt->get("1");
+        $docastna_premenna = $docastna_premenna[0];
+        ?>
+        <li><a <?php echo($glob_sc1); ?> href="<?php echo gv("?dir=casti/mapa/uniindex.php&amp;glob_sc=1"); ?>">mapa</a></li>
+        <li><a <?php echo($glob_sc2); ?> href="<?php echo gv("?dir=casti/aliance/index.php&amp;glob_sc=2"); ?>">aliance</a></li>
+        <li><a <?php echo($glob_sc3); ?> href="<?php echo gv("?dir=casti/hraci/index.php&amp;glob_sc=3"); ?>">statistika</a></li>
+        <li><a <?php echo($glob_sc4); ?> href="<?php echo gv("?dir=casti/diskuse/fora.php&amp;glob_sc=4"); ?>">f&Oacute;rum</a></li>
+        <li><a <?php echo($glob_sc5); ?> href="<?php echo gv("?dir=casti/suroviny/index.php&amp;glob_sc=5"); ?>">suroviny</a></li>
+        <li><a <?php echo($glob_sc6); ?> href="<?php echo gv("?dir=casti/utoky/index.php&amp;glob_sc=6"); ?>">útoky</a></li>
+        <li><p><a <?php echo($glob_sc7); ?> href="<?php echo gv("?dir=casti/zpravy/index.php&amp;glob_sc=7"); ?>">zprÁvy-<?php echo $docastna_premenna; ?></a></li>
+                <?php }else{ ?>
+        <li><a <?php echo($glob_sc1); ?> href="<?php echo gv("?dirn=1&amp;glob_sc=1"); ?>">pŘihlášení</a></li>
+        <li><a <?php echo($glob_sc2); ?> href="<?php echo gv("?dirn=2&amp;glob_sc=2"); ?>">statistika</a></li>
+        <li><a <?php echo($glob_sc3); ?> href="<?php echo gv("?dirn=3&amp;glob_sc=3"); ?>">registrace</a></li>
+        <li><a <?php echo($glob_sc4); ?> href="<?php echo gv("?dirn=4&amp;glob_sc=4"); ?>">obrÁzky</a></li>
+              </ul><?php } ?>
+    </div><?php } ?>  
+<div align="center">
+<?php    
+if($_SESSION["id"]){
+?>
+	   <div id="menu2">
+		
+<?php 
+  if($_SESSION["id"]){
+  require("casti/suroviny/lista.php");
+  }
+  ?>
+	</div> <?php } ?>
+	    </div>
+        <div id="content">
+          <div id="column1">
+            <?php
+require("casti/lavalista/index.php");  
+?>
+          </div>
+	          <div id="column2">
+<?php
+if($nas_chyba){
+chyba1($nas_chyba);
+}
+
+if($_SESSION["id"]){
+if($_MYGET["dir"]){
+$_SESSION["dir"] = $_MYGET["dir"];
+} 
+	  
+$dir = $_SESSION["dir"];
+if(!$dir){
+$dir="casti/uvod/prehlad.php";
+//$dir = hnet("towns2_uziv","SELECT glob_sc FROM towns2_uziv WHERE id = '".$_SESSION["id"]."'");
+refresh("?glob_sc=".hnet("towns2_uziv","SELECT glob_sc FROM towns2_uziv WHERE id = '".$_SESSION["id"]."'"));
+die();
+}
+}else{
+
+if(!$_SESSION["dirn"]){ $_SESSION["dirn"] = 1; }
+if($_MYGET["dirn"] == 1){ $_SESSION["dirn"] = 1; }
+if($_MYGET["dirn"] == 2){ $_SESSION["dirn"] = 2; }
+if($_MYGET["dirn"] == 3){ $_SESSION["dirn"] = 3; }
+if($_MYGET["dirn"] == 4){ $_SESSION["dirn"] = 4; }
+if($_SESSION["dirn"] == 1){ $dir = "casti/uvod/1.php"; }
+if($_SESSION["dirn"] == 2){ $dir = "casti/hraci/uzivatelia.php"; }
+if($_SESSION["dirn"] == 3){ $dir = "casti/uvod/3.php"; }
+if($_SESSION["dirn"] == 4){ $dir = "casti/obrazky/index.php"; }
+//$dir = "casti/uvod/index.php";
+}
+require($dir);
+?>
+          </div>
+        </div>
+        <div id="footer">copyright &copy; 2008 towns.cz verze 2 | <a href="mailto: hejpal@post.cz">hejpal@post.cz</a> | <?php echo profil(1); ?></div>
+  </div>
+<script type="text/javascript">
+<!-- 
+            /*function poslatx(){
+                var ajax = (window.XMLHttpRequest ? new XMLHttpRequest() : (window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : false));
+                if(!ajax){
+                    //alert("Tak tady to nepoběží!");
+                    return true;
+                }
+                ajax.onreadystatechange= function () {zpracujx(ajax); } ;
+                ajax.open("GET", "http://cron.towns.cz/index.php?a=a", true);
+                ajax.send(null);
+                return false
+            }
+            function zpracujx(ajax){
+                var txt;
+                if (ajax.readyState == 4){
+                    if(ajax.status == 200 || ajax.status==0){
+                        txt=ajax.responseText;
+            }}}
+            zpracujx();*/
+-->
+</script>
+<!-- <img src="http://cron.towns.cz/index.php" width="" height="" id="cron_l">  
+<script type="text/javascript">
+document.getElementById("cron_l").src = "";	
+</script>-->
+</body>
+</html>

@@ -1,0 +1,9 @@
+foreach(hnet2("towns2","SELECT xc,yc FROM towns2 WHERE pozadie != '10' AND obrazok = '0' ORDER BY rand()","0,100") as $rowr){
+$xcreg = $rowr["xc"];
+$ycreg = $rowr["yc"];
+$e = hnet("towns2","SELECT COUNT(1) FROM towns2 WHERE obrazok = '0' AND pozadie != '10' AND xc > ".($xcreg+0)."-1-3 AND yc > ".($ycreg+0)."-1-3 AND xc < ".($xcreg+0)."+1+3 AND yc < ".($ycreg+0)."+1+3");
+if($e == 49){
+break;
+}
+}
+echo($xcreg." / ".$ycreg );

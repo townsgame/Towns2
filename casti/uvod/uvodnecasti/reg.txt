@@ -1,0 +1,34 @@
+/*echo*/$odpoved =mysql_query("select xc,yc from towns2_ WHERE  vlastnik='1' AND obrazok='0'");
+//echo(mysql_error());
+while ($row = mysql_fetch_array($odpoved)) {
+$xcreg = rand(1,map_x);
+$ycreg = rand(1,map_y);
+}
+mysql_free_result($odpoved);
+
+$odpoved =mysql_query("select xc from towns2_ where xc = ".($xcreg+0)." AND yc = ".($ycreg+0)." AND vlastnik='1' AND obrazok='0'");
+while ($row = mysql_fetch_array($odpoved)) { $p1 = $row["xc"]; }
+mysql_free_result($odpoved);
+//--
+$odpoved =mysql_query("select xc from towns2_ where xc = ".($xcreg+0)." AND yc = ".($ycreg+1)." AND vlastnik='1' AND obrazok='0'");
+while ($row = mysql_fetch_array($odpoved)) { $p2 = $row["xc"]; }
+mysql_free_result($odpoved);
+//--
+$odpoved =mysql_query("select xc from towns2_ where xc = ".($xcreg+1)." AND yc = ".($ycreg+1)." AND vlastnik='1' AND obrazok='0'");
+while ($row = mysql_fetch_array($odpoved)) { $p3 = $row["xc"]; }
+mysql_free_result($odpoved);
+//--
+$odpoved =mysql_query("select xc from towns2_ where xc = ".($xcreg+1)." AND yc = ".($ycreg)." AND vlastnik='1' AND obrazok='0'");
+while ($row = mysql_fetch_array($odpoved)) { $p4 = $row["xc"]; }
+mysql_free_result($odpoved);
+//--
+$odpoved =mysql_query("select xc from towns2_ where xc = ".($xcreg+1)." AND yc = ".($ycreg-1)." AND vlastnik='1' AND obrazok='0'");
+while ($row = mysql_fetch_array($odpoved)) { $p5 = $row["xc"]; }
+mysql_free_result($odpoved);
+
+
+
+if($p1 and $p2  and $p3 and $p4 and $p5){
+}else{
+eval(file_get_contents("reg.txt"));
+}

@@ -1,0 +1,4 @@
+UPDATE towns SET obrazok = '0' WHERE xc = 
+
+
+UPDATE townsmes SET townsmes.drevo = townsmes.drevo + 1000*(SELECT COUNT( towns.vlastnik )  from towns where towns.vlastnik = townsmes.id AND towns.obrazok = 'tdrevo' AND (SELECT towns2.xc  FROM towns towns2 WHERE sqrt(pow(towns2.xc-towns.xc,2)+pow(towns2.yc-towns.yc,2)) < 10 AND towns2.obrazok = 'les' LIMIT 1) GROUP by towns.vlastnik)

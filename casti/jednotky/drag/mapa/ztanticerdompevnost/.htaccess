@@ -1,0 +1,1 @@
+redirectMatch 301 ^(.*)$ http://2.towns.cz/casti/jednotky/drag/mapa/kyasarny/1.gif

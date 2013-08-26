@@ -1,0 +1,25 @@
+<?php
+if(!function_exists("hnet")){
+$root = "../";
+require("../casti/funkcie/index.php"); 
+require("../casti/funkcie/vojak.php");
+}
+
+
+foreach(hnet2("townsuziv","SELECT * FROM townsuziv") as $row){
+
+eval(file_get_contents("../reg.txt"));
+
+$tmp = ("
+INSERT INTO `towns2_uziv` ( `id` , `typ` , `meno` , `ali` , `hodnost` , `pravomoci` , `body` , `poradie` , `heslo` , `popis` , `podpis` , `poznamky` , `pohlavie` , `vek` , `mail` , `zmail` , `www` , `menoc` , `lista` , `aktivita` , `lastip` , `farba` , `vojaci` , `vojacit` , `hlbudovaxc` , `hlbudovayc` , `prachy` , `jedlo` , `kamen` , `zelezo` , `drevo` , `ludia` , `ludiamax` , `surek` , `glob_sc` , `typ_menu` , `limit_mb` ) VALUES
+('".$row["id"]."', '".$row["typ"]."', '".$row["meno"]."', '".$row["ali"]."', '', '1,1,1,1,1,1', '0', '0', '".$row["heslo"]."' , '".$row["popis"]."', '', '' , '".$row["pohlavie"]."' , '".$row["vek"]."' , '".$row["mail"]."' , '".$row["zmail"]."' , '".$row["www"]."', '', '7,2,3', '0' , '".$row["lastip"]."', 'user', '.1(v0,s0,k0,r0,j0,t0,z0,b0,a0,e0,n0,d0,m0)', '.1(v0,s0,k0,r0,j0,t0,z0,b0,a0,e0,n0,d0,m0)', '".$xcreg."', '".$ycreg."', '5000', '5000', '5000', '5000', '5000', '0', '0', '0', '5' , '1' , '5')");
+mysql_query2($tmp);
+
+mysql_query2("UPDATE towns2 SET zivot=(SELECT zivot from towns2_uni WHERE towns2_uni.obrazok='hlbudova'), cas=1, obrazok = 'hlbudova', vlastnik = '".$row["id"]."' WHERE xc = ".($xcreg+0)." AND  yc = ".($ycreg+0));
+dc("towns2");
+dc("towns2_uziv");
+dcmapa($xcreg,$ycreg);
+//echo($tmp);
+//echo($row["id"]." ".$row["meno"]."<br/>");
+}
+?>

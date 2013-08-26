@@ -1,0 +1,51 @@
+/*if(!$dolezite_tmp){ $dolezite_tmp = 0; }
+$dolezite_tmp = $dolezite_tmp + 1;
+if($dolezite_tmp > 100){ chyba3(); }
+
+$xcreg = rand(1,map_x);
+$ycreg = rand(1,map_y);
+
+$odpoved =mysql_query("select xc from towns2 where xc = ".($xcreg+0)." AND yc = ".($ycreg+0)." AND vlastnik='1' AND obrazok='0'");
+while ($row = mysql_fetch_array($odpoved)) { $p1 = $row["xc"]; }
+mysql_free_result($odpoved);
+--//--
+$odpoved =mysql_query("select xc from towns2 where xc = ".($xcreg+0)." AND yc = ".($ycreg+1)." AND vlastnik='1' AND obrazok='0'");
+while ($row = mysql_fetch_array($odpoved)) { $p2 = $row["xc"]; }
+mysql_free_result($odpoved);
+//--
+$odpoved =mysql_query("select xc from towns2 where xc = ".($xcreg+1)." AND yc = ".($ycreg+1)." AND vlastnik='1' AND obrazok='0'");
+while ($row = mysql_fetch_array($odpoved)) { $p3 = $row["xc"]; }
+mysql_free_result($odpoved);
+//--
+$odpoved =mysql_query("select xc from towns2 where xc = ".($xcreg+1)." AND yc = ".($ycreg)." AND vlastnik='1' AND obrazok='0'");
+while ($row = mysql_fetch_array($odpoved)) { $p4 = $row["xc"]; }
+mysql_free_result($odpoved);
+//--
+$odpoved =mysql_query("select xc from towns2 where xc = ".($xcreg+1)." AND yc = ".($ycreg-1)." AND vlastnik='1' AND obrazok='0'");
+while ($row = mysql_fetch_array($odpoved)) { $p5 = $row["xc"]; }
+mysql_free_result($odpoved);
+--
+$e = hnet("towns2","SELECT COUNT(1) FROM towns2 WHERE obrazok = '0' AND pozadie != '10' AND xc > ".($xcreg+0)."-1-3 AND yc > ".($ycreg+0)."-1-3 AND xc < ".($xcreg+0)."+1+3 AND yc < ".($ycreg+0)."+1+3");
+//die($e);
+
+
+if($p1 and $e == 49-- and $p2  and $p3 and $p4 and $p5--){
+}else{
+if(!$dir_reg){ $dir_reg=""; }
+eval(file_get_contents($dir_reg."reg.txt"));
+}
+$dolezite_tmp = 0;*/
+
+mysql_query2("CREATE TABLE `towns2_z_tmp` (
+ `xc` INT NOT NULL ,
+ `yc` INT NOT NULL ,
+INDEX ( `xc` ),
+INDEX ( `yc` )
+ ) ENGINE = MYISAM");
+ mysql_query2("INSERT INTO towns2_z_tmp SELECT towns2.xc,towns2.yc FROM towns2 WHERE obrazok = '0' AND pozadie != '10'");
+ $reg_tmp = hnet2("towns2_z_tmp","SELECT xc,yc FROM towns2 WHERE (SELECT COUNT(1) FROM towns2_z_tmp WHERE towns2_z_tmp.xc > towns2.xc-1-3 AND towns2_z_tmp.yc > towns2.yc-1-3 AND towns2_z_tmp.xc < towns2.xc+1+3 AND towns2_z_tmp.yc < towns2.yc+1+3)");
+ $reg_tmp = $reg_tmp[0];
+ $xcreg  = $reg_tmp[0]
+ $ycreg  = $reg_tmp[1];
+ //mysql_query2("DROP TABLE towns2_z_tmp");
+ dc("towns2_z_tmp");

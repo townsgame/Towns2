@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title></title>
+</head>
+
+<body>
+
+<form id="form1" name="form1" method="post" action="">
+<table width="491" height="51" border="0">
+  <tr>
+    <td width="89">limit:</td>
+    <td width="392" height="24"><input name="limit" type="text" id="limit" value="1000" /></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top"><a onclick="spocti();"><strong>vypo&#269;&iacute;tat</strong></a></td>
+    <td height="21"><div id="vysledok"></div></td>
+    </tr>
+</table>
+
+</form>
+<script type="text/JavaScript">
+<!--
+function myrand(){
+x=Math.random()*6;
+x=Math.ceil(x);
+return(x);
+}
+
+function spocti(){
+
+xa=0;
+xb=0;
+xc=0;
+xd=0;
+xe=0;
+xf=0;
+limit = document.form1.limit.value-1+1;
+document.getElementById("vysledok").innerHTML = "";
+for(i=0;i<limit;i++){
+
+x=myrand();
+document.getElementById("vysledok").innerHTML = document.getElementById("vysledok").innerHTML+""+x+", ";
+if(x==1){xa=xa+1;}
+if(x==2){xb=xb+1;}
+if(x==3){xc=xc+1;}
+if(x==4){xd=xd+1;}
+if(x==5){xe=xe+1;}
+if(x==6){xf=xf+1;}/**/
+}
+document.getElementById("vysledok").innerHTML = document.getElementById("vysledok").innerHTML+"<hr/><b>1: </b>"+xa+"<br/>";
+document.getElementById("vysledok").innerHTML = document.getElementById("vysledok").innerHTML+"<b>2: </b>"+xb+"<br/>";
+document.getElementById("vysledok").innerHTML = document.getElementById("vysledok").innerHTML+"<b>3: </b>"+xc+"<br/>";
+document.getElementById("vysledok").innerHTML = document.getElementById("vysledok").innerHTML+"<b>4: </b>"+xd+"<br/>";
+document.getElementById("vysledok").innerHTML = document.getElementById("vysledok").innerHTML+"<b>5: </b>"+xe+"<br/>";
+document.getElementById("vysledok").innerHTML = document.getElementById("vysledok").innerHTML+"<b>6: </b>"+xf+"";
+}
+//-->
+</script>
+</body>
+</html>

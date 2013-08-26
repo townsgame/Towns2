@@ -1,0 +1,1 @@
+<?php submenu(array("Uživatelé","Aliance","Profil uživatele","Změna profilu","Profil aliance"),array("casti/hraci/uzivatelia.php","casti/hraci/aliancie.php","casti/hraci/profil.php","casti/hraci/profilch.php","casti/hraci/profila.php")); ?>

@@ -1,0 +1,1 @@
+<a href="?idz=1"><?php eval(file_get_contents("casti/jazyk/".$_SESSION["lang"].".txt")); echo $xprijate; ?></a> / <a href="?idz=2"><?php echo $xpsatzpravu; ?></a> / <a href="?idz=3"><?php echo $xarchyv; ?></a>edd

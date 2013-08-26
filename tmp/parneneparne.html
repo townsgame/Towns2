@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title></title>
+</head>
+
+<body>
+
+<form id="form1" name="form1" method="post" action="">
+<table width="491" height="131" border="0">
+  <tr>
+    <td width="89">Sudé:</td>
+    <td width="392" height="26">
+      <input name="v1" type="text" id="v1" value="x/2" />    </td>
+    </tr>
+  <tr>
+    <td>Liché:</td>
+    <td height="24"><input name="v2" type="text" id="v2" value="(x*3)+1" /></td>
+    </tr>
+  <tr>
+    <td>limit:</td>
+    <td height="24"><input name="limit" type="text" id="limit" value="100" /></td>
+  </tr>
+  <tr>
+    <td>za&#269;&aacute;tek:</td>
+    <td height="24"><input name="zacatek" type="text" id="zacatek" value="1" /></td>
+    </tr>
+  <tr>
+    <td align="left" valign="top"><a onclick="spocti();"><strong>vypo&#269;&iacute;tat</strong></a></td>
+    <td height="21"><div id="vysledok"></div></td>
+    </tr>
+</table>
+
+</form>
+<script type="text/JavaScript">
+<!--
+
+function spocti(){
+
+
+x = document.form1.zacatek.value-1+1;
+document.getElementById("vysledok").innerHTML = "";
+for(i=0;1;i++){
+
+if(i==0){ pridavok=""; }else{ pridavok=", "; }
+document.getElementById("vysledok").innerHTML = document.getElementById("vysledok").innerHTML+pridavok+(x+"");
+
+
+if(i+1==document.form1.limit.value){ document.getElementById("vysledok").innerHTML=document.getElementById("vysledok").innerHTML+"<b> !LIMIT</b>"; break; }
+if(x==1){ document.getElementById("vysledok").innerHTML=document.getElementById("vysledok").innerHTML+"<b> "+(i+1)+"</b>"; break; }
+
+if(Math.ceil(x/2) == (x/2)){
+vzorec=document.form1.v1.value;
+}else{
+vzorec=document.form1.v2.value;
+}
+
+eval("x="+vzorec+";");
+}
+}
+
+-->
+</script>
+</body>
+</html>

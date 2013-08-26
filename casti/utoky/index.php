@@ -1,0 +1,1 @@
+<?php submenu(array("Útoky","Vytrénovat vojáky","Bitevní simulátor"),array("casti/utoky/utoky.php","casti/utoky/kasarny.php","casti/utoky/emulator.php")); ?>

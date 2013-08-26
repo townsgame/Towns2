@@ -1,0 +1,74 @@
+body
+{ color: #000000;
+  background: #8DAFFD;
+}
+
+blockquote{border-color: #D7D7D7;}
+
+#main
+{ background: #FFF url(main2.png) repeat-y;
+  color: 000000;
+}
+
+#links, #footer, #menu, #menu li a
+{ background: #FFF url(menu.png);
+  color: #000000;
+  border-color: #D7D7D7;
+}
+
+#menu2
+{ background: #FFF url(menu2.png);
+  color: #000000;
+  border-color: #D7D7D7;
+}
+
+#links a, #footer a, #links a:hover, #footer a:hover
+{ background: transparent;
+  color: #283D82;
+}
+
+#logo
+{ background: #000000;
+  color: #ffffff;
+}
+
+h1
+{ background: transparent;
+  color: #000000;
+  border-color: #B5CA91;
+}
+
+#menu li a:hover, #menu li a#selected, #menu li a#selected:hover
+{ background: #FFF url(green_menu.png);
+  color: #000000;
+} 
+
+#content, #column2 a, #column2 a:hover
+{ background: transparent;
+  color: #000000;
+}
+
+.sidebaritem, .sidebaritem a, .sidebaritem a:hover
+{ background: transparent;
+  color: #000000;
+} 
+
+.sbihead
+{ background: #FFF url(green_sbi.png);
+  color: #000000;
+}
+
+.sbihead h1
+{ background: transparent;
+  color: #ffffff;
+}
+
+.sbilinks li a
+{ background: #FFF url(link.png);
+  color: #000000;
+} 
+
+.sbilinks li a:hover
+{ background: #B7B7B7;
+  color: #000000;
+} 
