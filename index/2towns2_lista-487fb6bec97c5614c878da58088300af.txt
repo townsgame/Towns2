@@ -1,0 +1,5 @@
+a:2:{i:0;s:54:"<?php
+require("casti/lavalista/data/budovy.php");
+?>";s:3:"kod";s:54:"<?php
+require("casti/lavalista/data/budovy.php");
+?>";}

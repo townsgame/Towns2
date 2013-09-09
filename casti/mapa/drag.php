@@ -3,22 +3,22 @@
                 
         function info(xc,yc,obrazok,utokna,zivot,zivotmax,vlastnik,uroven) 
         {  
-            document.show.xc.value = xc 	
-            document.show.yc.value = yc
+            document.show.xc.value = xc; 	
+            document.show.yc.value = yc;
             if(obrazok != 'žádná'){
-            document.show.obrazok.value = obrazok 
-            document.show.utokna.value = utokna
-            document.show.zivot.value = zivot
-            document.show.zivotmax.value = zivotmax
-            document.show.vlastnik.value = vlastnik
-            document.show.uroven.value = uroven
+            document.show.obrazok.value = obrazok; 
+            document.show.utokna.value = utokna;
+            document.show.zivot.value = zivot;
+            document.show.zivotmax.value = zivotmax;
+            document.show.vlastnik.value = vlastnik;
+            document.show.uroven.value = uroven;
 					  }else{
-            document.show.obrazok.value = '' 
-            document.show.utokna.value = ''
-            document.show.zivot.value = ''
-            document.show.zivotmax.value = ''
-            document.show.vlastnik.value = ''
-            document.show.uroven.value = 	''
+            document.show.obrazok.value = ''; 
+            document.show.utokna.value = '';
+            document.show.zivot.value = '';
+            document.show.zivotmax.value = '';
+            document.show.vlastnik.value = '';
+            document.show.uroven.value = 	'';
             }
         }
         function off(a){
@@ -29,27 +29,27 @@
         }
         coakce=1;
         var coco = new Array();
-        var coxc = new Array();
+        var coxc = new Array();                                        
  		  var coyc = new Array();
  		  copocet=0;
         function postavit(){
-            document.getElementById("coakce").innerHTML = "Pro <b>postavení</b> budovy klikněte na mapu.";
+            document.getElementById("coakce").innerHTML = "<?php echo $GLOBALS['mdrag1']; ?>";
 				coakce=1;        
         }
         function zbourat(){
-            document.getElementById("coakce").innerHTML = "Pro <b>zbourání</b> budovy klikněte na mapu.";
+            document.getElementById("coakce").innerHTML = "<?php echo $GLOBALS['mdrag2']; ?>";
             coakce=2;
         }
         function roz(){
-            document.getElementById("coakce").innerHTML = "Pro <b>rozšíření</b> budovy klikněte na mapu.";
+            document.getElementById("coakce").innerHTML = "<?php echo $GLOBALS['mdrag3']; ?>";
             coakce=3;
         }
         function zvy(){
-            document.getElementById("coakce").innerHTML = "Pro <b>zvýšení</b> budovy klikněte na mapu.";
+            document.getElementById("coakce").innerHTML = "<?php echo $GLOBALS['mdrag4']; ?>";
             coakce=4;
         }
         function utok(){
-            document.getElementById("coakce").innerHTML = "Pro <b>útok</b> na budovu klikněte na mapu.";
+            document.getElementById("coakce").innerHTML = "<?php echo $GLOBALS['mdrag5']; ?>";
             coakce=4;
         }
         
@@ -67,10 +67,10 @@
         coco[copocet] = budova;
         }
         if(coakce==3){
-        location.replace("<?php echo gv("?dir=casti/mapa/roz.php"); ?>&xc="+xcx+"&yc="+ycx);	
+        location.replace("<?php echo gv('?dir=casti/mapa/roz.php'); ?>&xc="+xcx+"&yc="+ycx);	
         }
         if(coakce==4){
-        location.replace("<?php echo gv("?dir=casti/utoky/utoky.php"); ?>&xc="+xcx+"&yc="+ycx);	
+        location.replace("<?php echo gv('?dir=casti/utoky/utoky.php'); ?>&xc="+xcx+"&yc="+ycx);	
         }
         coxc[copocet] = xcx;
         coyc[copocet] = ycx;
@@ -85,12 +85,12 @@
         
         function cozobrazz(){ 
 			//for(i=0;pocet==0;i++){
-			//document.getElementById("coakce2").innerHTML = document.getElementById("coakce2").innerHTML+"<br/>"+coco[i];
+			//document.getElementById("coakce2").innerHTML = document.getElementById("coakce2").innerHTML+"<br />"+coco[i];
 			//}
-			if(copocet == 1){ document.getElementById("coakce2").innerHTML = copocet+" budova k postavení nebo zbourání"; }
-			if(copocet != 1 && copocet<5){ document.getElementById("coakce2").innerHTML = copocet+" budovy k postavení nebo zbourání"; }
-			if(copocet > 4){ document.getElementById("coakce2").innerHTML = copocet+" budov k postavení nebo zbourání"; }
-			document.getElementById("coakce2").innerHTML = document.getElementById("coakce2").innerHTML+"<br/><a href=\"<?php echo gv("?dir=casti/mapa/dragzprac.php"); ?>&amp;coco="+coco+"&amp;coxc="+coxc+"&amp;coyc="+coyc+"\"><b>&gt;&gt;dále&gt;&gt;</b></a>"
+			if(copocet == 1){ document.getElementById("coakce2").innerHTML = copocet+" <?php echo $GLOBALS['mdrag6']; ?>"; }
+			if(copocet != 1 && copocet<5){ document.getElementById("coakce2").innerHTML = copocet+" <?php echo $GLOBALS['mdrag7']; ?>"; }
+			if(copocet > 4){ document.getElementById("coakce2").innerHTML = copocet+" <?php echo $GLOBALS['mdrag8']; ?>"; }
+			document.getElementById("coakce2").innerHTML = document.getElementById("coakce2").innerHTML+"<br /><a href=\"<?php echo gv('?dir=casti/mapa/dragzprac.php'); ?>&amp;coco="+coco+"&amp;coxc="+coxc+"&amp;coyc="+coyc+"\"><b>&gt;&gt;<?php echo $GLOBALS['mdrag8a']; ?>&gt;&gt;</b></a>"
 		  }
         -->
     </script>
@@ -105,31 +105,31 @@
 		  </div>
 		  </div>
         <div align="center">
-        <div style="position:relative; width:570px; height:400px; background-color: #000000; overflow: hidden;" id="mapa">mapa se načítá</div> 
+        <div style="position:relative; width:570px; height:400px; background-color: #000000; overflow: hidden; color: gray;" id="mapa"><?php echo $GLOBALS["mdrag9"]; ?></div> 
         <div style="position:relative; width:570px; height:130px; background-color: #bbbbbb; overflow: hidden;"><table width="560" height="130" border="0"><tr><td width="200" align="left" valign="top">
             <form name="show"> 
             <b>x:&nbsp;&nbsp;&nbsp;&nbsp;</b>
             <input size="3" name="xc" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/><b>y:&nbsp;&nbsp;&nbsp;&nbsp;</b> <input size="3" name="yc" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/>
             <br />
-            <b>vlastník:&nbsp;&nbsp;&nbsp;&nbsp;<input name="vlastnik" id="vlastnik" size="14" style="border:0px solid #FFFFFF; background-color: #bbbbbb;" /></b>
-            <br/> 
-            <b>budova:&nbsp;&nbsp;&nbsp;&nbsp;<input size="14" name="obrazok" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/>  </b> 
-            <br/>   
-            <b>život:&nbsp;&nbsp;&nbsp;&nbsp;</b> <input size="3" name="zivot" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/> / <input size="3" name="zivotmax" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/>  <br/>
-            <b>obrana:&nbsp;&nbsp;&nbsp;&nbsp;</b> <input size="4" name="utokna" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/><br/>
-            <b>úroveň:&nbsp;&nbsp;&nbsp;&nbsp;</b> <input size="4" name="uroven" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/>
+            <b><?php echo $GLOBALS["mdrag9a"]; ?>:&nbsp;&nbsp;&nbsp;&nbsp;<input name="vlastnik" id="vlastnik" size="14" style="border:0px solid #FFFFFF; background-color: #bbbbbb;" /></b>
+            <br /> 
+            <b><?php echo $GLOBALS["mdrag9b"]; ?>:&nbsp;&nbsp;&nbsp;&nbsp;<input size="14" name="obrazok" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/>  </b> 
+            <br />   
+            <b><?php echo $GLOBALS["mdrag9c"]; ?>:&nbsp;&nbsp;&nbsp;&nbsp;</b> <input size="3" name="zivot" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/> / <input size="3" name="zivotmax" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/>  <br />
+            <b><?php echo $GLOBALS["mdrag9d"]; ?>:&nbsp;&nbsp;&nbsp;&nbsp;</b> <input size="4" name="utokna" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/><br />
+            <b><?php echo $GLOBALS["mdrag9e"]; ?>:&nbsp;&nbsp;&nbsp;&nbsp;</b> <input size="4" name="uroven" style="border:0px solid #FFFFFF; background-color: #bbbbbb;"/>
 </td><td align="left" valign="top">
 
 <form id="form" name="form" action="?dir=casti/mapa/drag.php&glob_sc=1" method="POST">
-<b><a onClick="postavit();"><u>Postavit</u></a>
+<b><a onClick="postavit();"><u><?php echo $GLOBALS["mdrag10"]; ?></u></a>
 
 <select name="budova" id="budova" onchange="zmenabudovy(this)">
 <option value="" selected="selected">---</option>
 <?php
-foreach(hnet2("towns2_uni","SELECT meno,obrazok,kamen,drevo,ps,autor FROM towns2_uni WHERE ppp AND akce != '0' AND obrazok != '0' AND schvelene=1 ORDER by meno") as $row){
+foreach(hnet2("towns2_uni","SELECT " . $GLOBALS["name"] . ",obrazok,kamen,drevo,ps,autor FROM towns2_uni WHERE ppp AND akce != '0' AND obrazok != '0' AND schvelene=1 ORDER by " . $GLOBALS["name"]) as $row){
 $ne=0;
-if($row["ps"]==1 and $row["autor"]!=$_SESSION["id"]){ $ne=1; }
-if($row["ps"]==2 and $row["autor"]!=$_SESSION["id"]){ $ne=1; }
+if($row["ps"]==1 && $row["autor"]!=$_SESSION["id"]){ $ne=1; }
+if($row["ps"]==2 && $row["autor"]!=$_SESSION["id"]){ $ne=1; }
 //if($_SESSION["id"]=="1"){ $anoadmin=1; }
 if(!$ne){
 echo("
@@ -148,27 +148,26 @@ if(!zsur("kamen",$row["kamen"])){ $ne = 1; }
 if(!zsur("drevo",$row["drevo"])){ $ne = 1; }
 //---------------------------------
 if(!$ne or $_SESSION["id"]==1){
-echo("<option value=\"".$row["obrazok"]."\">".$row["meno"]."</option>");
+echo("<option value=\"".$row["obrazok"]."\">".$row[$GLOBALS["name"]]."</option>");
 }
 }
 }
 ?>
 </select>
- | <a onClick="zbourat();"><u>Zbourat</u></a> | <a onClick="roz();"><u>Rozšířit</u></a> | <a onClick="utok();"><u>Útok</u></a> <!-- | <a onClick="zvy();"><u>zvýšit o</u> <input type="text" size="3" name="jmeno" value="10"></a> --></b><br/>
-<div id="coakce">Pro <b>postavení</b> budovy klikněte na mapu.</div>
-<hr/>
+ | <a onClick="zbourat();"><u><?php echo $GLOBALS["mdrag11"]; ?></u></a> | <a onClick="roz();"><u><?php echo $GLOBALS["mdrag12"]; ?></u></a> | <a onClick="utok();"><u><?php echo $GLOBALS["mdrag13"]; ?></u></a> <!-- | <a onClick="zvy();"><u><?php echo $GLOBALS["mdrag13a"]; ?></u> <input type="text" size="3" name="jmeno" value="10"></a> --></b><br />
+<div id="coakce"><?php echo $GLOBALS["mdrag15a"]; ?></div>
+<hr />
 <div id="coakce2"></div>
 </form>
-
 </td></tr></table></div></div>
-    <script>
+   <script type="text/javascript">
         function poslat(velkost,zoom,xc,yc){
             vv = 50*velkost;
             mv = 25*velkost;
         <?php sleep(1); ?>
                 var ajax = (window.XMLHttpRequest ? new XMLHttpRequest() : (window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : false));
                 if(!ajax){
-                    alert("Tak tady to nepoběží!");
+                    alert("<?php echo $GLOBALS['mdrag14']; ?>");
                     return true;
                 }
                 ajax.onreadystatechange= function () {zpracuj(ajax,zoom,xc,yc); } ;
@@ -181,13 +180,13 @@ echo("<option value=\"".$row["obrazok"]."\">".$row["meno"]."</option>");
                 if (ajax.readyState == 4){
                     if(ajax.status == 200 || ajax.status==0){
                         txt=ajax.responseText;
-                        if(txt == "neplatne zadani_xc+"){ alert("Přesáhli jste okraj mapy "+ xc+"/"+yc+"."); xc = xc-10;}
-                        if(txt == "neplatne zadani_yc+"){ alert("Přesáhli jste okraj mapy "+ xc+"/"+yc+"."); yc = yc-10;}
-                        if(txt == "neplatne zadani_xc-"){ alert("Přesáhli jste okraj mapy "+ xc+"/"+yc+"."); xc = xc+10;}
-                        if(txt == "neplatne zadani_yc-"){ alert("Přesáhli jste okraj mapy "+ xc+"/"+yc+"."); yc = yc+10;}
+                        if(txt == "neplatne zadani_xc+"){ alert("<?php echo $GLOBALS['mdrag15']; ?> "+ xc+"/"+yc+"."); xc = xc-10;}
+                        if(txt == "neplatne zadani_yc+"){ alert("<?php echo $GLOBALS['mdrag15']; ?> "+ xc+"/"+yc+"."); yc = yc-10;}
+                        if(txt == "neplatne zadani_xc-"){ alert("<?php echo $GLOBALS['mdrag15']; ?> "+ xc+"/"+yc+"."); xc = xc+10;}
+                        if(txt == "neplatne zadani_yc-"){ alert("<?php echo $GLOBALS['mdrag15']; ?> "+ xc+"/"+yc+"."); yc = yc+10;}
                         //---------------------------------------------------------------------------------------------------------------
         
-        
+                       
                         //dat1 - 2prvni pismena obrazok - 2
                         //dat2 - zivot - 4
                         //dat3 - utok - 4
@@ -238,7 +237,7 @@ echo("<option value=\"".$row["obrazok"]."\">".$row["meno"]."</option>");
                             if(rand.charAt(0) == "0"){ rand = rand.charAt(1); }
                             //----------------------------------------
                             zkratka = dat1.charAt(i)+""+dat1.charAt(i+1);
-                             <?php $object_a = new index("towns2_uni","SELECT obrazok,meno,zivot,size FROM towns2_uni WHERE ppp","if(zkratka == \\\"\".substr(\$row[\"obrazok\"].\"0\",0,2).\"\\\"){ zkratka = \\\"\".\$row[\"obrazok\"].\"\\\"; foruser=\\\"\".\$row[\"meno\"].\"\\\"; zivotmax=\\\"\".\$row[\"zivot\"].\"\\\"; size=\\\"\".\$row[\"size\"].\"\\\";} "); $object_a->show("0,9999","1"); ?>
+                             <?php $object_a = new index("towns2_uni","SELECT obrazok," . $GLOBALS["name"] . ",zivot,size FROM towns2_uni WHERE ppp","if(zkratka == \\\"\".substr(\$row[\"obrazok\"].\"0\",0,2).\"\\\"){ zkratka = \\\"\".\$row[\"obrazok\"].\"\\\"; foruser=\\\"\".\$row[\"meno\"].\"\\\"; zivotmax=\\\"\".\$row[\"zivot\"].\"\\\"; size=\\\"\".\$row[\"size\"].\"\\\";} "); $object_a->show("0,9999","1"); ?>
                              if(zkratka == "do"){ zkratka = "0"; foruser="neco"; zivotmax="0"; size="0"; }                            
                              //----------------------------------------
                             vlastnik = dat4.charAt(i*2)+""+dat4.charAt(i*2+1)+""+dat4.charAt(i*2+2)+""+dat4.charAt(i*2+3);
@@ -247,7 +246,7 @@ echo("<option value=\"".$row["obrazok"]."\">".$row["meno"]."</option>");
                             //----------------------------------------
                             xc=xc+1;
                             if(((i+0)/2)/zoom == Math.ceil(((i+0)/2)/zoom)){
-                                cash = cash + ("<br/>");
+                                cash = cash + ("<br />");
                                 yc = yc + 1;
                                 xc = dxc;
                             }
@@ -286,7 +285,7 @@ echo("<option value=\"".$row["obrazok"]."\">".$row["meno"]."</option>");
         						
                         //--------------------------------------------------------------------------------
                     }
-                    else alert("Chyba: "+ ajax.status +":"+ ajax.statusText);
+                    else alert("<?php echo $GLOBALS['mdrag16']; ?>: "+ ajax.status +":"+ ajax.statusText);
                 }
                 }
                 
@@ -312,17 +311,17 @@ echo("<option value=\"".$row["obrazok"]."\">".$row["meno"]."</option>");
             if(xc < 1){ xck1=1; }
             if(xc > 1){ xck2=1; }             
             
-                        if(xc > 250){ alert("Přesáhli jste okraj mapy."); xc = xc-10;}
-                        if(yc > 250){ alert("Přesáhli jste okraj mapy."); yc = yc-10;}
-                        if(xc < 1){ alert("Přesáhli jste okraj mapy."); xc = xc+10;}
-                        if(yc < 1){ alert("Přesáhli jste okraj mapy."); yc = yc+10;}
+                        if(xc > 250){ alert("<?php echo $GLOBALS['mdrag15']; ?>"); xc = xc-10;}
+                        if(yc > 250){ alert("<?php echo $GLOBALS['mdrag15']; ?>"); yc = yc-10;}
+                        if(xc < 1){ alert("<?php echo $GLOBALS['mdrag15']; ?>"); xc = xc+10;}
+                        if(yc < 1){ alert("<?php echo $GLOBALS['mdrag15']; ?>"); yc = yc+10;}
             //alert(xc+" / "+yc);
             //window.setTimeout("document.getElementById(\"nacitanie\").innerHTML = \"<img border=\\\"0\\\" src=\\\"casti/mapa/desing/akce2/prejmenovat.png\\\" width=\\\"20\\\" height=\\\"20\\\" />\"",1);
             poslat(velkost,zoom,xc,yc);
             //window.setTimeout("document.getElementById(\"nacitanie\").innerHTML = \"\"",1);
             }
         </script>
-<br/>
+<br />
 <?php
 if($_POST["meno"]){
 $xc_dd = (intval(($_POST["xc_d"]-1)/10))+1;
@@ -331,35 +330,35 @@ mysql_query("INSERT INTO towns2_zal (hrac,meno,xc_d,yc_d) VALUES('".$_SESSION["i
 echo(mysql_error());
 dc("towns2_zal");
 }
-$stream = "<b>Jít na: </b>";
+$stream = "<b>" . $GLOBALS["mdrag17"] . ": </b>";
 $q = 1;
 foreach(hnet2("towns2_zal","SELECT meno,xc_d,yc_d FROM towns2_zal WHERE hrac = '".$_SESSION["id"]."' ORDER BY meno") as $row){
 if($q != 1){ $stream = $stream." | "; }
 $stream = $stream."<a href=\"".gv("?dir=casti/mapa/uniindex.php&amp;glob_sc=1&amp;xc=".((10*($row["xc_d"]-1))+1)."&amp;yc=".((10*($row["yc_d"]-1))+1))."\">".$row["meno"]."</a>";
 $q = 2;
 }
-$stream = $stream."<form  method=\"post\" action=\"\"><b>Přidat záložku: </b>Jméno: 
+$stream = $stream."<form  method=\"post\" action=\"\"><b>" . $GLOBALS["mdrag18"] . ": </b>" . $GLOBALS["mdrag17a"] . ": 
 <input name=\"meno\" type=\"text\" id=\"meno\" />
 <input name=\"xc_d\" type=\"hidden\" id=\"xc_d\" />
 <input name=\"yc_d\" type=\"hidden\" id=\"yc_d\" />
-<input type=\"submit\" name=\"Submit\" value=\"Přidat\" /></form>";
+<input type=\"submit\" name=\"Submit\" value=\"" . $GLOBALS["mdrag19"] . "\" /></form>";
 /*echo($_MYGET["xc"]);
 echo(" / ");
 echo($_MYGET["yc"]);*/
 if($_GET["xc_i"]){
 refresh(gv("?dir=casti/mapa/uniindex.php&glob_sc=1&xc=".$_GET["xc_i"]."&yc=".$_GET["yc_i"].""));
 }
-$stream = $stream."<form method=\"GET\" action=\"\"><b>Jdi na:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$stream = $stream."<form method=\"GET\" action=\"\"><b>" . $GLOBALS["mdrag20"] . ":&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 x: <input name=\"xc_i\" type=\"text\" id=\"xc_i\" size=\"2\" />
 y: <input name=\"yc_i\" type=\"text\" id=\"yc_i\" size=\"2\" />
-<input type=\"submit\" name=\"Submit\" value=\" jít na \" /></b>
+<input type=\"submit\" name=\"Submit\" value=\" " . $GLOBALS["mdrag21"] . " \" /></b>
 </form>
 ";
 ramcek($stream,"#cccccc");
 //--------------------------------
-/*$stream = $stream."<br/><form  method=\"GET\" action=\"\"><b>Jít na x:</b> 
+/*$stream = $stream."<br /><form  method=\"GET\" action=\"\"><b>Jít na x:</b> 
 <input name=\"xc\" type=\"text\" id=\"xc\" /><b>y:</b> 
 <input name=\"yc\" type=\"text\" id=\"yc\" />
-<input type=\"submit\" name=\"Submit\" value=\"Přidat\" /></form>";
+<input type=\"submit\" name=\"Submit\" value=\"<?php echo $GLOBALS['mdrag19']; ?\>\" /></form>";
 ramcek($stream,"#cccccc");*/
 ?>

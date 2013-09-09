@@ -84,7 +84,7 @@ while ($row = mysql_fetch_array($odpoved)) {
 $link = profil($row["id"]);
 
 echo("
-$link<br/>
+$link<br />
 ");
 }
 mysql_free_result($odpoved);

@@ -44,23 +44,23 @@ mysql_free_result($odpoved2);
 
 
 if(!$quit){
-die("$xtadysenada <a href=\"?dir=casti/mapa/index.php\">zpět</a>");
+die("$xtadysenada <a href=\"?dir=casti/mapa/index.php\">" . $GLOBALS["disindex2b"] . "</a>");
 }
 
 
 if($idmesta == $_SESSION["mestoid"]){ $pravo=1; }
 //if($hrac == "příroda" and $_SESSION["uzivatel"]){ $pravo=2; } 
 ?>
-<a href="?dir=casti/mapa/index.php">zpět</a>
+<a href="?dir=casti/mapa/index.php"><?php echo($GLOBALS["disindex2b"]); ?></a>
 <table border="0">
   <tr>
     <th width="120" rowspan="3" align="left" valign="top" scope="col"><img src="casti/jednotky/obrazky/<?php echo($obrazok); ?>.jpg" width="100" height="100" /></th>
     <th align="left" valign="top" scope="col"><?php echo $xbudovicka; ?></th>
-    <th align="left" valign="top" scope="col"><i> <?php echo($meno); ?></i></th>
+    <th align="left" valign="top" scope="col"><i><?php echo($meno); ?></i></th>
   </tr>
   <tr>
     <th width="70" align="left" valign="top" scope="col">pozice: </th>
-    <th align="left" valign="top" scope="col"><i> <?php echo pxy($xc,$yc); ?></i></th>
+    <th align="left" valign="top" scope="col"><i><?php echo pxy($xc,$yc); ?></i></th>
   </tr>
   <tr>
     <th align="left" valign="top" scope="col"><?php echo $xvlastnicek; ?></th>

@@ -1,0 +1,1 @@
+a:2:{i:0;s:6:"sadasd";s:5:"popis";s:6:"sadasd";}

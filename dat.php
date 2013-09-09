@@ -1,5 +1,8 @@
 <?php header("Cache-Control: no-cache, must-revalidate");
 
+// must
+require_once("general.php");
+
 if($_GET["zoom"] != 1){
 //if($_GET["zoom"] != 10){ die("neplatne zadani"); }
 //if($_GET["xc"] > map_x){ die("neplatne zadani_xc+"); }
@@ -47,7 +50,7 @@ IF(tmp!='',(SELECT towns2_2.tmp FROM towns2 towns2_2 WHERE $castdotazu AND towns
 //$castdotazu = "$castdotazu,towns2.tmp_s1,towns2.tmp_s2,towns2.tmp_s3,towns2.tmp_s4";
 //$castdotazu = "1";
 //$castdotazu = "'','s','','',''";
-/*echo*/$odpoved =mysql_query("select $castdotazu,towns2.level,towns2.uroven,towns2.pozadie,towns2_uziv.meno vlistnik,towns2.cas,towns2.obrazok,towns2.rand,towns2.xc,towns2.yc,towns2.vlastnik,towns2.utokna,towns2.zivot,towns2_uni.meno,towns2_uni.zivot zivotmax
+/*echo*/$odpoved =mysql_query("select $castdotazu,towns2.level,towns2.uroven,towns2.pozadie,towns2_uziv.meno vlistnik,towns2.cas,towns2.obrazok,towns2.rand,towns2.xc,towns2.yc,towns2.vlastnik,towns2.utokna,towns2.zivot,towns2_uni." . $GLOBALS["name"] . ",towns2_uni.zivot zivotmax
 from towns2
 left join towns2_uni ON towns2.obrazok = towns2_uni.obrazok
 left join towns2_uziv ON towns2.vlastnik = towns2_uziv.id

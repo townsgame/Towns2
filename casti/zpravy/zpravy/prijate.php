@@ -32,9 +32,9 @@ $predmet = "$xzadnypredmet ";
 echo("
   <tr>
   <th align=\"left\" width=\"136\"  bgcolor=\"$bg\" scope=\"col\">
-    <u><a href=\"?idz=4&amp;zprava=".$row["id"]."\">$predmet</a>...</u><br/>
-   $xod $profil<br/>
-   ".($row["cas"])."<br/><a href=\"?archyv=".$row["id"]."\">$xarchyvpr</a><hr width=\"130\" />
+    <u><a href=\"?idz=4&amp;zprava=".$row["id"]."\">" . zpravback($predmet) . "</a>...</u><br />
+   $xod $profil<br />
+   ".($row["cas"])."<br /><a href=\"?archyv=".$row["id"]."\">$xarchyvpr</a><hr width=\"130\" />
    </th>
     <th valign=\"top\" width=\"20\" scope=\"col\">&nbsp;<a href=\"?id=1&amp;zprava=".$row["id"]."\"><img src=\"casti/desing/no.bmp\" border=\"1\"  width=\"20\" height=\"20\"/></a></th>
   </tr>

@@ -153,18 +153,18 @@ echo($y);
   <table width="155" border="0" bgcolor="#FFFFFF">
     <tr>
       <th width="50" scope="col">&nbsp;</th>
-      <th width="46" scope="col"><a href="?dir=index.php&amp;yc=<?php echo $_SESSION["yc"]-$_SESSION["plus"]; ?>"><img src="desing/hore.jpg" alt="nahoru" width="50" height="30" border="0" /></a></th>
+      <th width="46" scope="col"><a href="?dir=index.php&amp;yc=<?php echo $_SESSION["yc"]-$_SESSION["plus"]; ?>"><img src="desing/hore.jpg" alt="|" width="50" height="30" border="0" /></a></th>
       <th width="62" scope="col">&nbsp;</th>
     </tr>
     <tr>
-      <td align="right"><a href="?dir=index.php&amp;xc=<?php echo $_SESSION["xc"]-$_SESSION["plus"]; ?>"><img src="desing/dolava.jpg" alt="doleva" width="30" height="50" border="0" /></a></td>
+      <td align="right"><a href="?dir=index.php&amp;xc=<?php echo $_SESSION["xc"]-$_SESSION["plus"]; ?>"><img src="desing/dolava.jpg" alt="<-" width="30" height="50" border="0" /></a></td>
       <td>&nbsp;</td>
-      <td><a href="?dir=index.php&amp;xc=<?php echo $_SESSION["xc"]+$_SESSION["plus"]; ?>"><img src="desing/doprava.jpg" alt="doprava" width="30" height="50" border="0" /></a></td>
+      <td><a href="?dir=index.php&amp;xc=<?php echo $_SESSION["xc"]+$_SESSION["plus"]; ?>"><img src="desing/doprava.jpg" alt="->" width="30" height="50" border="0" /></a></td>
     </tr>
     <tr>
-      <td align="right"><a href="?dir=index.php&amp;zoom=<?php echo $_SESSION["zoom"]-$_SESSION["plus"]; ?>"><img src="desing/plus.jpg" alt="nahoru" width="30" height="30" border="0" /></a></td>
-      <td><a href="?dir=index.php&amp;yc=<?php echo $_SESSION["yc"]+$_SESSION["plus"]; ?>"><img src="desing/dole.jpg" alt="dolu" width="50" height="30" border="0" /></a></td>
-      <td><a href="?dir=index.php&amp;zoom=<?php echo $_SESSION["zoom"]+$_SESSION["plus"]; ?>"><img src="desing/minus.jpg" alt="nahoru" width="30" height="15" border="0" /></a></td>
+      <td align="right"><a href="?dir=index.php&amp;zoom=<?php echo $_SESSION["zoom"]-$_SESSION["plus"]; ?>"><img src="desing/plus.jpg" alt="|" width="30" height="30" border="0" /></a></td>
+      <td><a href="?dir=index.php&amp;yc=<?php echo $_SESSION["yc"]+$_SESSION["plus"]; ?>"><img src="desing/dole.jpg" alt="|" width="50" height="30" border="0" /></a></td>
+      <td><a href="?dir=index.php&amp;zoom=<?php echo $_SESSION["zoom"]+$_SESSION["plus"]; ?>"><img src="desing/minus.jpg" alt="|" width="30" height="15" border="0" /></a></td>
     </tr>
     <tr>
       <td colspan="3">
@@ -218,7 +218,7 @@ $x="<a href=\\\"\"); require(\"../jednotky/let/xcyc.php\"); echo(\"\\\" target=\
 $i=$i-1;
 endwhile; 
 
-$x=$x."<br/>";
+$x=$x."<br />";
 
 $i = $_SESSION["zoom"];
 while ($i >= 1):

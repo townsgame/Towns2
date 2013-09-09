@@ -60,7 +60,7 @@ $size2=/*($_SESSION["sizes"]*(4/3))/$_SESSION["zooms"]*/112/3*5;
 <div id=\\\"p".$i."\\\"><a href=\\\"\"); require(\"../jednotky/xcyc2.php\"); echo(\"\\\"><img src=\\\"\"); require(\"../jednotky/pozadie2.php\"); echo(\"\\\" alt=\\\"\\\" width=\\\"".$size2."\\\" height=\\\"".($size2/3)."\\\" border=\\\"0\\\"/></a></div>
 
 
-<div id=\\\"p".$i."\\\">\"); require(\"../jednotky/xcyc2.php\"); echo(\"\\\"<br/><img src=\\\"\"); require(\"../jednotky/pozadie2.php\"); echo(\"\\\" alt=\\\"\\\" width=\\\"".$size2."\\\" height=\\\"".($size2/3)."\\\" border=\\\"0\\\"/></div>
+<div id=\\\"p".$i."\\\">\"); require(\"../jednotky/xcyc2.php\"); echo(\"\\\"<br /><img src=\\\"\"); require(\"../jednotky/pozadie2.php\"); echo(\"\\\" alt=\\\"\\\" width=\\\"".$size2."\\\" height=\\\"".($size2/3)."\\\" border=\\\"0\\\"/></div>
 */
 $_SESSION["nove"]=0;
 $_SESSION["novey"]=0;
@@ -88,13 +88,13 @@ if($_SESSION["nove"]>$_SESSION["zooms"]){
   $_SESSION["novey"] = $_SESSION["novey"]+1;
 }
 
-//echo("$xc,$xc<br/>");
+//echo("$xc,$xc<br />");
 
 
 $iii = prevrat($i,$ii);
 
 
-//echo($_SESSION["nove"]."/".$_SESSION["novey"]."<br/>");
+//echo($_SESSION["nove"]."/".$_SESSION["novey"]."<br />");
 //(($_SESSION["novey"]*(35*(5/$_SESSION["zoom"])))-(35*(5/$_SESSION["zoom"]))
 
 $zkosenie = (prevrat($_SESSION["novey"], $_SESSION["zooms"])*(37*(5/$_SESSION["zooms"])))-(37*(5/$_SESSION["zooms"]));

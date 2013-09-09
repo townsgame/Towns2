@@ -1,6 +1,5 @@
-<?php eval(file_get_contents("casti/jazyk/cz.txt")); ?>
 <?php
-echo("<h1>daně</h1>(Jednou za den)");
+echo("<h1>" . $GLOBALS["afourth1a"] . "</h1>(" . $GLOBALS["afourth2"] . ")");
 //-----------------------------
 if($_POST["ano"]){
 $prachy = vybersurku("prachy",999999);
@@ -10,7 +9,7 @@ $zelezo = vybersurku("zelezo",999999);
 $drevo = vybersurku("drevo",999999);
 mysql_query("UPDATE towns2_ali SET prachydane=".$prachy.", jedlodane=".$jedlo.", kamendane=".$kamen.", zelezodane=".$zelezo.", drevodane=".$drevo." WHERE id=".$_SESSION["ali"]);
 dc("towns2_ali");
-chyba2("změněno");
+chyba2($GLOBALS["aeighth1"]);
 }
 //-----------------------------
 $tmp = hnet2("towns2_ali","SELECT prachydane,jedlodane,kamendane,zelezodane,drevodane FROM towns2_ali WHERE ppp AND id = ".$_SESSION["ali"]);
@@ -40,11 +39,11 @@ $drevo = $tmp[4];
 <td><?php zadajsurku("drevo",999999,"</td><td>",$drevo); ?></td>
 </tr>
 </table>
-<button name="OK" value="OK" type="submit">změnit</button>
+<button name="OK" value="OK" type="submit"><?php echo $GLOBALS["sbanka11"]; ?></button>
 </form>
 <?php
 //-----------------------------------------------
-echo("<h1>Poslat suroviny</h1>");
+echo("<h1>" . $GLOBALS["sindex2"] . "</h1>");
 $tmp = hnet2("towns2_ali","SELECT prachy,jedlo,kamen,zelezo,drevo FROM towns2_ali WHERE ppp AND id = ".$_SESSION["ali"]);
 $tmp = $tmp[0];
 $prachy = $tmp[0];
@@ -67,9 +66,9 @@ mysql_query("UPDATE towns2_alipris SET prachy=prachy-".vybersurku("prachy",$prac
 dc("towns2_mes");
 dc("towns2_ali");
 dc("towns2_alipris");
-chyba2("odesláno");
+chyba2($GLOBALS["sposlata1"]);
 }else{
-chyba1("neexistující hráč");
+chyba1($GLOBALS["aeighth2"]);
 }
 }
 
@@ -96,5 +95,5 @@ chyba1("neexistující hráč");
 <td><?php zadajsurku("drevo",$drevo,"</td><td>"); ?></td>
 </tr>
 </table>
-<button name="OK" value="OK" type="submit">poslat</button>
+<button name="OK" value="OK" type="submit"><?php echo $GLOBALS["sposlat1"]; ?></button>
 </form>

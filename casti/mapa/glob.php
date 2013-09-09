@@ -6,7 +6,7 @@ require("../funkcie/index.php");
 <head>
 <link rel="shorcut icon" href="favicon.ico"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title><?php echo $xtowns; ?></title>
+<title><?php echo $GLOBALS["langtowns"]; ?></title>
 <style type="text/css">
 <!--
 #Layer1 {

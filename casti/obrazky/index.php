@@ -10,12 +10,12 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,lo
 <table>
 <tr>
 <?php
-$url = "casti/obrazky/data/";
+$url = "casti/obrazky/data/" . $GLOBALS["lang"]. "/";
 $i = 1;
-foreach(glob($url."*.png") as $filename){
+foreach(glob($url."*") as $filename){
 $popis = substr($filename,strlen($url));
 $popis = substr($popis,0,strlen($popis)-4);
-$popis = file_get_contents("casti/obrazky/txt/".$popis.".txt");
+$popis = file_get_contents("casti/obrazky/txt/" . $GLOBALS["lang"]. "/".$popis.".txt");
 echo('<td><hr /><a  HREF="javascript:popUp(\''.$filename.'\')" ><img src="'.$filename.'" width="160" height="120" alt="'.$popis.'" /><br />
 <b>'.$popis.'</b></a></td>');
 if($i==3){ echo("</tr><tr>"); $i = 0; }

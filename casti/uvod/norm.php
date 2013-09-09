@@ -9,7 +9,7 @@
 </style>
 <table width="589" height="500" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <th height="20" colspan="2" align="left" valign="top" scope="col"><h2 align="center" class="style11"> vítej na této stránce </h2></th>
+    <th height="20" colspan="2" align="left" valign="top" scope="col"><h2 align="center" class="style11"> <?php echo $GLOBALS["unnorm1"]; ?> </h2></th>
   </tr>
   <tr>
     <td height="105" colspan="2">
@@ -20,12 +20,12 @@
           <td colspan="2" align="left" valign="top" class="style10" scope="col">login:</td>
         </tr>
         <tr>
-          <th width="96" align="left" valign="top" scope="col">jméno:</th>
+          <th width="96" align="left" valign="top" scope="col"><?php echo $GLOBALS["afourth5"]; ?>:</th>
           <th width="83" align="left" valign="top" scope="col">
             <input name="meno" type="text" id="meno" /></th>
         </tr>
         <tr>
-          <th align="left" valign="top" scope="col">heslo:</th>
+          <th align="left" valign="top" scope="col"><?php echo $GLOBALS["index3"]; ?>:</th>
           <th align="left" valign="top" scope="col"><input name="heslo" type="text" id="heslo" /></th>
         </tr>
         <tr>
@@ -34,15 +34,15 @@
             <input type="submit" name="Submit" value="OK" />
             </label>
             <br />
-            <a href="?dir=casti/admin/registrace.php">registrace</a></th>
+            <a href="?dir=casti/admin/registrace.php"><?php echo $GLOBALS["htmlindex10"]; ?></a></th>
         </tr>
       </table>
       </form>    </td>
   </tr>
   
   <tr>
-    <td width="283" height="19" class="style10">nejnovější diskuse: </td>
-    <td width="306" height="0" class="style10">o čem je tato hra: </td>
+    <td width="283" height="19" class="style10"><?php echo $GLOBALS["unnorm2"]; ?>: </td>
+    <td width="306" height="0" class="style10"><?php echo $GLOBALS["unnorm3"]; ?>: </td>
   </tr>
   <tr>
     <td height="218" rowspan="3" align="left" valign="top">
@@ -67,14 +67,15 @@ echo "</table>";
 mysql_free_result($odpoved);
 ?>
 	</td>
-    <td width="306" height="57" align="left" valign="top">Towns je online hra. Hraješ jinými hráči jako náčelník města. Začínáš pouze s pár budovami. Vašim úkolem je město rozšířit a dosáhnout dobrých výsledků a hlavně si dobře zahrát. </td>
+    <td width="306" height="57" align="left" valign="top"><?php echo $GLOBALS["unnorm4"]; ?></td>
   </tr>
   <tr>
-    <td height="20" align="left" valign="top" class="style10">výhody:</td>
+    <td height="20" align="left" valign="top" class="style10"><?php echo $GLOBALS["unreg13"]; ?>:</td>
   </tr>
   <tr>
-    <td height="100" align="left" valign="top">-stačí mít obyčejný internetový prohlížeč<br />
-    -žádná instalace <br />
-    -žádné stahování </td>
+    <td height="100" align="left" valign="top">
+    -<?php echo $GLOBALS["unnorm5"]; ?><br />
+    -<?php echo $GLOBALS["unnorm6"]; ?><br />
+    -<?php echo $GLOBALS["unnorm7"]; ?></td>
   </tr>
 </table>

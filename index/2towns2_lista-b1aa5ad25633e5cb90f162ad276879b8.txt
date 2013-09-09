@@ -1,0 +1,5 @@
+a:2:{i:0;s:410:"<?php
+if($_POST["poznamky"]){
+mysql_query("UPDATE towns2_uziv SET poznamky='".addslashes($_POST["poznamky"])."' WHERE id=".$_SESSION["id"]);dc("towns2_uziv");}  ?><form method="POST"><textarea name="poznamky" rows="10" cols="13" id="poznamky"><?php echo hnet("towns2_uziv","SELECT poznamky FROM towns2_uziv WHERE id=".$_SESSION["id"]) ?></textarea><br/><input type="submit" name="Submit" value="Ok" /></form>";s:3:"kod";s:410:"<?php
+if($_POST["poznamky"]){
+mysql_query("UPDATE towns2_uziv SET poznamky='".addslashes($_POST["poznamky"])."' WHERE id=".$_SESSION["id"]);dc("towns2_uziv");}  ?><form method="POST"><textarea name="poznamky" rows="10" cols="13" id="poznamky"><?php echo hnet("towns2_uziv","SELECT poznamky FROM towns2_uziv WHERE id=".$_SESSION["id"]) ?></textarea><br/><input type="submit" name="Submit" value="Ok" /></form>";}

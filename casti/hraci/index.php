@@ -1,1 +1,2 @@
-<?php submenu(array("Uživatelé","Aliance","Profil uživatele","Změna profilu","Profil aliance"),array("casti/hraci/uzivatelia.php","casti/hraci/aliancie.php","casti/hraci/profil.php","casti/hraci/profilch.php","casti/hraci/profila.php")); ?>
+<?php submenu(array($GLOBALS["hindex1"],$GLOBALS["aindex1"],$GLOBALS["hindex2"],$GLOBALS["hindex3"],$GLOBALS["aindex2"]),
+        array("casti/hraci/uzivatelia.php","casti/hraci/aliancie.php","casti/hraci/profil.php","casti/hraci/profilch.php","casti/hraci/profila.php")); ?>

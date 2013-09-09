@@ -42,7 +42,7 @@ surovinames($tmp,"drevo","+",vybersurku("drevo"));*/
 <td><?php zadajsurku("drevo","dífult","</td><td>"); ?></td>
 </tr>
 </table>
-<button name="OK" value="OK" type="submit">poslat</button>
+<button name="OK" value="OK" type="submit"><?php echo $GLOBALS["sposlat1"]; ?></button>
 </form>
-<h1>poslanÉ suroviny</h1>
+<h1><?php echo $GLOBALS["sviac8"]; ?></h1>
 <?php surkyposlane(); ?>

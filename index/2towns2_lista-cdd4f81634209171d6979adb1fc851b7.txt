@@ -1,1 +1,5 @@
-N;
+a:2:{i:0;s:42:"<?php
+require("casti/uvod/info.php");
+?>";s:3:"kod";s:42:"<?php
+require("casti/uvod/info.php");
+?>";}

@@ -1,0 +1,3 @@
+<?php
+require("casti/lavalista/data/budovy.php");
+?>

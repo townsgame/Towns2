@@ -1,4 +1,3 @@
-<?php eval(file_get_contents("casti/jazyk/cz.txt")); ?>
 <?php
 if($_POST["ano"]){
 $odpoved = mysql_query("SELECT id FROM towns2_uziv WHERE ali = ".$_SESSION["aliance"]);
@@ -14,17 +13,17 @@ mysql_query("UPDATE towns2_uziv SET hodnost='".$_POST["hodnost_".($row["id"])]."
 deletecash("towns2_uziv");
 }
 ?>
-1) Změnit profil aliance.<br/>
-2) Spravovat fórum.<br/>
-3) Spravovat pokladnu.<br/>
-4) Pozvat hráče do aliance.<br/>
-5) Vyhodit hráče z aliance.<br/>
-6) Přidělovat hodnosti & pravomoci.<br/>
+1) <?php echo $GLOBALS["aninth1"]; ?><br />
+2) <?php echo $GLOBALS["aninth2"]; ?><br />
+3) <?php echo $GLOBALS["aninth3"]; ?><br />
+4) <?php echo $GLOBALS["aninth4"]; ?><br />
+5) <?php echo $GLOBALS["aninth5"]; ?><br />
+6) <?php echo $GLOBALS["aninth6"]; ?><br />
 <form action="<?php gv("?submenu=9"); ?>" method="post">
 <table>
 <tr>
-<th>jméno</th>
-<th>hodnost</th>
+<th><?php echo $GLOBALS["afourth5"]; ?></th>
+<th><?php echo $GLOBALS["aninth7"]; ?></th>
 <th>1</th>
 <th>2</th>
 <th>3</th>

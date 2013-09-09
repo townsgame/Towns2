@@ -17,7 +17,7 @@ $cas = $row["cas"];
 
 mysql_free_result($odpoved);
 if(!$quit){
-die("$xtadysenada  <a href=\"?dir=casti/mapa/link.txt\">zpět</a>");
+die("$xtadysenada  <a href=\"?dir=casti/mapa/link.txt\">" . $GLOBALS["disindex2b"] . "</a>");
 }
 
 if($obrazok){

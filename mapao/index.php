@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . "/../" . "general.php");
+
 ini_set("memory_limit","200M");
 ini_set("max_execution_time","60");
 $nocontroling = 1;
@@ -57,7 +59,7 @@ $_SESSION["im"] = ImageCreate($w*$s, $h*$s);
 //imagecolortransparent($im);
 $b = imagecolorallocatealpha($_SESSION["im"],0,0,0,127);
 $c = ImageColorAllocate($_SESSION["im"],0,0,0);
-//op("http://2.towns.cz/casti/suroviny/desing/prachy.png",20,20,0,0);
+//op("casti/suroviny/desing/prachy.png",20,20,0,0);
 //imagecolortransparent($_SESSION["im"]);
 ImageFill($_SESSION["im"],0,0,$b);
 
@@ -82,7 +84,7 @@ IF(tmp!='',(SELECT towns2_2.tmp FROM towns2 towns2_2 WHERE $castdotazu AND towns
 //$castdotazu = "$castdotazu,towns2.tmp_s1,towns2.tmp_s2,towns2.tmp_s3,towns2.tmp_s4";
 //$castdotazu = "1";
 //$castdotazu = "'','s','','',''";
-/*echo*/$odpoved =hnet2("towns2","select $castdotazu,towns2_uni.size,towns2.level,towns2.uroven,towns2.pozadie,towns2_uziv.meno vlistnik,towns2.cas,towns2.obrazok,towns2.rand,towns2.xc,towns2.yc,towns2.vlastnik,towns2.utokna,towns2.zivot,towns2_uni.meno,towns2_uni.zivot zivotmax
+/*echo*/$odpoved =hnet2("towns2","select $castdotazu,towns2_uni.size,towns2.level,towns2.uroven,towns2.pozadie,towns2_uziv.meno vlistnik,towns2.cas,towns2.obrazok,towns2.rand,towns2.xc,towns2.yc,towns2.vlastnik,towns2.utokna,towns2.zivot,towns2_uni." . $GLOBALS["name"] . ",towns2_uni.zivot zivotmax
 from towns2
 left join towns2_uni ON towns2.obrazok = towns2_uni.obrazok
 left join towns2_uziv ON towns2.vlastnik = towns2_uziv.id
@@ -97,7 +99,7 @@ $yy=(12.5*$s*$xu)+(12.5*$s*$yu);
 $xx=$xx-50+(25*$s*$zoom);
 $yy=$yy+50;
 
-//echo("-(".$row["xc"].",".$row["yc"].")<br/>");
+//echo("-(".$row["xc"].",".$row["yc"].")<br />");
 //imagestring($_SESSION["im"],4,$xx,$yy,"(".$row["xc"].",".$row["yc"].")",$c);
 
 
@@ -110,7 +112,7 @@ $yy=$yy+50;
 op("../casti/jednotky/drag/pozadie/".$row["pozadie"]."/index.gif",$s*50*2,$s*25*2,$xx,$yy);
 
 }
-//echo("a<br/>");
+//echo("a<br />");
 foreach($odpoved as $row){
 //----------------------------------------------
 $aa=$row["rand"];
@@ -157,9 +159,9 @@ $yy=$yy-20;
 $yy=$yy-($s*($row["level"]-500));
 
 if($row["level"]!=500){
-op("http://2.towns.cz/casti/jednotky/drag/level.php?level=".$row["level"]."&pozadie=".$row["pozadie"],$s*50*$row["size"],$s*($row["level"]-500+25)*$row["size"],$xx-((50*$size)/2)-($s*25*($row["size"]-1)),$yy+(50*$s),1);
+op("casti/jednotky/drag/level.php?level=".$row["level"]."&pozadie=".$row["pozadie"],$s*50*$row["size"],$s*($row["level"]-500+25)*$row["size"],$xx-((50*$size)/2)-($s*25*($row["size"]-1)),$yy+(50*$s),1);
 } /* */
-//echo("(".$xx.",".$yy.")<br/>");
+//echo("(".$xx.",".$yy.")<br />");
 op("../casti/jednotky/drag/mapa/".$row["obrazok"]."/".$aa.".gif",$s*50*$row["size"],$s*75*$row["size"],$xx-((50*$size)/2)-($s*25*($row["size"]-1)),$yy-((25*$size)/2)-($s*45*($row["size"]-1)));
 }
 

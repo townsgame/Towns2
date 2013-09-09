@@ -1,0 +1,13 @@
+a:2:{i:0;s:931:"<em><a href="#" onclick="javascript: location.reload();"><?php echo $GLOBALS["frefresh"]; ?></a></em><br /><br />
+<?php
+if($_MYGET["zrusstavbuxc"]){
+mysql_query("UPDATE towns2 SET obrazok = '0',cas='1' ,casovac=NULL WHERE vlastnik = ".$_SESSION["id"]." AND xc = ".$_MYGET["zrusstavbuxc"]." AND yc = ".$_MYGET["zrusstavbuyc"]); dc("towns2");dcmapa($_MYGET["zrusstavbuxc"],$_MYGET["zrusstavbuyc"]);}
+foreach(hnet2("towns2","select * from towns2 JOIN towns2_uni ON towns2.obrazok=towns2_uni.obrazok WHERE casovac != 0 AND cas='2' AND vlastnik=".$_SESSION["id"]." ORDER by casovac","0,9999","") as $row){
+echo "<a href=\"".gv("?zrusstavbuxc=".$row["xc"]."&amp;zrusstavbuyc=".$row["yc"])."\"><img src=\"casti/desing/no.bmp\" width=\"12\" height=\"12\" /> </a><b>". $row[$GLOBALS["name"]]."</b>  ".(qpxy($row["xc"],$row["yc"]))."<br/>".pocitadlo($row["casovac"], $row["xc"],$row["yc"],$row["obrazok"],$row["vlastnik"])."<br/>";}
+?>";s:3:"kod";s:931:"<em><a href="#" onclick="javascript: location.reload();"><?php echo $GLOBALS["frefresh"]; ?></a></em><br /><br />
+<?php
+if($_MYGET["zrusstavbuxc"]){
+mysql_query("UPDATE towns2 SET obrazok = '0',cas='1' ,casovac=NULL WHERE vlastnik = ".$_SESSION["id"]." AND xc = ".$_MYGET["zrusstavbuxc"]." AND yc = ".$_MYGET["zrusstavbuyc"]); dc("towns2");dcmapa($_MYGET["zrusstavbuxc"],$_MYGET["zrusstavbuyc"]);}
+foreach(hnet2("towns2","select * from towns2 JOIN towns2_uni ON towns2.obrazok=towns2_uni.obrazok WHERE casovac != 0 AND cas='2' AND vlastnik=".$_SESSION["id"]." ORDER by casovac","0,9999","") as $row){
+echo "<a href=\"".gv("?zrusstavbuxc=".$row["xc"]."&amp;zrusstavbuyc=".$row["yc"])."\"><img src=\"casti/desing/no.bmp\" width=\"12\" height=\"12\" /> </a><b>". $row[$GLOBALS["name"]]."</b>  ".(qpxy($row["xc"],$row["yc"]))."<br/>".pocitadlo($row["casovac"], $row["xc"],$row["yc"],$row["obrazok"],$row["vlastnik"])."<br/>";}
+?>";}

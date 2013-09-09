@@ -1,4 +1,12 @@
 <?php
+if(session_id() == '')
+{
+    session_save_path(__DIR__ . "/../sessions");
+}
+$root = __DIR__ . "/../";
+require_once(__DIR__ . "/../" . "general.php");
+require_once(__DIR__ . "/../casti/funkcie/index.php");
+
 if(!function_exists("prevest")){
 function prevest($kolik) {
 function file_post_contents($url,$headers=false,$cookie="a=a",$wasistdas="POST") {
@@ -38,7 +46,7 @@ function file_post_contents($url,$headers=false,$cookie="a=a",$wasistdas="POST")
 }
 
 
-
+/*
 $stream = file_post_contents("http://www.websurf.cz/admin_sess.php","akce=prihlasit_se&jmeno=towns&heslo=heslo190077");
 $tmp = strpos($stream,"PHPSESSID=");
 $stream = substr($stream,$tmp);
@@ -47,7 +55,7 @@ $stream = substr($stream,0,$tmp);
 
 //file_post_contents("http://www.websurf.cz/admin_sess.php","",$stream);
 file_post_contents("http://www.websurf.cz/admin_sess.php?akce=web_pridat_kredity","typ=NORMAL&odkud=sporci&kam=346ea1f70140e97ad36479931fa9d3&kolik=$kolik",$stream,"POST");
-//echo($stream);
+//echo($stream); */
 }
 //==================================================================================================================================================
 function budova_t($budova){
@@ -115,14 +123,13 @@ return($postavit);
 }
 //==================================================================================================================================================
 function onebot($id){
-foreach(hnet2("towns2","SELECT xc,yc,obrazok,vlastnik FROM towns2 WHERE cas=1 AND vlastnik = '".$id."' ORDER by RAND()",1) as $row){
-$tmp = hnet2("towns2","SELECT 
+foreach(premhnet("SELECT xc,yc,obrazok,vlastnik FROM towns2 WHERE cas=1 AND vlastnik = '".$id."' ORDER by RAND()",1) as $row){
+$tmp = premhnet("SELECT 
 (SELECT 1 FROM towns2 WHERE xc=".($row["xc"]+1)." AND yc = ".($row["yc"])." AND obrazok = '0'),
 (SELECT 1 FROM towns2 WHERE xc=".($row["xc"])." AND yc = ".($row["yc"]+1)." AND obrazok = '0'),
 (SELECT 1 FROM towns2 WHERE xc=".($row["xc"]-1)." AND yc = ".($row["yc"])." AND obrazok = '0'),
 (SELECT 1 FROM towns2 WHERE xc=".($row["xc"])." AND yc = ".($row["yc"]-1)." AND obrazok = '0')
 ");
-$tmp = $tmp[0];
 $podminka = "nein";
 if($tmp[0]){ $podminka = "xc = '".($row["xc"]+1)."' AND yc = '".($row["yc"])."'"; }
 if($tmp[1]){ $podminka = "xc = '".($row["xc"])."' AND yc = '".($row["yc"]+1)."'"; }
@@ -140,7 +147,8 @@ dcmapa($row["xc"],$row["yc"]-1);
 }
 //==================================================================================================================================================
 function meno_g(){
-$cash = hnet("towns2_nextbot","SELECT meno FROM towns2_nextbot ORDER BY RAND()");
+$cash = premhnet("SELECT meno FROM towns2_nextbot ORDER BY RAND()");
+$cash = $cash[0]["meno"];
 if(!$cash){
 $cash = "";
 for ($i = 1; $i <= rand(2,3); $i++) {	
@@ -158,10 +166,12 @@ return($cash);
 }
 //==================================================================================================================================================
 function p_bot(){
-$pocet = 1+hnet("towns2_uziv","SELECT MAX(id) FROM towns2_uziv");
-$poradie = 1+hnet("towns2_uziv","SELECT MAX(poradie) FROM towns2_uziv");
+$i1 = premhnet("SELECT MAX(id) FROM towns2_uziv");
+$i2 = premhnet("SELECT MAX(poradie) FROM towns2_uziv");
+$pocet = 1+$i1[0]["MAX(id)"];
+$poradie = 1+$i1[0]["MAX(poradie)"];
 $dir_reg = "../2/";
-//echo("(zac)--");
+//echo("(zac)--")
 
 eval(file_get_contents("../2/reg.txt"));
 
@@ -181,23 +191,25 @@ dcmapa($xcreg,$xcreg);
 }
 //==================================================================================================================================================
 function m_bot(){
-smazatuziv(hnet("towns2_uziv","SELECT id FROM towns2_uziv WHERE typ = '9' ORDER BY RAND()"));
+$u = premhnet("SELECT id FROM towns2_uziv WHERE typ = '9' ORDER BY RAND()");
+smazatuziv($u[0]["id"]);
 }
 //==================================================================================================================================================
 }
 //echo("toto_1_ano");
-foreach(hnet2("towns2_botdis","SELECT * from towns2_botdis WHERE cas<".time()." order by cas") as $row){
+foreach(premhnet("SELECT * from towns2_botdis WHERE cas<".time()." order by cas") as $row){
 /*if(hnet("towns2_tem","SELECT tema FROM towns2_tem where tema='".$row["to"]."'")){
 echo("exist-");
 }{
 echo("noexist-");*/
-mysql_query2("INSERT INTO towns2_tem ( `id` , `typ` , `sekce` , `tema` ) VALUES (".maxid("towns2_tem").",1,7,'".$row["to"]."')");	
+mysql_query("INSERT INTO towns2_tem ( `id` , `typ` , `sekce` , `tema` ) VALUES (".maxid("towns2_tem").",1,7,'".$row["to"]."')");	
 dc("towns2_tem");
 //}
-$idtem = hnet("towns2_tem","SELECT id FROM towns2_tem WHERE tema = '".$row["to"]."'");
-mysql_query2("INSERT INTO towns2_dis ( `id` , `tema` , `nadpis` , `meno` , `text` ) VALUES (".maxid("towns2_dis").",".$idtem.",'".$row["nadpis"]."',".$row["od"].",'".$row["text"]."')");	
-mysql_query2("DELETE FROM towns2_botdis WHERE nadpis = '".$row["nadpis"]."'");
-mysql_query2("DELETE FROM towns2_tem WHERE (SELECT count(id) from towns2_dis WHERE tema = towns2_tem.id)= 0");
+$ui = premhnet("SELECT id FROM towns2_tem WHERE tema = '".$row["to"]."'");
+$idtem = $ui[0]["id"];
+mysql_query("INSERT INTO towns2_dis ( `id` , `tema` , `nadpis` , `meno` , `text` ) VALUES (".maxid("towns2_dis").",".$idtem.",'".$row["nadpis"]."',".$row["od"].",'".$row["text"]."')");	
+mysql_query("DELETE FROM towns2_botdis WHERE nadpis = '".$row["nadpis"]."'");
+mysql_query("DELETE FROM towns2_tem WHERE (SELECT count(id) from towns2_dis WHERE tema = towns2_tem.id)= 0");
 dc("towns2_botdis");
 dc("towns2_dis");
 }
@@ -205,7 +217,8 @@ dc("towns2_dis");
 //echo("toto_2_ano");
 
 $botlimiter = file_get_contents("../2/cron/botlimiter.txt");
-$botpocet = hnet("towns2_uziv","SELECT count(1) FROM towns2_uziv WHERE typ = '9'");
+$botpocet = premhnet("SELECT count(1) FROM towns2_uziv WHERE typ = '9'");
+$botpocet = $botpocet[0]["count(1)"];
 echo("toto_2_p_ano");
 if($botlimiter > $botpocet){ p_bot(); }
 echo("toto_2_m_ano");
@@ -214,14 +227,14 @@ if($botlimiter < $botpocet){ m_bot(); }
 //echo("toto_3_ano");
 
 $plusn = 0;
-foreach(hnet2("towns2_uziv","SELECT id FROM towns2_uziv WHERE typ = '9'") as $row){
+foreach(premhnet("SELECT id FROM towns2_uziv WHERE typ = '9'") as $row){
 echo($row["id"]);
 if(rand(1,100/*288*/) == 5){
 echo(" - 1");
 onebot($row["id"]);
 $plusn = $plusn + 1;
 }
-echo("<br/>");
+echo("<br />");
 //onebot(186);
 }
 
@@ -229,6 +242,9 @@ echo("toto_4_ano");
 
 if($plusn != 0){
 prevest($plusn);
-echo("<br/>na WS:".$plusn);
+echo("<br />na WS:".$plusn);
+
 }
+
+echo("<br />All good.");
 ?>

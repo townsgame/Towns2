@@ -1,1 +1,1 @@
-<?php submenu(array("Útoky","Vytrénovat vojáky","Bitevní simulátor"),array("casti/utoky/utoky.php","casti/utoky/kasarny.php","casti/utoky/emulator.php")); ?>
+<?php submenu(array($GLOBALS["uindex1"],$GLOBALS["uindex2"],$GLOBALS["uindex3"]),array("casti/utoky/utoky.php","casti/utoky/kasarny.php","casti/utoky/emulator.php")); ?>

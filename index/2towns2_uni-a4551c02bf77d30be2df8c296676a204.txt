@@ -1,0 +1,1 @@
+a:2:{i:0;s:6:"hradba";s:7:"budovap";s:6:"hradba";}

@@ -16,11 +16,11 @@ $surkyu = $surky->get("id = '".$_SESSION["id"]."'");
 echo("
 <table border=\"0\" cellpadding=\"1\">
   <tr><td align=\"center\">		
-<img src=\"casti/suroviny/desing/prachy.png\" alt=\"prachy\" width=\"17\" height=\"17\" border=\"1\" /> &nbsp; ".zformatovat($surkyu["prachy"])."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-"./*<img src=\"casti/suroviny/desing/jedlo.png\" alt=\"jídlo\" width=\"17\" height=\"17\" border=\"1\"> &nbsp; ".zformatovat($surkyu["jedlo"])."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/"
-<img src=\"casti/suroviny/desing/kamen.png\" alt=\"kámen\" width=\"17\" height=\"17\" border=\"1\"> &nbsp; ".zformatovat($surkyu["kamen"])."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src=\"casti/suroviny/desing/zelezo.png\" alt=\"železo\" width=\"17\" height=\"17\" border=\"1\"> &nbsp; ".zformatovat($surkyu["zelezo"])."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<img src=\"casti/suroviny/desing/drevo.png\" alt=\"drevo\" width=\"17\" height=\"17\" border=\"1\" /> &nbsp; ".zformatovat($surkyu["drevo"])."&nbsp;&nbsp;&nbsp;&nbsp;
+<img src=\"casti/suroviny/desing/prachy.png\" alt=\"" . $GLOBALS["sviac1"] . "\" width=\"17\" height=\"17\" border=\"1\" /> &nbsp; ".zformatovat($surkyu["prachy"])."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+"./*<img src=\"casti/suroviny/desing/jedlo.png\" alt=\"" . $GLOBALS["sviac2"] . "\" width=\"17\" height=\"17\" border=\"1\"> &nbsp; ".zformatovat($surkyu["jedlo"])."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/"
+<img src=\"casti/suroviny/desing/kamen.png\" alt=\"" . $GLOBALS["sviac3"] . "\" width=\"17\" height=\"17\" border=\"1\"> &nbsp; ".zformatovat($surkyu["kamen"])."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src=\"casti/suroviny/desing/zelezo.png\" alt=\"" . $GLOBALS["sviac4"] . "\" width=\"17\" height=\"17\" border=\"1\"> &nbsp; ".zformatovat($surkyu["zelezo"])."&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src=\"casti/suroviny/desing/drevo.png\" alt=\"" . $GLOBALS["sviac5"] . "\" width=\"17\" height=\"17\" border=\"1\" /> &nbsp; ".zformatovat($surkyu["drevo"])."&nbsp;&nbsp;&nbsp;&nbsp;
 <a class=\"bzp\" href=\"".gv("?dir=casti/suroviny/index.php&amp;glob_sc=5")."\">&gt;&gt;</a></th>
 </td>
 </tr>

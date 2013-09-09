@@ -60,7 +60,7 @@ $size2=($_SESSION["size"]*(4/3))/$_SESSION["zoom"];
 <div id=\\\"p".$i."\\\"><a href=\\\"\"); require(\"../jednotky/xcyc2.php\"); echo(\"\\\"><img src=\\\"\"); require(\"../jednotky/pozadie2.php\"); echo(\"\\\" alt=\\\"\\\" width=\\\"".$size2."\\\" height=\\\"".($size2/3)."\\\" border=\\\"0\\\"/></a></div>
 
 
-<div id=\\\"p".$i."\\\">\"); require(\"../jednotky/xcyc2.php\"); echo(\"\\\"<br/><img src=\\\"\"); require(\"../jednotky/pozadie2.php\"); echo(\"\\\" alt=\\\"\\\" width=\\\"".$size2."\\\" height=\\\"".($size2/3)."\\\" border=\\\"0\\\"/></div>
+<div id=\\\"p".$i."\\\">\"); require(\"../jednotky/xcyc2.php\"); echo(\"\\\"<br /><img src=\\\"\"); require(\"../jednotky/pozadie2.php\"); echo(\"\\\" alt=\\\"\\\" width=\\\"".$size2."\\\" height=\\\"".($size2/3)."\\\" border=\\\"0\\\"/></div>
 */
 $_SESSION["nove"]=0;
 $_SESSION["novey"]=0;
@@ -91,13 +91,13 @@ if($_SESSION["nove"]>$_SESSION["zoom"]){
   $_SESSION["nove"] = 1;
   $_SESSION["novey"] = $_SESSION["novey"]+1;
 }
-//echo("$xc,$xc<br/>");
+//echo("$xc,$xc<br />");
 
 
 $iii = prevrat($i,$ii);
 
 
-//echo($_SESSION["nove"]."/".$_SESSION["novey"]."<br/>");
+//echo($_SESSION["nove"]."/".$_SESSION["novey"]."<br />");
 //(($_SESSION["novey"]*(35*(5/$_SESSION["zoom"])))-(35*(5/$_SESSION["zoom"]))
 
 $zkosenie = (prevrat($_SESSION["novey"], $_SESSION["zoom"])*(37*(5/$_SESSION["zoom"])))-(37*(5/$_SESSION["zoom"]));
@@ -173,17 +173,5 @@ eval($x);
 <area shape="rect" coords="151,92,173,137" href="?xc=<?php echo $_SESSION["xc"]+1; ?>" />
 <area shape="rect" coords="21,138,66,155" href="?zoom=<?php echo $_SESSION["zoom"]+1; ?>" />
 </map>
-<table width="555" height="30" border="0">
-  <tr>
-    <th width="69" bgcolor="#CCCCCC" scope="col">hlavní b. </th>
-    <th width="69" bgcolor="#999999" scope="col">tržiště</th>
-    <th width="69" bgcolor="#CCCCCC" scope="col">kovárna</th>
-    <th width="69" bgcolor="#999999" scope="col">dílna</th>
-    <th width="69" bgcolor="#CCCCCC" scope="col">kasárny</th>
-    <th width="69" bgcolor="#999999" scope="col">ambasáda</th>
-    <th width="69" bgcolor="#CCCCCC" scope="col">knihovna</th>
-    <th width="69" bgcolor="#999999" scope="col">blabla</th>
-  </tr>
-</table>
 </body>
 </html>

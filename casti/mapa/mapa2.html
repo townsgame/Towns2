@@ -1,17 +1,17 @@
 <script>
 for(var y=1;y<251;y=y+50){
 for(var x=1;x<251;x=x+50){
-document.write("<img border=\"0\" width=\"100\" height=\"100\" src=\"http://2.towns.cz/casti/mapa/obrazok_mapa_c.php?xc="+x+"&amp;yc="+y+"\" usemap=\"#x"+x+"y"+y+"\" />"); 
+document.write("<img border=\"0\" width=\"100\" height=\"100\" src=\"casti/mapa/obrazok_mapa_c.php?xc="+x+"&amp;yc="+y+"\" usemap=\"#x"+x+"y"+y+"\" />"); 
        
        
 document.write('<map name="x'+x+'y'+y+'" id="x'+x+'y'+y+'">');       
 for(var yy=1;yy<101;yy=yy+20){
 for(var xx=1;xx<101;xx=xx+20){
-document.write('<area shape="rect" coords="'+(xx-1)+','+(yy-1)+','+(xx+19)+','+(yy+19)+'" href="http://2.towns.cz/?xc_i='+(((xx-1)/2)+x)+'&amp;yc_i='+(((yy-1)/2)+y)+'" target=\"_top\" />');
+document.write('<area shape="rect" coords="'+(xx-1)+','+(yy-1)+','+(xx+19)+','+(yy+19)+'" href="?xc_i='+(((xx-1)/2)+x)+'&amp;yc_i='+(((yy-1)/2)+y)+'" target=\"_top\" />');
 }}
 document.write('</map>');       
        
 }
-document.write("<br/>");  
+document.write("<br />");  
 }
 </script>

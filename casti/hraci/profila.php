@@ -1,4 +1,4 @@
-<br/>
+<br />
 <?php
 $idc = $_SESSION["ali"];
 //echo $idc ;
@@ -23,27 +23,27 @@ $row = $tmp[0];
 ?>
 <table width="570" border="1" cellpadding="0" cellspacing="0">
   <tr>
-    <th colspan="5" bgcolor="#DDDDDD" scope="col">Aliance <?php echo $meno; ?></th>
+    <th colspan="5" bgcolor="#DDDDDD" scope="col"><?php echo $GLOBALS["asecond1"]; ?> <?php echo $meno; ?></th>
   </tr>
   <tr>
-    <th colspan="3" bgcolor="#EEEEEE">Detaily:</th>
+    <th colspan="3" bgcolor="#EEEEEE"><?php echo $GLOBALS["asecond2"]; ?>:</th>
     <th width="4" rowspan="7">&nbsp;</th>
-    <th width="170" bgcolor="#EEEEEE">Popis:</th>
+    <th width="170" bgcolor="#EEEEEE"><?php echo $GLOBALS["asecond3"]; ?>:</th>
   </tr>
   <tr>
     <td></td>
-    <th align="left" valign="top">Po&#345;ad&iacute;:</th>
+    <th align="left" valign="top"><?php echo $GLOBALS["asecond4"]; ?>:</th>
     <td><?php echo $poradie; ?></td>
     <td rowspan="6" align="center" valign="top"><?php echo convert($popis); ?></td>
   </tr>
   <tr>
     <td width="7"></td>
-    <th width="89" align="left" valign="top">Body:</th>
+    <th width="89" align="left" valign="top"><?php echo $GLOBALS["asecond5"]; ?>:</th>
     <td width="118"><?php echo $body; ?></td>
   </tr>
   
   <tr>
-    <th height="20" colspan="3" bgcolor="#EEEEEE">Hr&aacute;&#269;i v alianci: </th>
+    <th height="20" colspan="3" bgcolor="#EEEEEE"><?php echo $GLOBALS["asecond6"]; ?>: </th>
   </tr>
   <tr>
     <td height="20">&nbsp;</td>
@@ -53,7 +53,7 @@ foreach(hnet2("towns2_uziv","SELECT id,hodnost from towns2_uziv WHERE ppp AND al
 
 $link = profil($row["id"]);
 if($row["hodnost"]){ $hodnost="<b>".$row["hodnost"].": </b>"; }else{ $hodnost=""; }
-echo("$hodnost $link<br/>");
+echo("$hodnost $link<br />");
 }
 ?></td>
   </tr>

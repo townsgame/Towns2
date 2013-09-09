@@ -3,8 +3,8 @@
 .zpravyh1 {font-size: 20px}
 -->
 </style>
-<a onClick="if(window.confirm('Opravdu chcete přidat všechny zprávy do archivu?') == true){ location.assign('<?php echo gv("?alles=1&amp;submenu=1"); ?>'); }" href="#">Přidat vše do archivu.</a><br/>
-<a onClick="if(window.confirm('Opravdu chcete smazat všechny zprávy?') == true){ location.assign('<?php echo gv("?alles=2&amp;submenu=1"); ?>'); }" href="#">Smazat vše</a><br/>
+<a onClick="if(window.confirm('<?php echo $GLOBALS["zprijate1"]; ?>') == true){ location.assign('<?php echo gv("?alles=1&amp;submenu=1"); ?>'); }" href="#"><?php echo $GLOBALS["zprijate2"]; ?></a><br />
+<a onClick="if(window.confirm('<?php echo $GLOBALS["zprijate3"]; ?>') == true){ location.assign('<?php echo gv("?alles=2&amp;submenu=1"); ?>'); }" href="#"><?php echo $GLOBALS["zprijate4"]; ?></a><br />
 <?php
 //eval(file_get_contents("casti/jazyk/".$_SESSION["lang"].".txt"));
 if($_MYGET["zprava"]){
@@ -33,13 +33,13 @@ foreach(hnet2("towns2_zpr","select * from towns2_zpr WHERE komu = '".$_SESSION["
 $tmp = 1;
 $profil = profil($row["od"]);
 $predmet = $row["predmet"];
-if(!$predmet){ $predmet = "žádný předmět"; }
+if(!$predmet){ $predmet = $GLOBALS["zprijate5"]; }
 
 echo("<hr/>");
-echo("<u><span class=\"zpravyh1\">$predmet</span></u>   <br/> <b>Od: $profil<br/> ".(zcas($row["cas"]))."</b><br/><br/>".$row["zprava"]."<br/><br/><b><a href=\"".gv("?dir=casti/zpravy/index.php&amp;submenu=2&amp;piszpr2=".$row["id"]."&amp;piszpr=".$row["od"]."&amp;idz=2")."\">Odpovědět</a> | <a href=\"".gv("?archyv=".$row["id"])."\">Přidat do archivu</a> | <a href=\"".gv("?id=1&amp;zprava=".$row["id"])."\">Smazat</a></b>");
+echo("<u><span class=\"zpravyh1\">" . zpravback($predmet) . "</span></u>   <br /> <b>" . $GLOBALS["zprijate6"] . ": $profil<br /> ".(zcas($row["cas"]))."</b><br /><br />".zpravback($row["zprava"])."<br /><br /><b><a href=\"".gv("?dir=casti/zpravy/index.php&amp;submenu=2&amp;piszpr2=".$row["id"]."&amp;piszpr=".$row["od"]."&amp;idz=2")."\">" . $GLOBALS["zprijate7"] . "</a> | <a href=\"".gv("?archyv=".$row["id"])."\">" . $GLOBALS["zprijate8"] . "</a> | <a href=\"".gv("?id=1&amp;zprava=".$row["id"])."\">" . $GLOBALS["zprijate9"] . "</a></b>");
 }
 if($tmp == 0){
-echo("<b>Nemáte žádné přijaté zprávy.</b>");
+echo("<b>" . $GLOBALS["zprijate10"] . "</b>");
 }
 /*
 $odpoved =mysql_query("select * from towns2_zpr WHERE komu = '".$_SESSION["id"]."' AND precitane!=3 order by cas desc");

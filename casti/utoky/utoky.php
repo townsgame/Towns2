@@ -27,19 +27,19 @@ VALUES (
 dc("towns2_utok");
 dc("towns2_uziv");
 }else{
-chyba1("Jednotky nemají dostatečnou výdrž na překonání vzdálenosti ".(intval($xcyc*10)/10)/*intval(sqrt(pow(($xc-vyberxcyc("1")),2)+pow(($yc-vyberxcyc("2")),2)))*/." políček.");
+chyba1($GLOBALS["uutoky1"] . " " . (intval($xcyc*10)/10)/*intval(sqrt(pow(($xc-vyberxcyc("1")),2)+pow(($yc-vyberxcyc("2")),2)))*/. " " . $GLOBALS["uutoky1a"] . ".");
 }
 }else{
-chyba1("Musíte vybrat alespoň jednu jednotku.");
+chyba1($GLOBALS["uutoky2"]);
 }
 }else{
-chyba1("Neplatné políčko.");
+chyba1($GLOBALS["uutoky3"]);
 }
 }else{
-chyba1("Nedostatek vojáků.");
+chyba1($GLOBALS["uutoky4"]);
 }
 }else{
-chyba1("Musíte mít alespoň jedno shromaždiště.");
+chyba1($GLOBALS["uutoky5"]);
 }
 }
 //-------------------------------------------------------------------------------
@@ -54,17 +54,17 @@ dc("towns2_utok");
 //---------------------
 $vojaci = hnet("towns2_uziv","SELECT vojaci FROM towns2_uziv WHERE id='".$_SESSION["id"]."' AND ppp");
 ?>
-<h1>ve městě máte</h1>
+<h1><?php echo $GLOBALS["uutoky6"]; ?></h1>
 <?php vojakzobraz($vojaci); ?>
-<h1>vyslané útoky</h1>
+<h1><?php echo $GLOBALS["uutoky7"]; ?></h1>
 <?php
 
 //$docastna_1="select id,cas,xc,yc,xc2,yc2,vojak from towns2_utok where ppp";
 //$docastna_2="<tr><td width=\\\"551\\\">\"); vojakzobraz(\$row[\"vojak\"]); //echo (sqrt(pow((\$row[\"xc\"]-\$row[\"xc2\"]),2)+pow((\$row[\"yc\"]-\$row[\"yc2\"]),2))) ; //echo vojakutok(\$row[\"vojak\"], (sqrt(pow((\$row[\"xc\"]-\$row[\"xc2\"]),2)+pow((\$row[\"yc\"]-\$row[\"yc2\"]),2))) ); echo(\"<span id=\\\"pocitadlox\$pocet2\\\">\".(\$row[\"cas\"]).\"</span> na políčko \".(pxy(\$row[\"xc\"],\$row[\"yc\"])).\" (vlastník políčka: \".profilm(vlastnikxcyc(\$row[\"xc\"],\$row[\"yc\"])).\")<hr/></td>     <td width=\\\"69\\\"><a href=\\\"?del=\".\$row[\"id\"].\"\\\"><img src=\\\"casti/desing/no.bmp\\\" alt=\\\"x\\\" width=\\\"20\\\" height=\\\"20\\\" border=\\\"0\\\" /></a></td>   </tr>";
-//$vojaci = new index("towns2_mes",$docastna_1,$docastna_2,"<table width=\"551\" border=\"0\">","</table>","Žádné útoky nejsou vyslané.","\$_SESSION['pocet2'] = \$_SESSION['pocet2'] + 1;","\$_SESSION['pocet2'] = 1;");
+//$vojaci = new index("towns2_mes",$docastna_1,$docastna_2,"<table width=\"551\" border=\"0\">","</table>","Žádné útoky nejsou vyslané.","\$_SESSION["pocet2"] = \$_SESSION["pocet2"] + 1;","\$_SESSION["pocet2"] = 1;");
 //$vojaci->show("0,999","1");
 
-//$pocet = $_SESSION['pocet2'];
+//$pocet = $_SESSION["pocet2"];
 
 //echo"<script type=\"text/javascript\">";
 //while ($pocet > 0){
@@ -82,28 +82,28 @@ $vojaci = hnet("towns2_uziv","SELECT vojaci FROM towns2_uziv WHERE id='".$_SESSI
 
 
 
-foreach(hnet2("towns2_utok","SELECT * FROM towns2_utok WHERE od=".$_SESSION["id"]." ORDER by cas","0,9999","<b>Nemáte žádné vyslané útoky.</b>") as $row){
-$tmp = hnet2("towns2","SELECT utokna,zivot,(SELECT meno FROM towns2_uni WHERE towns2.obrazok=towns2_uni.obrazok) FROM towns2 WHERE xc = ".$row["xc"]." AND yc = ".$row["yc"]);
+foreach(hnet2("towns2_utok","SELECT * FROM towns2_utok WHERE od=".$_SESSION["id"]." ORDER by cas","0,9999",$GLOBALS["uutoky8"]) as $row){
+$tmp = hnet2("towns2","SELECT utokna,zivot,(SELECT " . $GLOBALS["name"] . " FROM towns2_uni WHERE towns2.obrazok=towns2_uni.obrazok) FROM towns2 WHERE xc = ".$row["xc"]." AND yc = ".$row["yc"]);
 $tmp = $tmp[0];
 $utokna = $tmp["utokna"];
 $zivot = $tmp["zivot"];
 $meno = $tmp[2];
-$vzdalenost = (sqrt(pow(($row["xc"]-$xc),2)+pow(($row["yc"]-$yc),2)));
+$vzdalenost = $xcyc; // PREM
 $vysledok = vojakboj($row["vojak"],$zivot,$utokna,$vzdalenost);
-if(is_numeric($vysledok)){ $vysledok="Budově zůstane ".intval($vysledok)." životů ze ".$zivot." životů."; }else{ $vysledok="Budova bude zničena."; }
+if(is_numeric($vysledok)){ $vysledok=$GLOBALS["uutoky9"]." ".intval($vysledok)." ".$GLOBALS["uutoky10"]." ".$zivot." ".$GLOBALS["uutoky11"]."."; }else{ $vysledok=$GLOBALS["uutoky12"]; }
 vojakzobraz($row["vojak"]);
 echo("<a href=\"".gv("?del=".$row["id"])."\"><img src=\"casti/desing/no.bmp\" border=\"1\"  width=\"15\" height=\"15\"/></a> ");
 echo(pocitadlo($row["cas"]));
-echo("<b>na: </b>".qpxyx($row["xc"],$row["yc"],"vlastník:")." <b>budova: </b>".$meno." <b>vzdálenost: </b>".(intval($row["vzdalenost"]*10)/10)." <br/> ".$vysledok);
+echo("<b>" . $GLOBALS["uutoky13"] . ": </b>".qpxyx($row["xc"],$row["yc"],$GLOBALS["uutoky14"].":")." <b>" . $GLOBALS["uutoky15"] . ": </b>".$meno." <b>" . $GLOBALS["uutoky16"] . ": </b>".(intval($row["vzdalenost"]*10)/10)." <br /> ".$vysledok);
 }
 ?>
 <form id="form1" name="form1" method="post" action="?del=0">
-  <h1>vyslat útok</h1>
+  <h1><?php echo $GLOBALS["uutoky17"]; ?></h1>
 <input name="anov" type="hidden" value="a" checked="checked" />
-  Bude útočit: <?php vojakvloz2(vojakvlozx()); ?><br />
-  Na políčko: <?php if($_GET["xc"]){ zadajxcyc($_GET["xc"],$_GET["yc"]); }else{ zadajxcyc(); } ?><br />
-  Útočit se nedá na políčko patřící přírodě, na hlavní budovu nebo na neexistující políčko.<br />
-  <input type="submit" name="Submit" value="vyslat" />
+  <?php echo $GLOBALS["uutoky18"]; ?>: <?php vojakvloz2(vojakvlozx()); ?><br />
+  <?php echo $GLOBALS["uutoky19"]; ?>: <?php if($_GET["xc"]){ zadajxcyc($_GET["xc"],$_GET["yc"]); }else{ zadajxcyc(); } ?><br />
+  <?php echo $GLOBALS["uutoky20"]; ?><br />
+  <input type="submit" name="Submit" value="<?php echo $GLOBALS['uutoky21']; ?>" />
   <br />
 </form>
 <?php zobraztbl(1); ?>

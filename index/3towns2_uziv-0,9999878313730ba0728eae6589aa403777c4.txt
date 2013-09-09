@@ -1,0 +1,1 @@
+a:2:{i:0;a:4:{i:0;s:1:"1";s:2:"id";s:1:"1";i:1;s:9:"president";s:7:"hodnost";s:9:"president";}i:1;a:4:{i:0;s:1:"2";s:2:"id";s:1:"2";i:1;s:0:"";s:7:"hodnost";s:0:"";}}

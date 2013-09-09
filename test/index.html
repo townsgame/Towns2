@@ -1,16 +1,49 @@
 <?php gv("?logof=1"); ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-
+<!DOCTYPE html>
+<html>  
 <head>
-  <title>towns - m&#283;sta</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title><?php echo $GLOBALS["langtowns"]; ?></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />    
+  <meta http-equiv="Expires" content="-1" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta name="author" content="<?php echo $GLOBALS['langauthor']; ?>" />
+  <meta name="googlebot" content="all,follow" />
+  <meta name="robots" content="all,follow" />
 
+  <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+  <meta name="DC.Title" content="<?php echo $GLOBALS['langtowns']; ?>" />
+  <meta name="DC.Creator" content="<?php echo $GLOBALS['langauthor']; ?>" />
+  <meta name="DC.Publisher" content="<?php echo $GLOBALS['langauthor']; ?>" />
+  <meta name="DC.Date.issued" content="<?php echo date('Y'); ?>" />
+  <meta name="DC.Type" scheme="DCMIType" content="Text" />
+  <meta name="DC.Type" scheme="DCMIType" content="Image" />
+  <meta name="DC.Format" scheme="IMT" content="text/html" />
+  <meta name="DC.Format" scheme="IMT" content="image/jpeg" />
+  <meta name="DC.Format.medium" content="computerFile" />
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta property="og:title" content="<?php echo $GLOBALS['langtowns']; ?>" />
+  <meta property="og:type" content="website" />
+   
+  <meta http-equiv="content-language" content="<?php echo $GLOBALS['lang']; ?>" />
+  <meta name="DC.Language" scheme="RFC3066" content="<?php echo $GLOBALS['lang']; ?>" />
+  <meta property="og:locale" content="<?php echo $GLOBALS['lang']; ?>" />
+  <meta name="keywords" content="towns,game,online,strategy,buildings,attacks,strategy,hra,online,strategie,budovy" />
+  <meta name="DC.Subject" scheme="PHNK" content="towns" />
+  <meta name="DC.Subject" scheme="PHNK" content="online" />
+  <meta name="DC.Subject" scheme="PHNK" content="game" />
+  <meta name="DC.Subject" scheme="PHNK" content="strategy" />
+  <meta name="DC.Subject" scheme="PHNK" content="buildings" />
+  <meta name="DC.Subject" scheme="PHNK" content="attacks" />
+  <meta name="DC.Subject" scheme="PHNK" content="middle ages" />
+  
   <!-- **** layout stylesheet **** -->
   <link rel="stylesheet" type="text/css" href="style/style.css" />
    <link rel="shortcut icon" href="favicon.ico">
   <!-- **** colour scheme stylesheet **** -->
   <link rel="stylesheet" type="text/css" href="style/green.css" />
+</head>
 <style type="text/css"> 
 <!--
 .submenu {font-size: 15px; color:#283D82;}
@@ -20,8 +53,6 @@ a.bzp:hover  { text-decoration: underline; color:#283D82;}
 a.bzp:active  { text-decoration: none; color:#283D82;}
 --> 
 </style>
-</head>
-
 <body>
 <!--contentzprac-->
   <div id="main">
@@ -49,19 +80,10 @@ if($typ_menu == 2){
         $docastna_premenna = $docastny_objekt->get("1");
         $docastna_premenna = $docastna_premenna[0];
         ?>
-    <div style=" padding-left: 10px">
-      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="760" height="85">
-          <param name="movie" value="style/logo.swf<?php if($_SESSION["id"]){ echo gv("?logof=1"); }else{ echo("?a=a"); } ?>&amp;user=<?php echo $_SESSION["id"]; ?>&amp;glob_sc=<?php echo($_SESSION["glob_sc"]); ?>&amp;zpravy=<?php echo $docastna_premenna; ?>" />
-          <param name="quality" value="high" /><param name="SCALE" value="exactfit" />
-          <embed src="style/logo.swf<?php if($_SESSION["id"]){ echo gv("?logof=1"); }else{ echo("?a=a"); } ?>&amp;user=<?php echo $_SESSION["id"]; ?>&amp;glob_sc=<?php echo($_SESSION["glob_sc"]); ?>&amp;zpravy=<?php echo $docastna_premenna; ?>" width="760" height="85" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" scale="exactfit"></embed>
-      </object>
-      
-
-    </div>
 <?php }else{ ?>
 <div id="logo" >
-<img src="style/logo.jpg" width="760" height="70" usemap="#MapL" />
-<map name="MapL" id="MapL"><area shape="rect" coords="736,3,755,22" href="<?php echo gv("?logof=1"); ?>" /></map>	
+<img src="style/logo.jpg" width="920" height="70" usemap="#MapL" />
+<map name="MapL" id="MapL"><area shape="rect" coords="893,3,915,22" href="<?php echo gv("?logof=1"); ?>" /></map>	
 </div>
      <div id="menu">
       <ul>
@@ -71,20 +93,21 @@ if($typ_menu == 2){
         $docastna_premenna = $docastny_objekt->get("1");
         $docastna_premenna = $docastna_premenna[0];
         ?>
-        <li><a <?php echo($glob_sc1); ?> href="<?php echo gv("?dir=casti/mapa/uniindex.php&amp;glob_sc=1"); ?>">mapa</a></li>
-        <li><a <?php echo($glob_sc2); ?> href="<?php echo gv("?dir=casti/aliance/index.php&amp;glob_sc=2"); ?>">aliance</a></li>
-        <li><a <?php echo($glob_sc3); ?> href="<?php echo gv("?dir=casti/hraci/index.php&amp;glob_sc=3"); ?>">statistika</a></li>
-        <li><a <?php echo($glob_sc4); ?> href="<?php echo gv("?dir=casti/diskuse/fora.php&amp;glob_sc=4"); ?>">f&Oacute;rum</a></li>
-        <li><a <?php echo($glob_sc5); ?> href="<?php echo gv("?dir=casti/suroviny/index.php&amp;glob_sc=5"); ?>">suroviny</a></li>
-        <li><a <?php echo($glob_sc6); ?> href="<?php echo gv("?dir=casti/utoky/index.php&amp;glob_sc=6"); ?>">útoky</a></li>
-        <li><p><a <?php echo($glob_sc7); ?> href="<?php echo gv("?dir=casti/zpravy/index.php&amp;glob_sc=7"); ?>">zprÁvy-<?php echo $docastna_premenna; ?></a></li>
+        <li><a <?php echo($glob_sc1); ?> href="<?php echo gv("?dir=casti/mapa/uniindex.php&amp;glob_sc=1"); ?>"><?php echo $GLOBALS["htmlindex1"]; ?></a></li>
+        <li><a <?php echo($glob_sc5); ?> href="<?php echo gv("?dir=casti/suroviny/index.php&amp;glob_sc=5"); ?>"><?php echo $GLOBALS["htmlindex2"]; ?></a></li>
+        <li><a <?php echo($glob_sc6); ?> href="<?php echo gv("?dir=casti/utoky/index.php&amp;glob_sc=6"); ?>"><?php echo $GLOBALS["htmlindex3"]; ?></a></li>
+        <li><a <?php echo($glob_sc2); ?> href="<?php echo gv("?dir=casti/aliance/index.php&amp;glob_sc=2"); ?>"><?php echo $GLOBALS["htmlindex4"]; ?></a></li>
+        <li><a <?php echo($glob_sc3); ?> href="<?php echo gv("?dir=casti/hraci/index.php&amp;glob_sc=3"); ?>"><?php echo $GLOBALS["htmlindex5"]; ?></a></li>
+        <li><a <?php echo($glob_sc4); ?> href="<?php echo gv("?dir=casti/diskuse/fora.php&amp;glob_sc=4"); ?>"><?php echo $GLOBALS["htmlindex6"]; ?></a></li>
+        <li><p><a <?php echo($glob_sc7); ?> href="<?php echo gv("?dir=casti/zpravy/index.php&amp;glob_sc=7"); ?>"><?php echo $GLOBALS["htmlindex7"]; ?>-<?php echo $docastna_premenna; ?></a></li>
                 <?php }else{ ?>
-        <li><a <?php echo($glob_sc1); ?> href="<?php echo gv("?dirn=1&amp;glob_sc=1"); ?>">pŘihlášení</a></li>
-        <li><a <?php echo($glob_sc2); ?> href="<?php echo gv("?dirn=2&amp;glob_sc=2"); ?>">statistika</a></li>
-        <li><a <?php echo($glob_sc3); ?> href="<?php echo gv("?dirn=3&amp;glob_sc=3"); ?>">registrace</a></li>
-        <li><a <?php echo($glob_sc4); ?> href="<?php echo gv("?dirn=4&amp;glob_sc=4"); ?>">obrÁzky</a></li>
+        <li><a <?php echo($glob_sc1); ?> href="<?php echo gv("?dirn=1&amp;glob_sc=1"); ?>"><?php echo $GLOBALS["htmlindex8"]; ?></a></li>
+        <li><a <?php echo($glob_sc2); ?> href="<?php echo gv("?dirn=2&amp;glob_sc=2"); ?>"><?php echo $GLOBALS["htmlindex9"]; ?></a></li>
+        <li><a <?php echo($glob_sc3); ?> href="<?php echo gv("?dirn=3&amp;glob_sc=3"); ?>"><?php echo $GLOBALS["htmlindex10"]; ?></a></li>
+        <li><a <?php echo($glob_sc4); ?> href="<?php echo gv("?dirn=4&amp;glob_sc=4"); ?>"><?php echo $GLOBALS["htmlindex11"]; ?></a></li
               </ul><?php } ?>
-    </div><?php } ?>  
+    </div><?php } ?>
+  
 <div align="center">
 <?php    
 if($_SESSION["id"]){
@@ -98,74 +121,57 @@ if($_SESSION["id"]){
   ?>
 	</div> <?php } ?>
 	    </div>
-        <div id="content">
-          <div id="column1">
+<div id="content">
+    <div align="center">
+        <div id="column1">
             <?php
-require("casti/lavalista/index.php");  
-?>
-          </div>
-	          <div id="column2">
-<?php
-if($nas_chyba){
-chyba1($nas_chyba);
-}
-
-if($_SESSION["id"]){
-if($_MYGET["dir"]){
-$_SESSION["dir"] = $_MYGET["dir"];
-} 
-	  
-$dir = $_SESSION["dir"];
-if(!$dir){
-$dir="casti/uvod/prehlad.php";
-//$dir = hnet("towns2_uziv","SELECT glob_sc FROM towns2_uziv WHERE id = '".$_SESSION["id"]."'");
-refresh("?glob_sc=".hnet("towns2_uziv","SELECT glob_sc FROM towns2_uziv WHERE id = '".$_SESSION["id"]."'"));
-die();
-}
-}else{
-
-if(!$_SESSION["dirn"]){ $_SESSION["dirn"] = 1; }
-if($_MYGET["dirn"] == 1){ $_SESSION["dirn"] = 1; }
-if($_MYGET["dirn"] == 2){ $_SESSION["dirn"] = 2; }
-if($_MYGET["dirn"] == 3){ $_SESSION["dirn"] = 3; }
-if($_MYGET["dirn"] == 4){ $_SESSION["dirn"] = 4; }
-if($_SESSION["dirn"] == 1){ $dir = "casti/uvod/1.php"; }
-if($_SESSION["dirn"] == 2){ $dir = "casti/hraci/uzivatelia.php"; }
-if($_SESSION["dirn"] == 3){ $dir = "casti/uvod/3.php"; }
-if($_SESSION["dirn"] == 4){ $dir = "casti/obrazky/index.php"; }
-//$dir = "casti/uvod/index.php";
-}
-require($dir);
-?>
-          </div>
+                require("casti/lavalista/index.php");  
+            ?>
         </div>
-        <div id="footer">copyright &copy; 2008 towns.cz verze 2 | <a href="mailto: hejpal@post.cz">hejpal@post.cz</a> | <?php echo profil(1); ?></div>
-  </div>
-<script type="text/javascript">
-<!-- 
-            /*function poslatx(){
-                var ajax = (window.XMLHttpRequest ? new XMLHttpRequest() : (window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : false));
-                if(!ajax){
-                    //alert("Tak tady to nepoběží!");
-                    return true;
+        <div id="column3">
+
+        </div>
+	<div id="column2">
+            <?php
+                if($nas_chyba){
+                chyba1($nas_chyba);
                 }
-                ajax.onreadystatechange= function () {zpracujx(ajax); } ;
-                ajax.open("GET", "http://cron.towns.cz/index.php?a=a", true);
-                ajax.send(null);
-                return false
-            }
-            function zpracujx(ajax){
-                var txt;
-                if (ajax.readyState == 4){
-                    if(ajax.status == 200 || ajax.status==0){
-                        txt=ajax.responseText;
-            }}}
-            zpracujx();*/
--->
-</script>
-<!-- <img src="http://cron.towns.cz/index.php" width="" height="" id="cron_l">  
-<script type="text/javascript">
-document.getElementById("cron_l").src = "";	
-</script>-->
+
+                if($_SESSION["id"]){
+                if($_MYGET["dir"]){
+                $_SESSION["dir"] = $_MYGET["dir"];
+                } 
+
+                $dir = $_SESSION["dir"];
+                if(!$dir){
+                $dir="casti/uvod/prehlad.php";
+                //$dir = hnet("towns2_uziv","SELECT glob_sc FROM towns2_uziv WHERE id = '".$_SESSION["id"]."'");
+                refresh("?glob_sc=".hnet("towns2_uziv","SELECT glob_sc FROM towns2_uziv WHERE id = '".$_SESSION["id"]."'"));
+                die();
+                }
+                }else{
+
+                if(!$_SESSION["dirn"]){ $_SESSION["dirn"] = 1; }
+                if($_MYGET["dirn"] == 1){ $_SESSION["dirn"] = 1; }
+                if($_MYGET["dirn"] == 2){ $_SESSION["dirn"] = 2; }
+                if($_MYGET["dirn"] == 3){ $_SESSION["dirn"] = 3; }
+                if($_MYGET["dirn"] == 4){ $_SESSION["dirn"] = 4; }
+                if($_SESSION["dirn"] == 1){ $dir = "casti/uvod/1.php"; }
+                if($_SESSION["dirn"] == 2){ $dir = "casti/hraci/uzivatelia.php"; }
+                if($_SESSION["dirn"] == 3){ $dir = "casti/uvod/3.php"; }
+                if($_SESSION["dirn"] == 4){ $dir = "casti/obrazky/index.php"; }
+                //$dir = "casti/uvod/index.php";
+                }
+                require($dir);
+            ?>
+        </div>
+    </div>
+</div>
+        <div id="footer">&copy;<?php echo date('Y'); ?> <?php echo $GLOBALS["langauthor"]; ?> | <a href="mailto: <?php echo $GLOBALS['langmail']; ?>"><?php echo $GLOBALS["langmail"]; ?></a></div>
+  </div>
 </body>
 </html>
+
+
+
+

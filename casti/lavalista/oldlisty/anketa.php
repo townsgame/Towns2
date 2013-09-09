@@ -16,7 +16,7 @@ mysql_query("UPDATE townsank SET p".$_GET["odpoved"]."=p".$_GET["odpoved"]."+1 W
 mysql_query("UPDATE townsank SET hraci=CONCAT(hraci,".$_SESSION["id"].",'p') WHERE id=".$_GET["otazka"]);
 }else{
 		echo "Už jste hlasoval!!!";
-		echo "<br/>";
+		echo "<br />";
 }
 }
 
@@ -45,7 +45,7 @@ mysql_free_result($odpoved);
 
 
 		echo "<b>".$otazka."</b>";
-		echo "<br/>";
+		echo "<br />";
 		echo "</p>";
 		
 		$a = $p1 + 0.001;

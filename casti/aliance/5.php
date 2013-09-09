@@ -1,4 +1,3 @@
-<?php eval(file_get_contents("casti/jazyk/cz.txt")); ?>
 <?php
 if($_MYGET["poznie"]){
 mysql_query("DELETE from towns2_poz WHERE hrac=".$_MYGET["poznie"]." AND ali=".$_SESSION["ali"]);
@@ -12,13 +11,13 @@ if(!hnet("towns2_uziv","SELECT 1 from towns2_uziv WHERE ppp AND id = ".vyberhrac
 mysql_query("INSERT INTO `towns2_poz` ( `ali` , `hrac` ) VALUES (".$_SESSION["ali"]." ,".vyberhraca().")");
 dc("towns2_poz");
 }else{
-chyba1($xtentohrac);
+chyba1($GLOBALS["afifth1"]);
 }
 }else{
-chyba1($xneexsist );
+chyba1($GLOBALS["afifth2"]);
 }
 }
-?><br/>
+?><br />
 <table width="119" border="0">
   <tr>
     <td width="84"></td>
@@ -38,5 +37,5 @@ echo("
 }
 //mysql_free_result($odpoved);
 ?>
-</table><br/>
+</table><br />
 <form action="<?php gv("?submenu=5"); ?>" method="post"><?php zadajhraca(); ?><input type="submit" value="OK"></form>

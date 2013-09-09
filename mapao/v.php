@@ -48,7 +48,7 @@ op($uurrll,50*50,25*50,$xx/2,$yy/2);
 //-------------------------------
 //echo("(".$xc.",".$yc.")"); 
 }
-//echo("<br/>");
+//echo("<br />");
 }
 header("Content-type: image/png");
 ImagePng($_SESSION["im"],"mapa.png");

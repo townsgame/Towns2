@@ -1,4 +1,13 @@
 ﻿<?php
+//ini_set("max_execution_time",10000);
+if(session_id() == '')
+{
+    session_save_path(__DIR__ . "/../sessions");
+}
+$root = __DIR__ . "/../";
+require_once(__DIR__ . "/../" . "general.php");
+require_once(__DIR__ . "/../casti/funkcie/index.php");
+
 //mysql_query(file_get_contents("zalohasad.txt"));
 //echo(mysql_error());
 mysql_query("UPDATE towns2_uziv SET ludia = (SELECT SUM(towns2_uni.ludia) FROM towns2,towns2_uni WHERE towns2.vlastnik = id AND towns2.obrazok=towns2_uni.obrazok GROUP BY towns2.vlastnik)");
@@ -58,4 +67,6 @@ echo(mysql_error());
 mysql_query("DROP TABLE towns2_z_tmp");
 echo(mysql_error());
 dc("towns2_ali");
+
+echo("<br />All good.");
 ?>

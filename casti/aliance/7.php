@@ -1,5 +1,4 @@
-<?php eval(file_get_contents("casti/jazyk/cz.txt")); ?>
-<p><strong><?php echo $xpopisali; ?></strong></p>
+<p><strong><?php echo $GLOBALS["aseventh1"] . ":"; ?></strong></p>
 <?php
 if($_POST["popis"]){
 mysql_query("UPDATE towns2_ali SET popis='".$_POST["popis"]."' WHERE id='".$_SESSION["aliance"]."'");
@@ -12,6 +11,6 @@ dc("towns2_ali");
   </label>
   <br />
   <label>
-  <input type="submit" name="Submit2" value="<?php echo $xok; ?>" />
+  <input type="submit" name="Submit2" value="OK" />
   </label>
 </form>

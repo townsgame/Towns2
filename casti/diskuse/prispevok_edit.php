@@ -9,10 +9,10 @@ $text = strip_tags($tmp[1]);
   <table width="354" border="0">
     <tr>
       <th width="256" height="150" align="left" nowrap scope="col">
-        Nadpis:
+        <?php echo $GLOBALS["fprispevok1"]; ?>:
         <input name="nadpis_e" type="text" id="nadpis_e" value="<?php echo($nadpis); ?>" />
         <br />
-       Text:<br/>
+       <?php echo $GLOBALS["fprispevok2"]; ?>:<br />
       <textarea name="pris_e" cols="40" rows="5" id="pris_e"><?php echo($text); ?></textarea>
       <label>
       <input type="submit" name="Submit" value="OK" />
