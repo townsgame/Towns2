@@ -310,7 +310,7 @@ $round = 2;
 eval(vojakrozloz($vojakind));
 //eval(vojakinfo($xxx,$GLOBALS["vojak6"]));
 //eval(vojakinfo($xxx,$GLOBALS["vojak7"]));
-
+                              
 if($v > 0){ $v = ((($v*$zivotv)-$utok)/$zivotv); }
 if($s > 0){ $s = ((($s*$zivots)-$utok)/$zivots); }
 if($k > 0){ $k = ((($k*$zivotk)-$utok)/$zivotk); }

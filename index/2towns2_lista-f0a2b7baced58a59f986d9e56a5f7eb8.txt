@@ -1,1 +1,0 @@
-a:2:{i:0;s:6:"Budovy";s:4:"meno";s:6:"Budovy";}

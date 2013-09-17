@@ -1,1 +1,0 @@
-if(vlastnik == "0001"){ vlastnikforuser = "admin"; } if(vlastnik == "0002"){ vlastnikforuser = "prema"; } 

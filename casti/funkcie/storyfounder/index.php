@@ -1,5 +1,13 @@
 <?php
-//error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED ^ E_WARNING );
+require_once(__DIR__ . "/../../general.php");
+
+// SQL
+$db_host = "mysql";
+$db_user = "towns2.storyfounder.com";
+$db_password = "longhorn8601";
+$db_database = "towns2_storyfounder_com";
+
+// error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED ^ E_WARNING );
 error_reporting(0);
 session_start();
 $_SESSION["roota"] = $root;
@@ -10,10 +18,8 @@ $no_c = 1;
 if($_SESSION["hesloxcycttwt"]!="31415"){
 if($_POST["hesloxcycttwt"]){ $_SESSION["hesloxcycttwt"] = $_POST["hesloxcycttwt"]; }
 ?>
-<h3>Tato verze hry se připravuje.</h3>
-<h4>Aktuální verze je na <a href=""></a>.</h4>	
 	
-<?php die("<form method=\"post\" action=\"\"><b>heslo: <b/> <input name=\"hesloxcycttwt\" type=\"password\" id=\"hesloxcycttwt\" />  <input type=\"submit\" name=\"Submit\" value=\"OK\"></form>"); }
+<?php die("<form method=\"post\" action=\"\"><b>" . $GLOBALS["index3"] . ":<b/> <input name=\"hesloxcycttwt\" type=\"password\" id=\"hesloxcycttwt\" />  <input type=\"submit\" name=\"Submit\" value=\"OK\"></form>"); }
 */
 //--------------------------------- 
 if($_SESSION["id"]){
@@ -30,6 +36,20 @@ if($_GET["glob_sc"] == "2"){header('Location: '.gv("?dirn=2&amp;glob_sc=2")); }
 if($_GET["glob_sc"] == "3"){header('Location: '.gv("?dirn=3&amp;glob_sc=3")); }
 }
 //---------------------------------
+// PREM ----
+function zpravback($str)
+{    
+    $imin = 1; // from lang $zprava..
+    $imax = 16; // from lang $zprava..
+    for ($i = $imin; $i <= $imax; $i++)
+    {
+        $str = str_replace("\$GLOBALS['zprava" . $i . "']", $GLOBALS["zprava" . $i], $str);
+    }
+    $str = str_replace("\$GLOBALS['zprava6a']", $GLOBALS["zprava6a"], $str);
+    
+    return $str;
+}
+// ---------
 function contentzprac($buffer){
 $kde=strpos($buffer,"<!--contentzprac-->");
 $zac=(substr($buffer,0,$kde));
@@ -78,6 +98,7 @@ return("?ww1bx8=".md5($a.$rndd));
 
 function myget(){
 $a = ($_SESSION["gets"][($_GET["ww1bx8"])]);
+//$_SESSION["gets"] = array();
 return($a);
 }
 //-------------------------
@@ -128,7 +149,7 @@ file_put_contents($fajl,$cont+1);
 define(map_x,150);
 define(map_y,150);
 
-if(!mysql_pconnect("mysql","towns2.ancwis.com","longhorn86")){
+if(!mysql_pconnect($GLOBALS["db_host"],$GLOBALS["db_user"],$GLOBALS["db_password"])){
 //if(!mysql_pconnect("mysql5_host","towns_cz","heslo190077")){
 die($GLOBALS["findex2"]);
 }
@@ -136,7 +157,7 @@ die($GLOBALS["findex2"]);
 //mysql_set_charset("utf8");
 mysql_query("SET NAMES 'utf8'");
 /*mysql_query("SET NAMES 'utf8'")*/
-if(!mysql_select_db("towns2_ancwis_com")){
+if(!mysql_select_db($GLOBALS["db_database"])){
 //$ct = file_get_contents("/home/alcatraz/hosts/cz/towns2_/www/logpadu.txt");
 //file_put_contents("/home/alcatraz/hosts/cz/towns2_/www/logpadu.txt",$ct."\n".time()." -".$_SESSION["id"]." -".$_SERVER["SCRIPT_FILENAME"]." - ".$_SERVER["REMOTE_ADDR"]." - ".$_SERVER["HTTP_USER_AGENT"]." ");
 //die("Prekrocil jste maximalni pocet obnoveni(200) za hodinu.");
@@ -209,6 +230,17 @@ foreach ($files as $filename) {
 unlink($filename);
 }
 }
+/*
+if ($tabulka == "towns2") // PREM
+{
+    $files = glob($_SESSION["roota"]."index/mapa*.txt");
+    if($files){
+    foreach ($files as $filename) {
+    unlink($filename);
+    }
+    }
+}
+*/
 }
 class index {
 private $tabulka = "";
@@ -292,7 +324,6 @@ return unserialize(file_get_contents($_SESSION["roota"]."index/3".$this->tabulka
 }
 }
 
-
 //$tabulka,$dotaz,$kod,$zaciatok,$koniec,$nic,$pridavok
 $_SESSION["object_diskuse"] = new index("towns2_tem","SELECT tema,id,(SELECT count(id) from towns2_dis WHERE tema = towns2_tem.id) from towns2_tem WHERE ppp AND (sekce<50 OR sekce=100+".$_SESSION["ali"].") order by id desc","<a href=\\\"\\\".gv('?dir=casti/diskuse/prispevky.php&tema=\'.\$row[\"id\"].\'').\\\"\\\">\".\$row[\"tema\"].\"</a>(\".\$row[2].\")<br />");
 $_SESSION["object_u_id"] = new index("towns2_uziv","SELECT id FROM towns2_uziv WHERE ppp UNION select 0");
@@ -362,6 +393,21 @@ mysql_query("UPDATE towns2_uziv SET ".$surovina." = ".$tmp." WHERE id = '".$hrac
 //echo("UPDATE towns2_uziv SET ".$surovina." = ".$tmp." WHERE id = '".$hrac."'");
 if(!$nod){ dc("towns2_uziv"); }
 }
+
+function surovinanew1($hrac,$surovina,$co,$kolko,$nod=""){
+$tmp = premhnet("SELECT ".$surovina." FROM towns2_uziv WHERE id=".$hrac);
+$tmp = $tmp[0][$surovina];
+//echo($tmp);
+if($co == "+"){
+$tmp = $tmp+$kolko;
+}
+if($co == "-"){
+$tmp = $tmp-$kolko;
+}
+premhnet("UPDATE towns2_uziv SET ".$surovina." = ".$tmp." WHERE id = '".$hrac."'", FALSE);
+//echo("UPDATE towns2_uziv SET ".$surovina." = ".$tmp." WHERE id = '".$hrac."'");
+if(!$nod){ dc("towns2_uziv"); }
+}
 //---------------------------------------------------------------------------------------------------------------------------
 
 function zsur($a,$b,$cc = "dífult"){
@@ -377,7 +423,7 @@ return($c);
 
 function convert($a,$id_convert="dífult"){
 if($id_convert=="dífult"){ $id_convert = $_SESSION["id"]; }
-$a=htmlspecialchars($a);
+$a=str_replace('\'', '\\\'', htmlspecialchars($a));
 $a=nl2br($a);
 //----------------------------------------------------------------------------------
 /*
@@ -475,12 +521,29 @@ return(profilid($a,$meno,$farba));
 return(profilid($a,$meno,$farba,1));
 }
 }
+function profil1($a,$b=0){
+$odpoved = premhnet("select meno,farba from towns2_uziv WHERE id='".$a."'");
+$odpoved = $odpoved[0];
+$meno = $odpoved["meno"];
+$farba = $odpoved["farba"];
+//$odpoved =mysql_query("select meno,typ,farba from towns2_uziv WHERE id='".$a."'");
+//while ($row = mysql_fetch_array($odpoved)) {	 	 	 
+//}
+if(!$b){
+return(profilid($a,$meno,$farba,0,0));
+}else{
+return(profilid($a,$meno,$farba,1,0));
+}
+}
 //---------------------------------------------------------------------------------------------------------------------------
-function profilid($a,$meno,$farba,$b=0){
-if(!$meno){ if($a = 31415){ return("Towns"); return("Neexistující uživatel"); } }
+function profilid($a,$meno,$farba,$b=0,$href=1){
+if(!$meno){ if($a = 31415){ return("Towns"); return("X"); } }
 $farba = str_replace("user",htmlspecialchars($meno),$farba);
 if(!$b){
-return("<a href=\"".gv("?dir=casti/hraci/index.php&amp;submenu=3&amp;id=$a")."\">$farba</a>");
+    if ($href)
+        return("<a href=\"".gv("?dir=casti/hraci/index.php&amp;submenu=3&amp;id=$a")."\">$farba</a>");
+    else
+        return($farba);
 }else{
 return($farba);
 }
@@ -549,6 +612,14 @@ return("$day:$month:$year $hour:$minute");
 }
 //---------------------------------------------------------------------------------------------------------------------------
 
+function zprava1($id,$predmet,$text,$babbcdeg = "dífult"){
+if($babbcdeg=="dífult"){ $babbcdeg = $_SESSION["id"]; }
+$temp = premhnet("SELECT MAX(id) FROM towns2_zpr");
+$pocet = $temp[0]['MAX(id)']+1;
+premhnet("INSERT INTO towns2_zpr VALUES($pocet ,'".$babbcdeg."', '".$id."', '0',CURRENT_TIMESTAMP , '".$predmet."', '".$text."')", FALSE);
+dc("towns2_zpr");
+}
+
 function zprava($id,$predmet,$text,$babbcdeg = "dífult"){
 if($babbcdeg=="dífult"){ $babbcdeg = $_SESSION["id"]; }
 $pocet = hnet("towns2_zpr","SELECT MAX(id) FROM towns2_zpr")+1;
@@ -559,6 +630,9 @@ dc("towns2_zpr");
 
 function qpxy($xc,$yc){
 return("<a href=\"".gv("?dir=casti/mapa/uniindex.php&amp;glob_sc=1&amp;xc=".$xc."&amp;yc=".$yc)."\">($xc,$yc)</a>");
+}
+function qpxy1($xc,$yc){
+return("($xc,$yc)");
 }
 //---------------------------------------------------------------------------------------------------------------------------
 
@@ -620,7 +694,8 @@ if($_MYGET["submenu"]){ $req = $_MYGET["submenu"]; }
 if($typy[$req-1] == 2 OR $typy[$req-1] == 3){ chyba3(); }
 
 //eval(file_get_contents($root."casti/jazyk/".$_SESSION["lang"].".txt"));
-require($odkazy[$req-1]);
+if ($odkazy[$req-1])
+  require($odkazy[$req-1]);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------
@@ -714,17 +789,36 @@ function vyberxc(){ return vyberxcyc(1); }
 function vyberyc(){ return vyberxcyc(2); }
 //---------------------------------------------------------------------------------------------------------------------------
 
-function pocitadlo($a){
+function pocitadlo($a, $xc = 0, $yc = 0, $obrazok = 0, $id = 0){
+  
 $b=$a;
 $a=rand(111111,999999);
+
+// change buildings PREM
+if ($xc != 0 && $yc != 0)
+{
+    if (time() - $b >= 0)
+    {
+        mysql_query("UPDATE towns2 SET cas='1', casovac='0' WHERE xc = '". $xc . "' AND yc = '" . $yc . "'");
+        if($obrazok == "pole")
+        { 
+            mysql_query("UPDATE towns2 SET obrazok='0' WHERE xc='".$xc."' AND yc='".$yc."'");
+            surovinanew($id,"jedlo","+",1000);	
+        }
+        dcmapa($xc, $yc);
+        //dc("towns2");
+    }
+}
+
 return("<span id=\"pocitadlo$a\">$b</span>
 <script type=\"text/javascript\">
-theBigDayx1$a = new Date();
+theBigDayx1$a = new Date(" . time()*1000 . ");
 casx1$a = Math.ceil((theBigDayx1$a.getTime()/1000)-0.99999999999999999);
 casx1$a = document.getElementById(\"pocitadlo$a\").innerHTML - casx1$a;
 window.setInterval(\"casx1$a=casx1$a-1; if(casx1$a < 1){ casx1$a = '1'; } cas2x1$a = casx1$a; hodx1$a = Math.ceil((cas2x1$a/3600)-0.99999999999999999); cas2x1$a=cas2x1$a-(3600*hodx1$a); minx1$a = Math.ceil((cas2x1$a/60)-0.99999999999999999); cas2x1$a=cas2x1$a-(60*minx1$a); secx1$a = cas2x1$a; document.getElementById(\\\"pocitadlo$a\\\").innerHTML=hodx1$a.toString()+\\\":\\\"+(minx1$a).toString()+\\\":\\\"+(secx1$a-1).toString(); \", 1000);
 </script>");
 }
+
 function pocitadlodo(){
 echo(pocitadlo(intval((time()+3600)/3600)*3600));
 }
@@ -797,6 +891,38 @@ echo($nein);
 return($tmp);
 }
 
+// for cron
+function premhnet($SQL, $select = TRUE)
+{
+    $array = array();
+    $i = 0;
+
+    try 
+    {
+        $pdo = new PDO ("mysql:host=" . $GLOBALS["db_host"] .";dbname=" . $GLOBALS["db_database"],$GLOBALS["db_user"],$GLOBALS["db_password"]);
+    } 
+    catch (PDOException $e) 
+    {
+        echo $e->getMessage() . "\n";
+        exit;
+    }
+    $query = $pdo->prepare($SQL);
+    $query->execute();
+
+    if ($select)
+    {
+        for($i = 0; $row = $query->fetch(); $i++)
+        {
+            $array[$i] = $row;
+        }
+    }
+
+    unset($pdo); 
+    unset($query); 
+    
+    return $array;
+}
+
 //---------------------------------------------------------------------------------------------------------------------------
 
 function smazatuziv($aky){
@@ -837,10 +963,10 @@ unlink("casti/obrazky/".$aky);
 function surkyposlane($hrac = "dífult"){
 if($hrac == "dífult"){ $hrac = $_SESSION["id"]; }
 foreach(hnet2("towns2_possur","SELECT * FROM towns2_possur WHERE od='".$hrac."' OR kam='".$hrac."' ORDER BY cas") as $row){
-echo("<b>od:</b> ");
+echo("<b>" . $GLOBALS["uvindex11"] . ":</b> ");
 echo(profil($row["od"]));
 echo("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-echo("<b>kam:</b> ");
+echo("<b>" . $GLOBALS["uvindex12"] . ":</b> ");
 echo(profil($row["kam"]));
 echo("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 echo(pocitadlo($row["cas"]));
@@ -852,6 +978,11 @@ echo(zobrazsur($row["prachy"],$row["jedlo"],$row["kamen"],$row["zelezo"],$row["d
 function vlastnikxcyc($xc,$yc){
 //echo("SELECT vlastnik FROM towns2 WHERE xc = '".$xc."' AND yc = '".$yc."'<br />");
 return(hnet("towns2","SELECT vlastnik FROM towns2 WHERE xc = '".$xc."' AND yc = '".$yc."'"));	
+}
+function vlastnikxcyc1($xc,$yc){
+//echo("SELECT vlastnik FROM towns2 WHERE xc = '".$xc."' AND yc = '".$yc."'<br />");
+$vl = premhnet("SELECT vlastnik FROM towns2 WHERE xc = '".$xc."' AND yc = '".$yc."'");
+return($vl[0]["vlastnik"]);	
 }
 //---------------------------------------------------------------------------------------------------------------------------
 function budova($obrazok,$hrac = "dífult"){

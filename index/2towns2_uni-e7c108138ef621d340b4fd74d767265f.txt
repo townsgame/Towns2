@@ -1,1 +1,0 @@
-a:2:{i:0;s:13:"sklad surovin";s:4:"meno";s:13:"sklad surovin";}

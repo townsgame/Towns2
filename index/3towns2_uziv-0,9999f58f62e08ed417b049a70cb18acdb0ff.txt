@@ -1,1 +1,0 @@
-a:1:{i:0;a:4:{i:0;s:5:"prema";s:4:"meno";s:5:"prema";i:1;s:4:"user";s:5:"farba";s:4:"user";}}
