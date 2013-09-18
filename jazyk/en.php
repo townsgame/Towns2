@@ -1,8 +1,10 @@
 <?php
-$langmail = "orders@injectioncomp.com";
-$langauthor = "Injection Computers";
-$langtowns = "Towns";
+$langmail = "info@townstwo.com";
+$langauthor = "Pavel Hejny, Premysl Cerny, Injection Computers";
+$langtowns = "Towns2";
 $langdesc = "$langtowns is an online strategy game based on building towns and fighting enemies.";
+
+$please_wait = "please wait ...";
 
 $frefresh = "Refresh";
 $poprey = "Prey";

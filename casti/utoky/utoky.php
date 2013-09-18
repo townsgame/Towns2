@@ -93,7 +93,7 @@ $vysledok = vojakboj($row["vojak"],$zivot,$utokna,$vzdalenost);
 if(is_numeric($vysledok)){ $vysledok=$GLOBALS["uutoky9"]." ".intval($vysledok)." ".$GLOBALS["uutoky10"]." ".$zivot." ".$GLOBALS["uutoky11"]."."; }else{ $vysledok=$GLOBALS["uutoky12"]; }
 vojakzobraz($row["vojak"]);
 echo("<a href=\"".gv("?del=".$row["id"])."\"><img src=\"casti/desing/no.bmp\" border=\"1\"  width=\"15\" height=\"15\"/></a> ");
-echo(pocitadlo($row["cas"]));
+echo(pocitadlo($row["cas"], 0, 0, 0, 0, 1));
 echo("<b>" . $GLOBALS["uutoky13"] . ": </b>".qpxyx($row["xc"],$row["yc"],$GLOBALS["uutoky14"].":")." <b>" . $GLOBALS["uutoky15"] . ": </b>".$meno." <b>" . $GLOBALS["uutoky16"] . ": </b>".(intval($row["vzdalenost"]*10)/10)." <br /> ".$vysledok);
 }
 ?>

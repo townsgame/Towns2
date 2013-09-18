@@ -789,7 +789,7 @@ function vyberxc(){ return vyberxcyc(1); }
 function vyberyc(){ return vyberxcyc(2); }
 //---------------------------------------------------------------------------------------------------------------------------
 
-function pocitadlo($a, $xc = 0, $yc = 0, $obrazok = 0, $id = 0){
+function pocitadlo($a, $xc = 0, $yc = 0, $obrazok = 0, $id = 0, $show = FALSE){
   
 $b=$a;
 $a=rand(111111,999999);
@@ -807,6 +807,13 @@ if ($xc != 0 && $yc != 0)
         }
         dcmapa($xc, $yc);
         //dc("towns2");
+    }
+}
+else if ($show)
+{
+    if (time() - $b >= 0)
+    {
+        return($GLOBALS["please_wait"]);
     }
 }
 
