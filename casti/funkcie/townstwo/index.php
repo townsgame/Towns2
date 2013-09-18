@@ -817,11 +817,11 @@ else if ($show)
     }
 }
 
-return("<span id=\"pocitadlo$a\">$b</span>
+return("<span id=\"pocitadlo$a\"></span>
 <script type=\"text/javascript\">
 theBigDayx1$a = new Date(" . time()*1000 . ");
 casx1$a = Math.ceil((theBigDayx1$a.getTime()/1000)-0.99999999999999999);
-casx1$a = document.getElementById(\"pocitadlo$a\").innerHTML - casx1$a;
+casx1$a = $b - casx1$a;
 window.setInterval(\"casx1$a=casx1$a-1; if(casx1$a < 1){ casx1$a = '1'; } cas2x1$a = casx1$a; hodx1$a = Math.ceil((cas2x1$a/3600)-0.99999999999999999); cas2x1$a=cas2x1$a-(3600*hodx1$a); minx1$a = Math.ceil((cas2x1$a/60)-0.99999999999999999); cas2x1$a=cas2x1$a-(60*minx1$a); secx1$a = cas2x1$a; document.getElementById(\\\"pocitadlo$a\\\").innerHTML=hodx1$a.toString()+\\\":\\\"+(minx1$a).toString()+\\\":\\\"+(secx1$a-1).toString(); \", 1000);
 </script>");
 }
