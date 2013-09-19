@@ -976,7 +976,7 @@ echo("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
 echo("<b>" . $GLOBALS["uvindex12"] . ":</b> ");
 echo(profil($row["kam"]));
 echo("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-echo(pocitadlo($row["cas"]));
+echo(pocitadlo($row["cas"], 0, 0, 0, 1));
 echo(zobrazsur($row["prachy"],$row["jedlo"],$row["kamen"],$row["zelezo"],$row["drevo"]));
 }
 }
