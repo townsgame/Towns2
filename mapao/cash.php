@@ -11,9 +11,9 @@ ini_set("max_execution_time","999");
 <script>
        for(var y=1;y<251;y=y+50){
 		 for(var x=1;x<251;x=x+50){
-             document.write("<img border=\"1\" width=\"100\" height=\"100\" src=\"http://2.towns.cz/mapao/index.php?xc="+x+"&amp;yc="+y+"\" />");
+             document.write("<img border=\"1\" width=\"100\" height=\"100\" src=\"mapao/index.php?xc="+x+"&amp;yc="+y+"\" />");
        }
-       document.write("<br/>");  
+       document.write("<br />");  
        }
 </script>
 </body>
@@ -22,11 +22,11 @@ ini_set("max_execution_time","999");
 for($y=1;$y<251;$y=$y+50){
 for($x=1;$x<251;$x=$x+50){
 unlink("xc_".$x."yc_".$y.".png");
-file("http://2.towns.cz/mapao/index.php?xc=".$x."&yc=".$y);
+file("mapao/index.php?xc=".$x."&yc=".$y);
 echo("X");
 }
-echo("<br/>");  
+echo("<br />");  
 }
-file("http://2.towns.cz/mapao/v.php");
+file("mapao/v.php");
 //unlink("xc_1yc_1.png");
 ?>

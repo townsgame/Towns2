@@ -87,27 +87,23 @@ chyba1($xkodneopsany);
 if($_POST["ano"]){
 //-------------------
 if(!$_POST["heslor"]){
-	chyba1("Nezadali jste heslo.");
-}elseif(!$_POST["kod"]){
-	chyba1("Musíte opsat kód z obrázku.");
-}elseif($_POST["kod"] != $_SESSION["obrazokk"]){
-	chyba1("Neopsali jste správně text z obrázku.");
+	chyba1($GLOBALS["uvthird1"]);
 }elseif($_POST["heslor"] != $_POST["heslo2r"]){
-	chyba1("Hesla nejsou stejná.");
+	chyba1($GLOBALS["uvthird2"]);
 }elseif(!$_POST["menor"]){
-	chyba1("Nezadali jste jméno.");
+	chyba1($GLOBALS["uvthird3"]);
 }elseif(!trim($_POST["menor"])){
-	chyba1("Jméno se nedá skládat pouze s mezer.");
+	chyba1($GLOBALS["uvthird4"]);
 }elseif(hnet("towns2_uziv","SELECT id FROM towns2_uziv WHERE meno = '".trim($_POST["menor"])."'")){
-	chyba1("Jméno je už obsazeno.");
+	chyba1($GLOBALS["uvthird5"]);
 }elseif(!$_POST["pravidlar"]){
-	chyba1("Musíte souhlasit s pravidly hry.");
+	chyba1($GLOBALS["uvthird6"]);
 }elseif(is_numeric($_POST["menor"])){
-	chyba1("Jméno nemůže být pouze číslo.");
+	chyba1($GLOBALS["uvthird7"]);
 }elseif(vyberxc() xor vyberyc()){
-	chyba1("Musíte zadat x i y nebo ani jedno. (Při nezadání pozice se pozice vygeneruje sama.)");
+	chyba1($GLOBALS["uvthird8"]);
 }elseif(vyberxc() and 25 != hnet("towns2","SELECT COUNT(1) FROM towns2 WHERE obrazok = '0' AND pozadie != '10' AND xc > ".(vyberxc()+0)."-1-2 AND yc > ".(vyberyc()+0)."-1-2 AND xc < ".(vyberxc()+0)."+1+2 AND yc < ".(vyberyc()+0)."+1+2")){
-	chyba1("Vedle tohoto políčka není dost místa. (Při nezadání pozice se pozice vygeneruje sama.)");
+	chyba1($GLOBALS["uvthird9"]);
 	//echo("==".vyberxc()."==");
 }else{
 
@@ -122,7 +118,7 @@ $ycreg = vyberyc();
 //mysql_query("UPDATE towns2 SET pozadie='19' WHERE xc > ".($xcreg+0)."-1-3 AND yc > ".($ycreg+0)."-1-3 AND xc < ".($xcreg+0)."+1+3 AND yc < ".($ycreg+0)."+1+3");
 logx("new user ".$_POST["menor"]." heslo ".$_POST["heslor"]." ($xcreg,$ycreg) id:$pocet poradie:$poradie");
 mysql_query("INSERT INTO towns2_uziv (id,typ,meno,ali,body,poradie,heslo,lista,aktivita,farba,vojaci,vojacit,hlbudovaxc,hlbudovayc,jedlo,prachy,kamen,zelezo,drevo) 
-VALUES ($pocet,7,'".trim($_POST["menor"])."',0,100,$poradie,'".md5($_POST["heslor"])."','".file_get_contents("casti/lavalista/zakladne.txt")."','".time()."','user','.1(v10,s0,k0,r0,j0,t0,z0,b0,a0,e0,n0,d0,m0)','.1(v0,s0,k0,r0,j0,t0,z0,b0,a0,e0,n0,d0,m0)',$xcreg,$ycreg,150,150,150,150,150)");
+VALUES ($pocet,6,'".trim($_POST["menor"])."',0,100,$poradie,'".md5($_POST["heslor"])."','".file_get_contents("casti/lavalista/zakladne.txt")."','".time()."','user','.1(v10,s0,k0,r0,j0,t0,z0,b0,a0,e0,n0,d0,m0)','.1(v0,s0,k0,r0,j0,t0,z0,b0,a0,e0,n0,d0,m0)',$xcreg,$ycreg,150,150,150,150,150)");
 //echo(mysql_error());
 mysql_query("UPDATE towns2 SET zivot=(SELECT zivot from towns2_uni WHERE towns2_uni.obrazok='hlbudova'), cas=1, obrazok = 'hlbudova', vlastnik = '$pocet' WHERE xc = ".($xcreg+0)." AND  yc = ".($ycreg+0));
 //mysql_query("UPDATE towns2 SET zivot=(SELECT zivot from towns2_uni WHERE towns2_uni.obrazok='dom'), cas=1, obrazok = 'dom', vlastnik = '$pocet' WHERE xc = ".($xcreg+0)." AND  yc = ".($ycreg+1));
@@ -134,7 +130,7 @@ dc("towns2");
 dcmapa($xcreg,$ycreg);
 
 if(!$_POST["regpr"]){
-	chyba2("Vaše registrace proběhla úspěšně. <a href=\"".gv("?dirn=1&amp;glob_sc=1")."\">přihlásit se</a>");
+	chyba2($GLOBALS["uvthird10"] . " <a href=\"".gv("?dirn=1&amp;glob_sc=1")."\">" . $GLOBALS["uvthird11"] . "</a>");
 }else{
 	$_SESSION["id"] = $pocet;
 	$_SESSION["kontrolid"] = $pocet;
@@ -146,29 +142,29 @@ if(!$_POST["regpr"]){
 ?>
 <form id="form4" name="form4" method="post" action="<?php echo gv("?logof=0"); ?>">
 <table>
-<tr align="left"><th>*Jméno:</th><th> <input name="menor" type="text" id="menor" maxlength="20" value="<?php echo $_POST["menor"]; ?>" /></th></tr>
-<tr align="left"><th>*Heslo:</th><th> <input name="heslor" type="password" id="heslor" value="<?php echo $_POST["heslor"]; ?>" /></th></tr>
-<tr align="left"><th>*Heslo znovu:</th><th> <input name="heslo2r" type="password" id="heslo2r" value="<?php echo $_POST["heslo2r"]; ?>" /></th></tr>
+<tr align="left"><th>*<?php echo $GLOBALS["mdrag17a"]; ?>:</th><th> <input name="menor" type="text" id="menor" maxlength="20" value="<?php echo $_POST["menor"]; ?>" /></th></tr>
+<tr align="left"><th>*<?php echo $GLOBALS["hprofilch27"]; ?>:</th><th> <input name="heslor" type="password" id="heslor" value="<?php echo $_POST["heslor"]; ?>" /></th></tr>
+<tr align="left"><th>*<?php echo $GLOBALS["uvthird12"]; ?>:</th><th> <input name="heslo2r" type="password" id="heslo2r" value="<?php echo $_POST["heslo2r"]; ?>" /></th></tr>
 <tr align="left">
-  <td><span style="font-weight: bold">Začáteční pozice<sup>1</sup></span>:
+  <td><span style="font-weight: bold"><?php echo $GLOBALS["uvthird13"]; ?><sup>1</sup></span>:
     <br />
     <br /></td>
-  <th align="left" valign="top"><?php zadajxcyc()?> <i>nepovinné</i></th>
+  <th align="left" valign="top"><?php zadajxcyc()?> <i><?php echo $GLOBALS["uvthird14"]; ?></i></th>
 </tr>
-<tr align="left"><th colspan="2"><textarea name="textarea" cols="50" rows="10" readonly="readonly">1)Hra
-1.1) Všechny herní chyby (tzn. Bugy) musí být okamžitě nahlášeny administrátorovi a nesmí se používat ke zvýhodňování účtu nebo poškozování hry. Porušení může vést k potrestání hráče.
-1.2) Každý hráč musí dbát na slušné chování. Admin může změnit(nebo smazat) nevhodné názvy účtů, aliancí, nadpisů, atd. či bez jakéhokoliv upozornění.
-1.3) Admin má neomezené pravomoci a vyhrazuje si možnost změnit tato pravidla.
-2)Hráči
-2.2)Každý člověk může vlastnit maximálně 5 účtů.</textarea></th></tr>
+<tr align="left"><th colspan="2"><textarea name="textarea" cols="50" rows="10" readonly="readonly">
+1) <?php echo $GLOBALS["ffora10"] . "\n"; ?>
+1.1) <?php echo $GLOBALS["uvthird15"] . "\n"; ?>
+1.2) <?php echo $GLOBALS["uvthird16"] . "\n"; ?>
+1.3) <?php echo $GLOBALS["uvthird17"] . "\n"; ?>
+2) <?php echo $GLOBALS["uvthird18"] . "\n"; ?>
+2.2) <?php echo $GLOBALS["uvthird19"]; ?></textarea></th></tr>
 <tr align="left">
   <th colspan="2">*
-  <input <?php if($_POST["pravidlar"]){ echo("checked"); } ?> name="pravidlar" type="checkbox" id="pravidlar" value="1" />Přečetl jsem pravidla hry.</th></tr>
-<tr align="left"><th colspan="2">*Opište kód z obrázku: <img src="obrazok.php<?php if($_POST["kod"] == $_SESSION["obrazokk"] and $_SESSION["obrazokk"]){ $kodmus = rand(1000,9999); echo "?kodmus=".$kodmus; } ?>" width="52" height="25" border="2" /> <input name="kod" type="text" id="kod" value="<?php echo($kodmus); ?>"/></th></tr>  
-<tr align="left"><th colspan="2"><input name="ano" type="hidden" id="ano" value="1" /><input type="submit" name="Submit2" value="registrovat" /></th></tr>
+  <input <?php if($_POST["pravidlar"]){ echo("checked"); } ?> name="pravidlar" type="checkbox" id="pravidlar" value="1" /><?php echo $GLOBALS["uvthird20"]; ?></th></tr>
+<tr align="left"><th colspan="2"><input name="ano" type="hidden" id="ano" value="1" /><input type="submit" name="Submit2" value="<?php echo $GLOBALS['uvthird21']; ?>" /></th></tr>
 <tr align="left"><th colspan="2"><input <?php if($_POST["regpr"]){ echo("checked"); } ?> name="regpr" type="checkbox" id="regpr" value="1" />
-  Po registraci se hned přihlásit. 
+  <?php echo $GLOBALS["uvthird22"]; ?>
 </tr>
 </table>
 <br />
-<span style="font-style: italic"><sup>1</sup>Pokud máte vybranou pozici na mapě kde chcete začínat napište ji sem.</span>
+<span style="font-style: italic"><sup>1</sup><?php echo $GLOBALS["uvthird23"]; ?></span>

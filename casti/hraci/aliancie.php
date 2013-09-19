@@ -1,4 +1,4 @@
-<br/>
+<br />
 <style type="text/css">
 <!--
 .online {color: #000000}
@@ -11,10 +11,10 @@
 <div align="center"><table width="570" border="1" cellpadding="0" cellspacing="0">
   <tr>
     <th bgcolor="#CCCCCC" scope="col" width="1"></th>
-    <th bgcolor="#CCCCCC" scope="col">jméno</th>
-    <th bgcolor="#CCCCCC" scope="col">hráči</th>
-    <th bgcolor="#CCCCCC" scope="col">daně(dohromady)</th>
-    <th bgcolor="#CCCCCC" scope="col">body</th>
+    <th bgcolor="#CCCCCC" scope="col"><?php echo $GLOBALS["mbuild1"]; ?></th>
+    <th bgcolor="#CCCCCC" scope="col"><?php echo $GLOBALS["afourth3"]; ?></th>
+    <th bgcolor="#CCCCCC" scope="col"><?php echo $GLOBALS["afourth1a"]; ?> (<?php echo $GLOBALS["haliancie1"]; ?>)</th>
+    <th bgcolor="#CCCCCC" scope="col"><?php echo $GLOBALS["sviac6"]; ?></th>
   </tr>
   <?php
 if(!$_SESSION["statuziv_a"]){

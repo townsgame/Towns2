@@ -40,7 +40,7 @@ $mapaodkaz[$x_o][$y_o ] = "?togox=".$row1["xc"]."&amp;togoy=".$row1["yc"]	gv("?d
 
 echo("<td bgcolor=\"".$bg."\" width=\"1\" height=\"1\"><a href=\"".$sb."&amp;togox=".$row1["xc"]."&amp;togoy=".$row1["yc"]."\"><img src=\"casti/mapa/bod.gif\" width=\"2\" height=\"2\" /></a></td>");
 
-//echo("<br/>");
+//echo("<br />");
 }
 echo("</tr></table>");
 
@@ -48,31 +48,31 @@ echo("</tr></table>");
 ?>
 <table>
 <tr><td bgcolor="#6699FF" width="20"></td>
-<td>Voda</td></tr>
+<td><?php echo $GLOBALS["uniglob1"]; ?></td></tr>
 	
 <tr><td bgcolor="#cccccc" width="20"></td>
-<td>Cesta</td></tr>
+<td><?php echo $GLOBALS["uniglob2"]; ?></td></tr>
 	
 <tr><td bgcolor="#663300" width="20"></td>
-<td>Hlína</td></tr>
+<td><?php echo $GLOBALS["uniglob3"]; ?></td></tr>
 	
 <tr><td bgcolor="#000000" width="20"></td>
-<td>Kameny</td></tr>
+<td><?php echo $GLOBALS["uniglob4"]; ?></td></tr>
 	
 <tr><td bgcolor="#66FFFF" width="20"></td>
-<td>Sníh</td></tr>
+<td><?php echo $GLOBALS["uniglob5"]; ?></td></tr>
 		
 <tr><td bgcolor="#CC9900" width="20"></td>
-<td>Les</td></tr>
+<td><?php echo $GLOBALS["uniglob6"]; ?></td></tr>
 		
 <tr><td bgcolor="#FFFF00" width="20"></td>
-<td>Písek</td></tr>
+<td><?php echo $GLOBALS["uniglob7"]; ?></td></tr>
 		
 <tr><td bgcolor="#66FFCC" width="20"></td>
-<td>Led</td></tr>
+<td><?php echo $GLOBALS["uniglob8"]; ?></td></tr>
 	
 <tr><td bgcolor="#669900" width="20"></td>
-<td>Tráva</td></tr>
+<td><?php echo $GLOBALS["uniglob9"]; ?></td></tr>
 </table>
 <?php
 }

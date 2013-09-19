@@ -171,7 +171,7 @@ $x="<a href=\\\"\"); require(\"../jednotky/xcyc.php\"); echo(\"\\\"  target=\\\"
 $i=$i-1;
 endwhile; 
 
-$x=$x."<br/>";
+$x=$x."<br />";
 
 $i = $_SESSION["zoom"];
 while ($i >= 1):

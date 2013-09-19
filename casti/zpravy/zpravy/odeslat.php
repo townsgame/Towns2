@@ -19,9 +19,9 @@ while ($row = mysql_fetch_array($odpoved)) {
 $zpravax = convert($_POST["text"]);
 mysql_query("INSERT INTO townszpr VALUES('".$pocet."','".$_SESSION["id"]."', '".$komu."', '0',CURRENT_TIMESTAMP , '".$_POST["predmet"]."', '".$zpravax."')");
 //echo(mysql_error());
-echo("$xodeslanozp<br/>");
+echo("$xodeslanozp<br />");
 }else{
-echo("$xneexsist<br/>");
+echo("$xneexsist<br />");
 }
 }
 

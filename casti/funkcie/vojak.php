@@ -1,4 +1,4 @@
-<?php
+<?php          
 function vojakrozloz($a){
 if(!$a){
 $a = ".1(v0,s0,k0,r0,j0,t0,z0,b0,a0,e0,n0,d0,m0)";
@@ -31,17 +31,24 @@ m - vesmirna lod - $ves
 */
 }
 //echo vojakrozloz(".1(v1,s0,k0,r0,j0,t0,z0,b0,a0,e0,n0,d0,m1).2(v2,s0,k0,r0,j0,t0,z0,b0,a0,e0,n0,d0,m2)");
-function vojakinfo($sada,$sloupec){
+function vojakinfo($sada,$sloupec){    
 $odpoved =mysql_query("select $sloupec,id from towns2_voj where sada = '$sada'");
 while ($row = mysql_fetch_array($odpoved)) {
-$retrn = $retrn." \$$sloupec".$row[1]." = ".$row[0].";";
+    
+// lang
+if ($sloupec == "name")
+    $retrn = $retrn." \$meno".$row[1]." = ".$row[0].";";
+else
+    $retrn = $retrn." \$$sloupec".$row[1]." = ".$row[0].";";
 }
 mysql_free_result($odpoved);
+
 return($retrn);
 }
+
 function vojakzobraz($a){
 /*echo*/eval(vojakrozloz($a));
-eval(vojakinfo($xxx,"meno"));
+eval(vojakinfo($xxx,$GLOBALS["name"]));
 echo("
 <table width=\"427\" height=\"49\" border=\"0\">
   <tr>
@@ -58,7 +65,7 @@ echo("
     <td width=\"26\"><img src=\"casti/jednotky/jednotobr/$xxx/n.jpg\" width=\"20\" height=\"20\" alt=\"$menon\" /></td>
     <td width=\"26\"><img src=\"casti/jednotky/jednotobr/$xxx/d.jpg\" width=\"20\" height=\"20\" alt=\"$menod\" /></td>
     <td width=\"26\"><img src=\"casti/jednotky/jednotobr/$xxx/m.jpg\" width=\"20\" height=\"20\" alt=\"$menom\" /></td>
-    <td width=\"31\">celkem:</td>
+    <td width=\"31\">" . $GLOBALS["vojakA1"] . ":</td>
   </tr>
   <tr  bgcolor=\"#eeeeee\">
     <td height=\"21\">$v</td>
@@ -81,7 +88,7 @@ echo("
 }
 function vojakvloz($a,$tlacidlo){
 eval(vojakrozloz($a));
-eval(vojakinfo($xxx,"meno"));
+eval(vojakinfo($xxx,$GLOBALS["name"]));
 echo("
 <form id=\"vlz\" name=\"vlz\" method=\"post\" action=\"\">
 <table width=\"427\" height=\"49\" border=\"0\">
@@ -124,7 +131,7 @@ echo("
 
 function vojakvloz2($a){
 eval(vojakrozloz($a));
-eval(vojakinfo($xxx,"meno"));
+eval(vojakinfo($xxx,$GLOBALS["name"]));
 echo("
 <table width=\"427\" height=\"49\" border=\"0\">
   <tr>
@@ -225,7 +232,7 @@ return(".1(v0,s0,k0,r0,j0,t0,z0,b0,a0,e0,n0,d0,m0)");
 
 function vojakcena($a){
 eval(vojakrozloz($a));
-eval(vojakinfo($xxx,"cena"));
+eval(vojakinfo($xxx,$GLOBALS["vojak1"]));
 $cena = ($v*$cenav)+$cena;
 $cena = ($s*$cenas)+$cena;
 $cena = ($k*$cenak)+$cena;
@@ -244,15 +251,15 @@ return($cena);
 
 function vojaktext($a){
 eval(vojakrozloz($a));
-/*echo*/eval(vojakinfo($xxx,"meno2p"));
+/*echo*/eval(vojakinfo($xxx,$GLOBALS["vojak2"]));
 return("<a onclick=\"alert(\\'$v $meno2pv, $s $meno2ps, $k $meno2pk, $r $meno2pr, $j $meno2pj, $t $meno2pt, $z $meno2pz, $b $meno2pb, $a $meno2pa, $e $meno2pe, $n $meno2pn, $d $meno2pd, $m $meno2pm\\');\">(+)</a>");
 }
 
 function vojakutok($a,$vzdalenost){
 //echo($a);
 eval(vojakrozloz($a));
-eval(vojakinfo($xxx,"utok"));
-eval(vojakinfo($xxx,"vydrz"));
+eval(vojakinfo($xxx,$GLOBALS["vojak3"]));
+eval(vojakinfo($xxx,$GLOBALS["vojak4"]));
 return(
 ($v*$utokv/100*(100-((100-$vydrzv)*($vzdalenost/10)) ))
 +($s*$utoks/100*(100-((100-$vydrzs)*($vzdalenost/10)) ))
@@ -272,7 +279,7 @@ return(
 
 function vojakrychlost($a,$vzdalenost){
 eval(vojakrozloz($a));
-eval(vojakinfo($xxx,"rychlost"));
+eval(vojakinfo($xxx,$GLOBALS["vojak5"]));
 if($v){ $v = 1; }
 if($s){ $s = 1; }
 if($k){ $k = 1; }
@@ -296,14 +303,14 @@ function vojakboj($vojakind,$zivot,$utok,$vzdalenost){
 $round = 1;
 while(!$stop){
 if($round == 1){
-$utok2 = vojakutok($vojakind,$vzdalenost);
-$zivot = ($zivot - $utok2);
+$utok2 = vojakutok($vojakind,$vzdalenost);  
+$zivot = ($zivot - $utok2); 
 $round = 2;
 }else{
 eval(vojakrozloz($vojakind));
-eval(vojakinfo($xxx,"zivot"));
-eval(vojakinfo($xxx,"regenerace"));
-
+//eval(vojakinfo($xxx,$GLOBALS["vojak6"]));
+//eval(vojakinfo($xxx,$GLOBALS["vojak7"]));
+                              
 if($v > 0){ $v = ((($v*$zivotv)-$utok)/$zivotv); }
 if($s > 0){ $s = ((($s*$zivots)-$utok)/$zivots); }
 if($k > 0){ $k = ((($k*$zivotk)-$utok)/$zivotk); }
@@ -338,23 +345,23 @@ return(mysql_num_rows($odpoved));
 }
 
 function zobraztbl($xxx){
-eval(vojakinfo($xxx,"zivot"));
-eval(vojakinfo($xxx,"regenerace"));
-eval(vojakinfo($xxx,"utok"));
-eval(vojakinfo($xxx,"vydrz"));
-eval(vojakinfo($xxx,"rychlost"));
-eval(vojakinfo($xxx,"cena"));
-eval(vojakinfo($xxx,"meno"));
+eval(vojakinfo($xxx,$GLOBALS["vojak6"]));
+eval(vojakinfo($xxx,$GLOBALS["vojak7"]));
+eval(vojakinfo($xxx,$GLOBALS["vojak3"]));
+eval(vojakinfo($xxx,$GLOBALS["vojak4"]));
+eval(vojakinfo($xxx,$GLOBALS["vojak5"]));
+eval(vojakinfo($xxx,$GLOBALS["vojak1"]));
+eval(vojakinfo($xxx,$GLOBALS["name"]));
 
 echo("<table width=\"570\" border=\"0\">
   <tr>
-    <td colspan=\"3\"><strong>Ceník jednotek: </strong></td>
-    <th width=\"57\" bgcolor=\"#dddddd\">Život:</th>
-    <th width=\"80\" bgcolor=\"#dddddd\">Regenerace:</th>
-    <th width=\"75\" bgcolor=\"#dddddd\">Útok:</th>
-    <th width=\"78\" bgcolor=\"#dddddd\">Výdrž:</th>
-    <th width=\"114\" bgcolor=\"#dddddd\">*Rychlost:</th>
-    <th width=\"106\" bgcolor=\"#dddddd\">Cena:</th>
+    <td colspan=\"3\"><strong>" . $GLOBALS["vojak9"] . ": </strong></td>
+    <th width=\"57\" bgcolor=\"#dddddd\">" . $GLOBALS["vojak10"] . ":</th>
+    <th width=\"80\" bgcolor=\"#dddddd\">" . $GLOBALS["vojak11"] . ":</th>
+    <th width=\"75\" bgcolor=\"#dddddd\">" . $GLOBALS["vojak12"]. ":</th>
+    <th width=\"78\" bgcolor=\"#dddddd\">" . $GLOBALS["vojak13"] . ":</th>
+    <th width=\"114\" bgcolor=\"#dddddd\">*" . $GLOBALS["vojak14"] . ":</th>
+    <th width=\"106\" bgcolor=\"#dddddd\">" . $GLOBALS["vojak15"] . ":</th>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -365,7 +372,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utokv</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzv%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlostv (".(60/$rychlostv).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenav železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenav " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -376,7 +383,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utoks</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzs%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlosts (".(60/$rychlosts).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenas železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenas " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -387,7 +394,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utokk</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzk%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlostk (".(60/$rychlostk).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenak železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenak " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -398,7 +405,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utokr</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzr%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlostr (".(60/$rychlostr).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenar železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenar " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -409,7 +416,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utokj</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzj%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlostj (".(60/$rychlostj).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenaj železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenaj " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -420,7 +427,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utokt</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzt%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlostt (".(60/$rychlostt).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenat železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenat " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -431,7 +438,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utokz</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzz%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlostz (".(60/$rychlostz).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenaz železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenaz " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -442,7 +449,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utokb</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzb%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlostb (".(60/$rychlostb).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenab železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenab " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -453,7 +460,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utoka</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrza%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlosta (".(60/$rychlosta).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenaa železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenaa " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -464,7 +471,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utoke</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrze%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychloste (".(60/$rychloste).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenae železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenae " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -475,7 +482,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utokn</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzn%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlostn (".(60/$rychlostn).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenan železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenan " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -486,7 +493,7 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utokd</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzd%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlostd (".(60/$rychlostd).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenad železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenad " . $GLOBALS["vojak16"] . "</td>
   </tr>
   <tr>
     <td width=\"14\">&nbsp;</td>
@@ -497,11 +504,11 @@ echo("<table width=\"570\" border=\"0\">
     <td width=\"75\" bgcolor=\"#dddddd\">$utokm</td>
     <td width=\"78\" bgcolor=\"#dddddd\">$vydrzm%</td>
     <td width=\"114\" bgcolor=\"#dddddd\">$rychlostm (".(60/$rychlostm).")</td>
-    <td width=\"106\" bgcolor=\"#dddddd\">$cenam železa</td>
+    <td width=\"106\" bgcolor=\"#dddddd\">$cenam " . $GLOBALS["vojak16"] . "</td>
   </tr>
 </table></br>
 <i>
-*rychlost překonání jednoho políčka v minutách / počet políček překonaných za hodinu</br>
+*" . $GLOBALS["vojak17"] . "</br>
 </i>");
 }
 ?>

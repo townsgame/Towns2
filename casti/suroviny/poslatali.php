@@ -13,9 +13,9 @@ mysql_query("UPDATE towns2_alipris SET prachy=prachy+".vybersurku("prachy").",je
 dc("towns2_mes");
 dc("towns2_ali");
 dc("towns2_alipris");
-chyba2("odesláno");
+chyba2($GLOBALS["sposlata1"]);
 }else{
-chyba1("neexistující aliance");
+chyba1($GLOBALS["sposlata2"]);
 }
 }
 
@@ -42,5 +42,5 @@ chyba1("neexistující aliance");
 <td><?php zadajsurku("drevo","dífult","</td><td>"); ?></td>
 </tr>
 </table>
-<button name="OK" value="OK" type="submit">poslat</button>
+<button name="OK" value="OK" type="submit"><?php echo $GLOBALS["sposlat1"]; ?></button>
 </form>

@@ -13,11 +13,11 @@ $row["meno"] = $_POST["meno$q"];
 }
 echo("<input name=\"meno$q\" type=\"text\" id=\"meno$q\" value=".$row["meno"]." />
 <a href=\"".gv("?submenu=2&del=$q")."\"><img src=\"casti/desing/no.bmp\" width=\"20\" height=\"20\" /></a>
-<a href=\"".gv("?dir=casti/mapa/uniindex.php&amp;glob_sc=1&amp;xc=".((10*($row["xc_d"]-1))+1)."&amp;yc=".((10*($row["yc_d"]-1))+1))."\">Jdi na</a>
-<br/>");
+<a href=\"".gv("?dir=casti/mapa/uniindex.php&amp;glob_sc=1&amp;xc=".((10*($row["xc_d"]-1))+1)."&amp;yc=".((10*($row["yc_d"]-1))+1))."\">" . $GLOBALS["mdrag20"] . "</a>
+<br />");
 $q = $q+1;
 }
 ?>
-<input type="submit" name="Submit" value="Změnit" />
+<input type="submit" name="Submit" value="<?php echo $GLOBALS["mpos1"]; ?>" />
 </form>
-<i>Po smazání musíte pro aktualizaci obnovit.</i>
+<i><?php echo $GLOBALS["mpos2"]; ?></i>

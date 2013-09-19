@@ -42,7 +42,7 @@ echo("&nbsp;");
 //echo("_");
 }
 }
-echo("<br/>");
+echo("<br />");
 }
 
 
@@ -51,7 +51,7 @@ echo("<br/>");
 //header("Content-type: image/png");
 //ImagePng($im);
 //ImageDestroy($im);
-echo("<br/>");
+echo("<br />");
 }
 }
 ?>

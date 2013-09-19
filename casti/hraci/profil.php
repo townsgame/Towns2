@@ -1,4 +1,4 @@
-<br/>
+<br />
 <?php
 $idc = $_SESSION["id"];
 if($_MYGET["id"]){
@@ -26,9 +26,9 @@ $row = $tmp[0];
 	//$aktivita = aktivita($row["id"]);
 
 
-$akce = "<a href=\"".gv("?dir=casti/zpravy/index.php&amp;submenu=2&amp;piszpr=".$idp."&amp;glob_sc=7")."\">Psát zprávu</a>";
-if($idp == $_SESSION["id"]){ $akce = $akce."<br/><a href=\"".gv("?submenu=4")."\">Změna profilu</a>"; };
-$akce = $akce."<br/><a href=\"".gv("?dir=casti/mapa/uniindex.php&amp;glob_sc=1&amp;xc=".$row["hlbudovaxc"]."&amp;yc=".$row["hlbudovayc"])."\">Ukázat na mapě $pozice</a>";
+$akce = "<a href=\"".gv("?dir=casti/zpravy/index.php&amp;submenu=2&amp;piszpr=".$idp."&amp;glob_sc=7")."\">" . $GLOBALS["hprofil1"] . "</a>";
+if($idp == $_SESSION["id"]){ $akce = $akce."<br /><a href=\"".gv("?submenu=4")."\">" . $GLOBALS["hprofil2"] . "</a>"; };
+$akce = $akce."<br /><a href=\"".gv("?dir=casti/mapa/uniindex.php&amp;glob_sc=1&amp;xc=".$row["hlbudovaxc"]."&amp;yc=".$row["hlbudovayc"])."\">" . $GLOBALS["hprofil3"] . " $pozice</a>";
 
 if(!$zmail){
 $mail = "";
@@ -38,28 +38,27 @@ if($idc == $_SESSION["id"]){
 $zmena = $xzmenitprofil;
 }
 if($pohlavie == 0){ $pohlavie = ""; }
-if($pohlavie == 1){ $pohlavie = "muž"; }
-if($pohlavie == 2){ $pohlavie = "žena"; }
+if($pohlavie == 1){ $pohlavie = $GLOBALS["hprofil4"]; }
+if($pohlavie == 2){ $pohlavie = $GLOBALS["hprofil5"]; }
 ?>
-
 
 <table width="570" border="1" cellpadding="0" cellspacing="0">
   <tr>
-    <th colspan="5" bgcolor="#DDDDDD" scope="col">Hráč <?php echo $meno; ?></th>
+    <th colspan="5" bgcolor="#DDDDDD" scope="col"><?php echo $GLOBALS["asixth1"]; ?> <?php echo $meno; ?></th>
   </tr>
   <tr>
-    <th colspan="3" bgcolor="#EEEEEE">Detaily:</th>
+    <th colspan="3" bgcolor="#EEEEEE"><?php echo $GLOBALS["asecond2"]; ?>:</th>
     <th width="4" rowspan="17">&nbsp;</th>
-    <th width="170" bgcolor="#EEEEEE">Popis:</th>
+    <th width="170" bgcolor="#EEEEEE"><?php echo $GLOBALS["asecond3"]; ?>:</th>
   </tr>
     <tr>
     <td width="7" rowspan="13"></td>
-    <th width="89" align="left" valign="top">Pořadí:</th>
+    <th width="89" align="left" valign="top"><?php echo $GLOBALS["asecond4"]; ?>:</th>
     <td width="118"><?php echo $poradie; ?></td>
     <td rowspan="18" align="center" valign="top"><?php echo convert($popis,$idc); ?></td>
   </tr>
     <tr>
-    <th align="left" valign="top">Body:</th>
+    <th align="left" valign="top"><?php echo $GLOBALS["asecond5"]; ?>:</th>
     <td><?php echo $body; ?></td>
   </tr>
 
@@ -68,35 +67,35 @@ if($pohlavie == 2){ $pohlavie = "žena"; }
       <td><?php echo $idp; ?></td>
     </tr>
   <tr>
-    <th align="left" valign="top">Typ:</th>
+    <th align="left" valign="top"><?php echo $GLOBALS["hprofil6"]; ?>:</th>
     <td><?php echo $typ; ?></td>
   </tr>
   <tr>
-    <th align="left" valign="top">Aliance:</th>
+    <th align="left" valign="top"><?php echo $GLOBALS["asecond1"]; ?>:</th>
     <td><?php echo $ali; ?></td>
   </tr>
   <tr>
-    <th align="left" valign="top">Hodnost:</th>
+    <th align="left" valign="top"><?php echo $GLOBALS["hprofil7"]; ?>:</th>
     <td><?php echo($hodnost); ?></td>
   </tr>
   <tr>
-    <th align="left" valign="top">Pozice:</th>
+    <th align="left" valign="top"><?php echo $GLOBALS["hprofil8"]; ?>:</th>
     <td><?php echo($pozice); ?></td>
   </tr>
   <tr>
-    <th align="left" valign="top">Populace:</th>
+    <th align="left" valign="top"><?php echo $GLOBALS["hprofil9"]; ?>:</th>
     <td><?php echo($popka); ?></td>
   </tr>
     <tr>
-    <th align="left" valign="top">Jméno:</th>
+    <th align="left" valign="top"><?php echo $GLOBALS["mdrag17a"]; ?>:</th>
     <td><?php echo convert($menoc); ?></td>
   </tr>
   <tr>
-    <th align="left" valign="top">Věk:</th>
+    <th align="left" valign="top"><?php echo $GLOBALS["hprofil10"]; ?>:</th>
     <td><?php echo convert($vek); ?></td>
   </tr>
   <tr>
-    <th align="left" valign="top">Pohlaví:</th>
+    <th align="left" valign="top"><?php echo $GLOBALS["hprofil11"]; ?>:</th>
     <td><?php echo $pohlavie; ?></td>
   </tr>
   <tr>
@@ -109,7 +108,7 @@ if($pohlavie == 2){ $pohlavie = "žena"; }
   </tr>
   
   <tr>
-    <th height="20" colspan="3" bgcolor="#EEEEEE">Akce:</th>
+    <th height="20" colspan="3" bgcolor="#EEEEEE"><?php echo $GLOBALS["hprofil12"]; ?>:</th>
   </tr>
   <tr>
     <td></td>
@@ -117,4 +116,4 @@ if($pohlavie == 2){ $pohlavie = "žena"; }
   </tr>
 </table>
 <br />
-*Lze používat místo uživatelského jména.
+*<?php echo $GLOBALS["hprofil13"]; ?>

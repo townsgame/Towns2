@@ -1,6 +1,5 @@
 <?php
 require("../funkcie/index.php");
-eval(file_get_contents("../jazyk/".$_SESSION["lang"].".txt"));
 //chyba1("Omlouvám se, ale mapa ještě není funkční.");
 //die();
 /*s */ ?>
@@ -150,18 +149,18 @@ echo($y);
   <table width="155" border="0" bgcolor="#FFFFFF">
     <tr>
       <th width="50" scope="col">&nbsp;</th>
-      <th width="46" scope="col"><a href="?dir=index.php&amp;yc=<?php echo $_SESSION["ycs"]-$_SESSION["pluss"]; ?>"><img src="desing/hore.jpg" alt="nahoru" width="50" height="30" border="0" /></a></th>
+      <th width="46" scope="col"><a href="?dir=index.php&amp;yc=<?php echo $_SESSION["ycs"]-$_SESSION["pluss"]; ?>"><img src="desing/hore.jpg" alt="|" width="50" height="30" border="0" /></a></th>
       <th width="62" scope="col">&nbsp;</th>
     </tr>
     <tr>
-      <td align="right"><a href="?dir=index.php&amp;xc=<?php echo $_SESSION["xcs"]-$_SESSION["pluss"]; ?>"><img src="desing/dolava.jpg" alt="doleva" width="30" height="50" border="0" /></a></td>
+      <td align="right"><a href="?dir=index.php&amp;xc=<?php echo $_SESSION["xcs"]-$_SESSION["pluss"]; ?>"><img src="desing/dolava.jpg" alt="<-" width="30" height="50" border="0" /></a></td>
       <td>&nbsp;</td>
-      <td><a href="?dir=index.php&amp;xc=<?php echo $_SESSION["xcs"]+$_SESSION["pluss"]; ?>"><img src="desing/doprava.jpg" alt="doprava" width="30" height="50" border="0" /></a></td>
+      <td><a href="?dir=index.php&amp;xc=<?php echo $_SESSION["xcs"]+$_SESSION["pluss"]; ?>"><img src="desing/doprava.jpg" alt="->" width="30" height="50" border="0" /></a></td>
     </tr>
     <tr>
-      <td align="right"><a href="?dir=index.php&amp;zoom=<?php echo $_SESSION["zooms"]-$_SESSION["pluss"]; ?>"><img src="desing/plus.jpg" alt="nahoru" width="30" height="30" border="0" /></a></td>
-      <td><a href="?dir=index.php&amp;yc=<?php echo $_SESSION["ycs"]+$_SESSION["pluss"]; ?>"><img src="desing/dole.jpg" alt="dolu" width="50" height="30" border="0" /></a></td>
-      <td><a href="?dir=index.php&amp;zoom=<?php echo $_SESSION["zooms"]+$_SESSION["pluss"]; ?>"><img src="desing/minus.jpg" alt="nahoru" width="30" height="15" border="0" /></a></td>
+      <td align="right"><a href="?dir=index.php&amp;zoom=<?php echo $_SESSION["zooms"]-$_SESSION["pluss"]; ?>"><img src="desing/plus.jpg" alt="|" width="30" height="30" border="0" /></a></td>
+      <td><a href="?dir=index.php&amp;yc=<?php echo $_SESSION["ycs"]+$_SESSION["pluss"]; ?>"><img src="desing/dole.jpg" alt="|" width="50" height="30" border="0" /></a></td>
+      <td><a href="?dir=index.php&amp;zoom=<?php echo $_SESSION["zooms"]+$_SESSION["pluss"]; ?>"><img src="desing/minus.jpg" alt="|" width="30" height="15" border="0" /></a></td>
     </tr>
     <tr>
       <td colspan="3">
@@ -170,25 +169,25 @@ echo($y);
   
         <table width="144" border="0">
           <tr>
-            <th align="left" scope="col"><?php echo $xzoom; ?>
+            <th align="left" scope="col">zoom
               </th>
             <th height="31" scope="col"><input name="zoom" type="text" id="zoom" value="<?php echo($_SESSION["zooms"]); ?>" size="4" /></th>
           </tr>
           <tr>
-            <th align="left" scope="col"><?php echo $xplus; ?></th>
+            <th align="left" scope="col">+</th>
             <th height="31" scope="col"><input name="plus" type="text" id="plus" value="<?php echo($_SESSION["pluss"]); ?>" size="4" /></th>
           </tr>
           <tr>
-            <th align="left" scope="col"><?php echo $xx; ?></th>
+            <th align="left" scope="col">x</th>
             <th height="31" scope="col"><input name="xc" type="text" id="xc" value="<?php echo($_SESSION["xcs"]); ?>" size="4" /></th>
           </tr>
           <tr>
-            <th width="56" align="left" scope="col"><?php echo $xy; ?></th>
+            <th width="56" align="left" scope="col">y</th>
             <th width="78" height="31" scope="col"><input name="yc" type="text" id="yc" value="<?php echo($_SESSION["ycs"]); ?>" size="4" /></th>
           </tr>
         </table>
         <label>
-        <input name="submit" type="submit" value="<?php echo $xok; ?>" />
+        <input name="submit" type="submit" value="OK" />
           </label>
 </form>	  </td>
     </tr>
@@ -213,7 +212,7 @@ $x="<a href=\\\"\"); require(\"../jednotky/let/xcyc.php\"); echo(\"\\\" target=\
 $i=$i-1;
 endwhile; 
 
-$x=$x."<br/>";
+$x=$x."<br />";
 
 $i = $_SESSION["zooms"];
 while ($i >= 1):

@@ -18,59 +18,59 @@ if($_GET["del"]){
 mysql_query("DELETE FROM townsank WHERE id = ".$_GET["del"]." AND autor = ".$_SESSION["id"]);
 }
 ?>
-<h3>přidat anketu: </h3>
+<h3><?php echo $GLOBALS["unprank1"]; ?>: </h3>
 <form id="form1" name="form1" method="post" action="">
-  <label><strong>otázka:
+  <label><strong><?php echo $GLOBALS["unprank2"]; ?>:
   </strong>
   <input name="otazka" type="text" id="otazka" size="55" />
   </label>
   <label></label>
   <br />
-  <label><strong>odpověď 1: </strong>
+  <label><strong><?php echo $GLOBALS["unprank3"]; ?> 1: </strong>
   <input name="o1" type="text" id="o1" size="50" />
   </label>
   <label></label>
   <br />
-  <label><strong>odpověď 2: </strong>
+  <label><strong><?php echo $GLOBALS["unprank3"]; ?> 2: </strong>
   <input name="o2" type="text" id="o2" size="50" />
   </label>
   <label></label>
   <br />
-  <label><strong>odpověď 3: </strong>
+  <label><strong><?php echo $GLOBALS["unprank3"]; ?> 3: </strong>
   <input name="o3" type="text" id="o3" size="50" />
   </label>
   <label></label>
   <br />
-  <label><strong>odpověď 4: </strong>
+  <label><strong><?php echo $GLOBALS["unprank3"]; ?> 4: </strong>
   <input name="o4" type="text" id="o4" size="50" />
   </label>
   <label></label>
   <br />
-  <label><strong>odpověď 5: </strong>
+  <label><strong><?php echo $GLOBALS["unprank3"]; ?> 5: </strong>
   <input name="o5" type="text" id="o5" size="50" />
   </label>
   <label></label>
   <br />
-  <strong>přečetl jsem si pravidla  </strong>
+  <strong><?php echo $GLOBALS["unprank4"]; ?>  </strong>
   <label>
   <input name="pecpr" type="checkbox" id="pecpr" value="1" />
   <br />
-  <input type="submit" name="Submit" value="přidej" />
+  <input type="submit" name="Submit" value="<?php echo $GLOBALS['unprank4a']; ?>" />
   </label>
 </form>
-<h3>vaše anketu: </h3>
+<h3><?php echo $GLOBALS["unprank5"]; ?>: </h3>
 
 <table width="480" border="0">
   <tr bgcolor="#CCCCCC">
-    <th width="170" bgcolor="#CCCCCC">otázka</th>
-    <th width="166" bgcolor="#CCCCCC">odpovědi</th>
-    <th width="80" bgcolor="#CCCCCC">stav</th>
+    <th width="170" bgcolor="#CCCCCC"><?php echo $GLOBALS["unprank6"]; ?></th>
+    <th width="166" bgcolor="#CCCCCC"><?php echo $GLOBALS["unprank7"]; ?></th>
+    <th width="80" bgcolor="#CCCCCC"><?php echo $GLOBALS["unprank8"]; ?></th>
     <td width="46" bgcolor="#FFFFFF">&nbsp;</td>
   </tr>
 <?php
-$odpoved =mysql_query("select * from townsank where autor = '".$_SESSION["id"]."'");
+$odpoved = mysql_query("select * from townsank where autor = '".$_SESSION["id"]."'");
 while ($row = mysql_fetch_array($odpoved)) {
-if($row["schvaleno"] == "1"){ $stuff = "schváleno"; }else{ $stuff = "čeká na schválení"; }
+if($row["schvaleno"] == "1"){ $stuff = $GLOBALS["unprank9"]; }else{ $stuff = $GLOBALS["unprank10"]; }
 
 echo("
   <tr bgcolor=\"#EBEBEB\">
@@ -89,8 +89,8 @@ mysql_free_result($odpoved);
 ?>
 </table>
 <br />
-<h3>nápověda &amp; pravidla: </h3>
+<h3><?php echo $GLOBALS["unprank11"]; ?> &amp; <?php echo $GLOBALS["unprank12"]; ?>: </h3>
 <p><br />
-  1) zákaz používání neslušných slov
+  1) <?php echo $GLOBALS["unprank13"]; ?>
   <br />
-  2) za každý klik od uživatele na vaši anketu dostanete 10 peněz </p>
+  2) <?php echo $GLOBALS["unprank14"]; ?></p>

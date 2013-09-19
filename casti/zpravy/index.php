@@ -1,1 +1,2 @@
-<?php submenu(array("Přijaté","Psát zprávu","Archiv","Odeslané"),array("casti/zpravy/prijate.php","casti/zpravy/odeslat.php","casti/zpravy/archyv.php","casti/zpravy/odeslane.php")) ?>
+<?php submenu(array($GLOBALS["zindex1"],$GLOBALS["hprofil1"],$GLOBALS["zindex2"],$GLOBALS["zindex3"]),
+        array("casti/zpravy/prijate.php","casti/zpravy/odeslat.php","casti/zpravy/archyv.php","casti/zpravy/odeslane.php")) ?>

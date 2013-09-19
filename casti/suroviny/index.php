@@ -14,5 +14,6 @@ $typy[3]=1;
 $typy[4]=2;	
 }*/
 
-submenu(array("Přehled","Poslat suroviny","Poslat suroviny alianci",/*"Tržiště",*/"Výměna<br/> surovin","Těžba surovin","Hry","Zadat kód"),array("casti/suroviny/viac.php","casti/suroviny/poslat.php","casti/suroviny/poslatali.php",/*"casti/suroviny/vymena.php",*/"casti/suroviny/banka.php","casti/suroviny/surowiny.php","casti/stah/index.php","casti/suroviny/kod.php"),$typy,array("","Pro tuto možnost musíte mít postavené tržiště.","Pro tuto možnost musíte mít postavené tržiště.","Pro tuto možnost musíte mít postavenou banku.","Pro tuto možnost musíte mít postavenou banku.","",""));
+submenu(array($GLOBALS["sindex1"],$GLOBALS["sindex2"],$GLOBALS["sindex3"],/*$GLOBALS["sindex4"],*/$GLOBALS["sindex5"],$GLOBALS["sindex6"]/*,$GLOBALS["sindex7"]*//*,$GLOBALS["sindex8"]*/),array("casti/suroviny/viac.php","casti/suroviny/poslat.php","casti/suroviny/poslatali.php",/*"casti/suroviny/vymena.php",*/"casti/suroviny/banka.php","casti/suroviny/surowiny.php"/*,"casti/stah/index.php"*//*,"casti/suroviny/kod.php"*/),$typy,
+        array("",$GLOBALS["sindex9"],$GLOBALS["sindex9"],$GLOBALS["sindex10"],/*$GLOBALS["sindex10"],*/"",""));
 ?>

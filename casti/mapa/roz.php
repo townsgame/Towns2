@@ -8,32 +8,32 @@ if(!$o){ $o=1; }
 //echo("SELECT vlastnik FROM towns2 WHERE xc=".$xc3." AND yc=".$yc3);
 $vlastnik = hnet("towns2","SELECT vlastnik FROM towns2 WHERE xc=".$xc3." AND yc=".$yc3);
 if($vlastnik != $_SESSION["id"]){
-$stav = "Vlastník této budovy je ".profil($vlastnik)." .";
+$stav = $GLOBALS["roz1"]." ".profil($vlastnik)." .";
 }
 
 if(hnet("towns2","SELECT obrazok FROM towns2 WHERE xc=".$xc3." AND yc=".$yc3) == "0"){
-$stav = "Na tomto políčku není žádná budova. ";
+$stav = $GLOBALS["roz2"];
 }
 
 $drevo = hnet("towns2","SELECT drevo FROM towns2_uni WHERE obrazok=(SELECT obrazok FROM towns2 WHERE xc=$xc3 AND yc=$yc3)",1)/2;
 $kamen = hnet("towns2","SELECT kamen FROM towns2_uni WHERE obrazok=(SELECT obrazok FROM towns2 WHERE xc=$xc3 AND yc=$yc3)",1)/2;
 if(!zsur("drevo",$drevo*$o) or !zsur("kamen",$kamen*$o)){
-$stav = "Nedostatek surovin. ";
+$stav = $GLOBALS["roz3"];
 }
 
 if($stav){
 echo($stav);
 }else{
-echo("Budova rozšířena o ".$o." úrovní.");
+echo($GLOBALS["roz4"]." ".$o." " . $GLOBALS["roz5"] . ".");
 surovinanew($_SESSION["id"],"drevo","-",$drevo*$o);
 surovinanew($_SESSION["id"],"kamen","-",$kamen*$o);
-mysql_query2("UPDATE towns2 SET uroven=uroven+".$o." WHERE xc=$xc3 AND yc=$yc3");
+premhnet("UPDATE towns2 SET uroven=uroven+".$o." WHERE xc=$xc3 AND yc=$yc3", FALSE);
 dc("towns2");
 dcmapa($xc3,$yc3);
 }
 ?>
- <a href="<?php echo gv("?dir=casti/mapa/drag.php&amp;glob_sc=1"); ?>">zpět</a>
+ <a href="<?php echo gv("?dir=casti/mapa/drag.php&amp;glob_sc=1"); ?>"><?php echo $GLOBALS["disindex2b"]; ?></a>
 <form method="POST" action="?xc=<?php echo $_GET["xc"]; ?>&amp;yc=<?php echo $_GET["yc"]; ?>">
-Rozšířit o dalších <input type="text" size="2" name="o"> úrovní.
+<?php echo $GLOBALS["roz6"]; ?> <input type="text" size="2" name="o"> <?php echo $GLOBALS["toz5"]; ?>.
 <input type="submit" name="Submit" value="OK" />
 </form>

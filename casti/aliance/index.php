@@ -14,5 +14,7 @@ if(!$tmp2[3]){ $tmp[4] = 2; }
 if(!$tmp2[4]){ $tmp[5] = 2; }
 if(!$tmp2[5]){ $tmp[8] = 2; }
 
-submenu(array("Aliance","Profil aliance","Fórum aliance","Pokladna","Pozvat hráče","Vyhodit hráče","Změna profilu aliance","Správa pokladny","Hodnosti &amp; pravomoci"),array("casti/aliance/1.php","casti/hraci/profila.php","casti/aliance/3.php","casti/aliance/4.php","casti/aliance/5.php","casti/aliance/6.php","casti/aliance/7.php","casti/aliance/8.php","casti/aliance/9.php"),$tmp,array("","Pro tuto možnost musíte být v alianci.","Pro tuto možnost musíte být v alianci.","Pro tuto možnost musíte být v alianci.","Pro tuto možnost musíte být v alianci a mít na to pravomoci.","Pro tuto možnost musíte být v alianci a mít na to pravomoci.","Pro tuto možnost musíte být v alianci a mít na to pravomoci.","Pro tuto možnost musíte být v alianci a mít na to pravomoci.","Pro tuto možnost musíte být v alianci a mít na to pravomoci.","Pro tuto možnost musíte být v alianci a mít na to pravomoci."));
+submenu(array($GLOBALS["aindex1"],$GLOBALS["aindex2"],$GLOBALS["aindex3"],$GLOBALS["aindex4"],$GLOBALS["aindex5"],$GLOBALS["aindex6"],$GLOBALS["aindex7"],$GLOBALS["aindex8"],$GLOBALS["aindex9"]),array("casti/aliance/1.php","casti/hraci/profila.php","casti/aliance/3.php","casti/aliance/4.php","casti/aliance/5.php","casti/aliance/6.php","casti/aliance/7.php","casti/aliance/8.php","casti/aliance/9.php"),$tmp,
+        array("",$GLOBALS["aindex10"],$GLOBALS["aindex10"],$GLOBALS["aindex10"],$GLOBALS["aindex11"],$GLOBALS["aindex11"],$GLOBALS["aindex11"],$GLOBALS["aindex11"],
+            $GLOBALS["aindex11"],$GLOBALS["aindex11"]));
 ?>

@@ -36,7 +36,7 @@ $heslor=crypt($_POST["heslor"],"PH");
 mysql_query("
 INSERT INTO `towns2_uziv` ( `id` ,`typ` , `meno`, `ali` , `body` , `poradie`, `heslo` , `popis` , `pohlavie` , `vek` , `mail` , `zmail` , `www`, `mestozal`,  `lista`) 
 VALUES (
-'$pocet',7 , '".$_POST["menor"]."', '0', '0', '0', '$heslor', '', '0', '0', '".$_POST["mailr"]."', '".$_POST["zmailr"]."', '','0','lista(2); lista(4); lista(6); lista(8); lista(3); lista(5); lista(7);'
+'$pocet',6, '".$_POST["menor"]."', '0', '0', '0', '$heslor', '', '0', '0', '".$_POST["mailr"]."', '".$_POST["zmailr"]."', '','0','lista(2); lista(4); lista(6); lista(8); lista(3); lista(5); lista(7);'
 );
 ");
 echo(mysql_error());
@@ -79,30 +79,21 @@ $pocetz = $pocetz+1;
 mysql_query("INSERT INTO towns2_zpr VALUES('".$pocetz."','1', '$pocet', '0',CURRENT_TIMESTAMP , 'Vítejte v towns2_', '".$zpravax."')");
 
 alog("new user ".$_POST["menor"],1);
-chyba2($xpodekovani);
+chyba2($GLOBALS["unreg1"]);
 }else{
-chyba1("uživatel již existuje");
+chyba1($GLOBALS["unreg2"]);
 }
 }else{
-chyba1($xmusitesouhlasit);
+chyba1($GLOBALS["unreg3"]);
 }
 }else{
-chyba1($xheslanicht );
-}
-}else{
-chyba1($xkodneopsany);
+chyba1($GLOBALS["unreg4"]);
 }
 }
 ?>
 <table width="484" height="515" border="0" cellpadding="0" cellspacing="0" bgcolor="#000000">
    <tr>
-     <td height="24" align="center" valign="middle"><h3><?php echo $xvitejte; ?></h3>
-
-<a href="http://www.toplist.cz/stat/639792"><script language="JavaScript" type="text/javascript">
-<!--
-document.write ('<img src="http://toplist.cz/count.asp?id=639792&logo=mc&http='+escape(document.referrer)+'&wi='+escape(window.screen.width)+'&he='+escape(window.screen.height)+'&cd='+escape(window.screen.colorDepth)+'&t='+escape(document.title)+'" width="88" height="60" border=0 alt="TOPlist" />'); 
-//--></script><noscript><img src="http://toplist.cz/count.asp?id=639792&logo=mc" border="0"
-alt="TOPlist" width="88" height="60" /></noscript></a>
+     <td height="24" align="center" valign="middle"><h3><?php echo $GLOBALS["unreg5"]; ?></h3>
 
 <?php
 $stats = new index("towns2_uziv","select COUNT(id) FROM towns2_uziv WHERE ppp");
@@ -110,10 +101,10 @@ $stat2 = $stats->get("UNIX_TIMESTAMP() < aktivita + 302400");
 $stat1 = $stats->get("1");
 
 
-echo("<br/>Registrovaných: ");
+echo("<br />" . $GLOBALS["unreg6"] . ": ");
 //print_r($stat1);
 echo($stat1[0]);
-echo("<br/>Aktivních: ");
+echo("<br />" . $GLOBALS["unreg7"] . ": ");
 echo($stat2[0]);
 
 ?>
@@ -127,9 +118,9 @@ echo($stat2[0]);
    <tr>
      <td height="49" align="center" valign="middle"><table width="484" border="0">
        <tr>
-         <td width="161" align="left" bgcolor="#000033"><span class="style10"><?php echo $xnejhraci; ?></span></td>
-         <td width="161" align="left" bgcolor="#000033"><span class="style10"><?php echo $xnejali; ?></span></td>
-         <td width="161" height="22" align="left" bgcolor="#000033"><span class="style10"><?php echo $xnejmesta; ?></span></td>
+         <td width="161" align="left" bgcolor="#000033"><span class="style10"><?php echo $GLOBALS["unreg8"]; ?>:</span></td>
+         <td width="161" align="left" bgcolor="#000033"><span class="style10"><?php echo $GLOBALS["unreg9"]; ?>:</span></td>
+         <td width="161" height="22" align="left" bgcolor="#000033"><span class="style10"><?php echo $GLOBALS["unreg10"]; ?>:</span></td>
        </tr>
        <tr>
          <td width="161" align="left" valign="top">
@@ -149,63 +140,66 @@ echo($stat2[0]);
      <td height="287" align="center" valign="middle"><form id="form4" name="form4" method="post" action="?logof=0">
        <table width="484" border="0">
          <tr>
-           <td colspan="2" align="left" bgcolor="#000033"><span class="style10"><?php echo $xregistrace; ?></span></td>
+           <td colspan="2" align="left" bgcolor="#000033"><span class="style10"><?php echo $GLOBALS["unreg11"]; ?>:</span></td>
          </tr>
          <tr>
-           <td colspan="2" align="left" valign="top"><p><span class="style10"><span class="style11"><?php echo $xvocem; ?></span><br />
-               </span><?php echo $xtowns2_je; ?><br />
-               <span class="style11"><?php echo $xvyhody; ?></span><br />
-             <?php echo $xvyhoda1; ?><br />
-             <?php echo $xvyhoda2; ?><br />
-             <?php echo $xvyhoda3; ?></p></td>
+           <td colspan="2" align="left" valign="top"><p><span class="style10"><span class="style11"><?php echo $GLOBALS["unreg12"]; ?>:</span><br />
+               </span><?php echo $GLOBALS["unnorm4"]; ?><br />
+               <span class="style11"><?php echo $GLOBALS["unreg13"]; ?></span><br />
+             <?php echo $GLOBALS["unnorm5"]; ?><br />
+             <?php echo $GLOBALS["unnorm6"]; ?><br />
+             <?php echo $GLOBALS["unnorm7"]; ?></p></td>
          </tr>
          <tr>
-           <th width="102" align="left"><?php echo $xjmeno; ?></th>
+           <th width="102" align="left"><?php echo $GLOBALS["afourth5"]; ?>:</th>
            <td width="372"><input name="menor" type="text" id="menor" value="<?php echo $_POST["menor"]; ?>" /></td>
          </tr>
          <tr>
-           <th align="left"><?php echo $xheslo; ?></th>
+           <th align="left"><?php echo $GLOBALS["index3"]; ?>:</th>
            <td><input name="heslor" type="password" id="heslor" value="<?php echo $_POST["heslor"]; ?>" /></td>
          </tr>
          <tr>
-           <th align="left"><?php echo $xhesloznovu; ?></th>
+           <th align="left"><?php echo $GLOBALS["unreg14"]; ?>:</th>
            <td><input name="heslo2r" type="password" id="heslo2r" value="<?php echo $_POST["heslo2r"]; ?>" /></td>
          </tr>
          <tr>
-           <th align="left"><?php echo $xmail; ?></th>
+           <th align="left">e-mail:</th>
            <td><input name="mailr" type="text" id="mailr" value="<?php echo $_POST["mailr"]; ?>" /></td>
          </tr>
          <tr>
-           <th align="left"><?php echo $xjmenomesta; ?></th>
+           <th align="left"><?php echo $GLOBALS["unreg15"]; ?>:</th>
            <td><input name="mestor" type="text" id="mestor" value="<?php echo $_POST["mestor"]; ?>" /></td>
          </tr>
          <tr>
-           <th colspan="2" align="left"><?php echo $xzobrazovatmail; ?> 
+           <th colspan="2" align="left"><?php echo $GLOBALS["unreg16"]; ?> 
              <label>
              <input name="zmailr" type="checkbox" id="zmailr" value="1" />
              </label></th>
            </tr>
          <tr>
            <th colspan="2" align="left"><label>
-             <textarea name="textarea" cols="50" rows="10" readonly="readonly"><?php echo $xpravidla; ?></textarea>
+             <textarea name="textarea" cols="50" rows="10" readonly="readonly">
+                1) <?php echo $GLOBALS["ffora10"] . "\n"; ?>
+                1.1) <?php echo $GLOBALS["uvthird15"] . "\n"; ?>
+                1.2) <?php echo $GLOBALS["uvthird16"] . "\n"; ?>
+                1.3) <?php echo $GLOBALS["uvthird17"] . "\n"; ?>
+                2) <?php echo $GLOBALS["uvthird18"] . "\n"; ?>
+                2.2) <?php echo $GLOBALS["uvthird19"]; ?>
+             </textarea>
            </label></th>
            </tr>
          <tr>
            <th colspan="2" align="left"><label>
              <input name="pravidlar" type="checkbox" id="pravidlar" value="1" />
-             <?php echo $xprectenapravidla; ?></label></th>
+             <?php echo $GLOBALS["uvthird20"]; ?></label></th>
            </tr>
-         <tr>
-           <th colspan="2" align="left" valign="top"><?php echo $xkod; ?><img src="obrazok.php" width="52" height="25" border="2" /> <label>
-             <input name="kod" type="text" id="kod" />
-           </label></th>
-         </tr>
          <tr>
            <th colspan="2" align="left"><label>
-             <input type="submit" name="Submit2" value="<?php echo $xtlreg; ?>" />
-           <?php echo $xvarovani; ?></label></th>
+             <input type="submit" name="Submit2" value="<?php echo $GLOBALS["uvthird21"]; ?>" />
+           <?php echo "(" . $GLOBALS["unreg17"] . ")"; ?></label></th>
            </tr>
        </table>
-          </form>     </td>
+          </form>     
+     </td>
    </tr>
- </table>
+</table>

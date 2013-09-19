@@ -3,8 +3,8 @@ if(!function_exists("hnet")){
 $root = "../../";
 $no_c = "1";
 $no_ss = "1";
-require("../funkcie/index.php");
-require("../funkcie/vojak.php");
+require_once("../funkcie/index.php");
+require_once("../funkcie/vojak.php");
 ?>
 <SCRIPT LANGUAGE="JavaScript">
 <!--
@@ -38,36 +38,18 @@ eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,lo
 }
 -->
 </script>
-
-
-<!-- STEP TWO: Use the following link to open the new window -->
-
-<A HREF="javascript:popUp('http://2.towns.cz/casti/mapa/budovy.php')">(nové okno)</A>
-
 <!-- Script Size:  0.73 KB  -->
 <?php
 }
 /*$odpoved =mysql_query("select * from townsuni WHERE akce != '0' order by meno");
 while ($row = mysql_fetch_array($odpoved)) { */
 //popis pludia	budovavedla		budovap		budoval
-echo("<table><tr>
-<th bgcolor=\"#cccccc\">jméno</th>
-<th bgcolor=\"#cccccc\">dřevo</th>
-<th bgcolor=\"#cccccc\">kámen</th>
-<th bgcolor=\"#cccccc\">život</th>
-<th bgcolor=\"#cccccc\">čas</th>
-<th bgcolor=\"#cccccc\">útok</th>
-<th bgcolor=\"#cccccc\">vzdálenost</th>
-<th bgcolor=\"#cccccc\">obyvatel</th>
-<th bgcolor=\"#cccccc\">autor</th>
-<th bgcolor=\"#cccccc\">AP</th>
-<th bgcolor=\"#cccccc\"></th>
-</tr>");
+echo("<table align=\"center\">");
 
-foreach(hnet2("towns2_uni","select * from towns2_uni WHERE akce != '0' AND obrazok != '0' AND schvelene=1 order by typ,meno") as $row){
+foreach(hnet2("towns2_uni","select * from towns2_uni WHERE akce != '0' AND obrazok != '0' AND schvelene=1 order by typ," . $GLOBALS["name"]) as $row){
 $ne=0;
-if($row["ps"]==1 and $row["autor"]!=$_SESSION["id"]){ $ne=1; }
-if($row["ps"]==2 and $row["autor"]!=$_SESSION["id"]){ $ne=1; }
+if($row["ps"]==1 && $row["autor"]!=$_SESSION["id"]){ $ne=1; }
+if($row["ps"]==2 && $row["autor"]!=$_SESSION["id"]){ $ne=1; }
 if(!$ne){
 
 $cas = $row["casovac2"];
@@ -116,37 +98,73 @@ $cas = "$hod:$min:$cas";
   </tr>
 </table>
 ");*/
-
+/*
 if($last!=$row["typ"]){
 echo("<th colspan=\"8\" bgcolor=\"#aacccc\">");
-if($row["typ"]=="1"){ echo("infrastruktura"); }
-if($row["typ"]=="2"){ echo("surovinové"); }
-if($row["typ"]=="3"){ echo("obyvatelé"); }
-if($row["typ"]=="4"){ echo("vojenské"); }
-if($row["typ"]=="5"){ echo("obrana"); }
+if($row["typ"]=="1"){ echo($GLOBALS["mbuild11"]); }
+if($row["typ"]=="2"){ echo($GLOBALS["mbuild12"]); }
+if($row["typ"]=="3"){ echo($GLOBALS["mbuild13"]); }
+if($row["typ"]=="4"){ echo($GLOBALS["mbuild14"]); }
+if($row["typ"]=="5"){ echo($GLOBALS["mbuild15"]); }
 echo("</th>");
 }
 $last=$row["typ"];
+*/
 /*echo("
-<b><u><a onClick=\"if(".$row["obrazok"].".style.display=='none'){ ".$row["obrazok"].".style.display='inline' }else{ ".$row["obrazok"].".style.display='none' }\">".($row["meno"])."</a></u></b><br/>
+<b><u><a onClick=\"if(".$row["obrazok"].".style.display=='none'){ ".$row["obrazok"].".style.display='inline' }else{ ".$row["obrazok"].".style.display='none' }\">".($row["meno"])."</a></u></b><br />
 <div style=\"display: none;\" id=\"".$row["obrazok"]."\" ><hr/>
-<b>Kámen: </b>".$row["kamen"]."<br/>
-<b>Dřevo: </b>".$row["drevo"]."<br/>
-<b>Útok: </b>".$row["utok"]."<br/>
-<b>Život: </b>".$row["zivot"]."<br/>
-<b>Vzdálenost útoku: </b>".$row["vutok"]."<br/>
-<b>Populace: </b>".$row["ludia"]."<br/>
-<b>Čas: </b>".$cas."<br/>
+<b>Kámen: </b>".$row["kamen"]."<br />
+<b>Dřevo: </b>".$row["drevo"]."<br />
+<b>Útok: </b>".$row["utok"]."<br />
+<b>Život: </b>".$row["zivot"]."<br />
+<b>Vzdálenost útoku: </b>".$row["vutok"]."<br />
+<b>Populace: </b>".$row["ludia"]."<br />
+<b>Čas: </b>".$cas."<br />
 ".$row["popis"]." <hr/>
 </div>
 ");*/
 //popis pludia	budovavedla		budovap		budoval
-$popis = $row["popis"];
-if($row["pludia"]){ $popis=$popis."<br/><b>++</b>Přidává ".$row["pludia"]." míst pro obyvatele."; }
-if($row["budovavedla"]){ $popis=$popis."<br/><b>++</b>Dá se postavit pouze vedle vaší budovy ".hnet("towns2_uni","SELECT meno FROM towns2_uni WHERE obrazok='".$row["budovavedla"]."'")."."; }
-if($row["budovap"]){ $popis=$popis."<br/><b>++</b>Musíte mít ".hnet("towns2_uni","SELECT meno FROM towns2_uni WHERE obrazok='".$row["budovap"]."'")." na úrovni ".$row["budoval"]."."; }
-echo("<tr>
-<th bgcolor=\"#cccccc\">".$row["meno"]."</th>
+//$popis = $row["popis"];
+if($row["pludia"]){ $popis=$popis."<br /><b>++</b>" . $GLOBALS["mbuild16"] . " ".$row["pludia"]." " . $GLOBALS["mbuild17"] . "."; }
+if($row["budovavedla"]){ $popis=$popis."<br /><b>++</b>" . $GLOBALS["mbuild18"] . " ".hnet("towns2_uni","SELECT " . $GLOBALS["name"] . " FROM towns2_uni WHERE obrazok='".$row["budovavedla"]."'")."."; }
+if($row["budovap"]){ $popis=$popis."<br /><b>++</b>" . $GLOBALS["mbuild19"] . " ".hnet("towns2_uni","SELECT " . $GLOBALS["name"] . "  FROM towns2_uni WHERE obrazok='".$row["budovap"]."'")." " . $GLOBALS["mbuild20"] . " ".$row["budoval"]."."; }
+echo("
+<tr>
+<td colspan=\"10\">
+  <table height=\"150\" border=\"0\">
+    " .
+/*
+    <tr>
+        <th>" . $GLOBALS["mbuild22"] . ":</th>
+    </tr>
+*/
+   "
+    <tr>
+        <td><img src=\"casti/jednotky/drag/mapa/" . $row["obrazok"] . "/1.gif\" width=\"100\" height=\"150\" border=\"1\" /></td>
+        <td><img src=\"casti/jednotky/drag/mapa/" . $row["obrazok"] . "/2.gif\" width=\"100\" height=\"150\" border=\"1\" /></td>
+        <td><img src=\"casti/jednotky/drag/mapa/" . $row["obrazok"] . "/3.gif\" width=\"100\" height=\"150\" border=\"1\" /></td>
+        " // <td><img src=\"casti/jednotky/drag/mapa/" . $row["obrazok"] . "/4.gif\" width=\"100\" height=\"150\" border=\"1\" /></td>
+        ."
+        <td><img src=\"casti/jednotky/drag/mapa/" . $row["obrazok"] . "/5.gif\" width=\"100\" height=\"150\" border=\"1\" /></td>
+        <td><img src=\"casti/jednotky/drag/mapa/" . $row["obrazok"] . "/6.gif\" width=\"100\" height=\"150\" border=\"1\" /></td>
+    </tr>
+  </table>  
+</td>
+</tr>        
+<tr>
+<th bgcolor=\"#cccccc\">" . $GLOBALS["mbuild1"] . "</th>
+<th bgcolor=\"#cccccc\">" . $GLOBALS["mbuild2"] . "</th>
+<th bgcolor=\"#cccccc\">" . $GLOBALS["mbuild3"] . "</th>
+<th bgcolor=\"#cccccc\">" . $GLOBALS["mbuild4"] . "</th>
+<th bgcolor=\"#cccccc\">" . $GLOBALS["mbuild5"] . "</th>
+<th bgcolor=\"#cccccc\">" . $GLOBALS["mbuild6"] . "</th>
+<th bgcolor=\"#cccccc\">" . $GLOBALS["mbuild7"] . "</th>
+<th bgcolor=\"#cccccc\">" . $GLOBALS["mbuild8"] . "</th>
+<th bgcolor=\"#cccccc\">" . $GLOBALS["mbuild9"] . "</th>
+<th bgcolor=\"#cccccc\">" . $GLOBALS["mbuild10"] . "</th>
+</tr>    
+<tr>
+<th bgcolor=\"#cccccc\">".$row[$GLOBALS["name"]] ."</th>
 <td bgcolor=\"#eeeeee\">".$row["drevo"]."</td>
 <td bgcolor=\"#eeeeee\">".$row["kamen"]."</td>
 <td bgcolor=\"#eeeeee\">".$row["zivot"]."</td>
@@ -156,10 +174,9 @@ echo("<tr>
 <td bgcolor=\"#eeeeee\">".$row["ludia"]."</td>
 <td bgcolor=\"#eeeeee\">".hnet("towns2_uziv","SELECT meno FROM towns2_uziv WHERE id='".$row["autor"]."'")."</td>
 <td bgcolor=\"#eeeeee\">".$row["ap"]."</td>
-<td bgcolor=\"#eeeeee\"><A HREF=\"javascript:popUpx('http://2.towns.cz/casti/mapa/budovym.php?co=".$row["obrazok"]."')\"><b>obrázek</b></A></td>
-</tr><tr>
+</tr>" /* <tr>
 <td colspan=\"11\">".$popis."</td>
-</tr>");
+</tr>" */);
 }
 }
 echo("</table>");

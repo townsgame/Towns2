@@ -1,7 +1,7 @@
 <?php
 if($_POST["text"]){ 
 if($pravo == 1){ 
-mysql_query("UPDATE towns SET napis = '".$_POST["text"]."' WHERE xc=$xc AND yc=$yc");
+mysql_query("UPDATE towns2 SET napis = '".$_POST["text"]."' WHERE xc=$xc AND yc=$yc");
 }
 }
 $odpoved =mysql_query("select napis from towns where xc = ".$xc." AND yc = ".$yc);

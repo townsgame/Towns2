@@ -1,8 +1,0 @@
-dohoda urob z nabidky
-dohoda zrus
-\\nabidka urob
-nabidka zrus
-konec valky  urob z nabidky
-valka zacni
-konec valky  nabidka
-zrusit nabidku o ukonceni valky

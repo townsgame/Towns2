@@ -84,7 +84,7 @@ echo("
     <td>".$row["zivot"]." / ".$row["zivot2"]."</td>
     <td>".$row["xc"]."</td>
     <td>".$row["yc"]."</td>
-    <td><a href=\"../../index.php?dir=casti/admin/smazat.php&xc=".$row["xc"]."&yc=".$row["yc"]."\" target=\"_parent\">zbourat</td>
+    <td><a href=\"../../index.php?dir=casti/admin/smazat.php&xc=".$row["xc"]."&yc=".$row["yc"]."\" target=\"_parent\">X</td>
 ");
 }
 mysql_free_result($odpoved);

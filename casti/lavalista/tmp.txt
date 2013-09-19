@@ -1,0 +1,3 @@
+<?php
+require("casti/uvod/info.php");
+?>

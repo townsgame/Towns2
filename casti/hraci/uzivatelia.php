@@ -1,4 +1,4 @@
-<br/>
+<br />
 <style type="text/css">
 <!--
 .online {color: #000000}
@@ -11,13 +11,13 @@
 <div align="center"><table width="570" border="1" cellpadding="0" cellspacing="0">
   <tr>
     <th bgcolor="#CCCCCC" scope="col" width="1"></th>
-    <th bgcolor="#CCCCCC" scope="col">jméno</th>
-    <th bgcolor="#CCCCCC" scope="col">typ</th>
+    <th bgcolor="#CCCCCC" scope="col"><?php echo $GLOBALS["mbuild1"]; ?></th>
+    <th bgcolor="#CCCCCC" scope="col"><?php echo $GLOBALS["ssurowiny3"]; ?></th>
 <?php /*<th bgcolor="#CCCCCC" scope="col">aktivita</th>*/ ?>
-    <th bgcolor="#CCCCCC" scope="col">pozice</th>
-    <th bgcolor="#CCCCCC" scope="col">aliance</th>
-    <th bgcolor="#CCCCCC" scope="col">populace</th>
-    <th bgcolor="#CCCCCC" scope="col">body</th>
+    <th bgcolor="#CCCCCC" scope="col"><?php echo $GLOBALS["ssurowiny4"]; ?></th>
+    <th bgcolor="#CCCCCC" scope="col"><?php echo $GLOBALS["htmlindex4"]; ?></th>
+    <th bgcolor="#CCCCCC" scope="col"><?php echo $GLOBALS["sviac7"]; ?></th>
+    <th bgcolor="#CCCCCC" scope="col"><?php echo $GLOBALS["sviac6"]; ?></th>
   </tr>
   <?php
 //if(!$_SESSION["statuziv"]){ }

@@ -16,18 +16,18 @@ deletecash("towns2_zpr");
 $tmp = 0;
 foreach(hnet2("towns2_zpr","select * from towns2_zpr WHERE od = '".$_SESSION["id"]."' AND ppp order by cas desc") as $row){
 $tmp = 1;
-$profil = profil($row["komu"]);
+$profil = profil(convert($row["komu"]));
 $predmet = $row["predmet"];
-if(!$predmet){ $predmet = "žádný předmět"; }
-if($row["precitane"] == "0"){ $row["precitane"]="nepřečtená"; }
-if($row["precitane"] == "1"){ $row["precitane"]="přečtená"; }
-if($row["precitane"] == "3"){ $row["precitane"]="v archivu"; }
+if(!$predmet){ $predmet = $GLOBALS["zprijate5"]; }
+if($row["precitane"] == "0"){ $row["precitane"]=$GLOBALS["zodeslane1"]; }
+if($row["precitane"] == "1"){ $row["precitane"]=$GLOBALS["zodeslane2"]; }
+if($row["precitane"] == "3"){ $row["precitane"]=$GLOBALS["zodeslane3"]; }
 
 echo("<hr/>");
-echo("<u><span class=\"zpravyh1\">$predmet</span></u>   <br/> <b>Komu: $profil<br/> ".(zcas($row["cas"]))."</b><br/><br/>".$row["zprava"]."<br/><br/>(".$row["precitane"].")");
+echo("<u><span class=\"zpravyh1\">" . zpravback($predmet) . "</span></u>   <br /> <b>" . $GLOBALS["zodeslane4"] . ": $profil<br /> ".(zcas($row["cas"]))."</b><br /><br />".zpravback($row["zprava"])."<br /><br />(".$row["precitane"].")");
 }
 if($tmp == 0){
-echo("<b>Nemáte žádné zprávy co jste odeslal.</b>");
+echo("<b>" . $GLOBALS["zodeslane5"] . "</b>");
 }
 /*
 $odpoved =mysql_query("select * from towns2_zpr WHERE komu = '".$_SESSION["id"]."' AND precitane!=3 order by cas desc");
