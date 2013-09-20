@@ -31,12 +31,12 @@ foreach(split("[,]",$_GET["coco"]) as $row){
 
 $xc3 = $xc[$pocet];
 $yc3 = $yc[$pocet];
-$tmp = hnet2("towns2_uni","SELECT meno,drevo,kamen,budovavedla,akce,casovac2,ap,autor,voda FROM towns2_uni WHERE obrazok='".$row."' ");
+$tmp = hnet2("towns2_uni","SELECT "  . $GLOBALS["name"] . ",drevo,kamen,budovavedla,akce,casovac2,ap,autor,voda FROM towns2_uni WHERE obrazok='".$row."' ");
 $tmp = $tmp[0];
 if($tmp["akce"] == "0"){ chyba3(); }
 $budovavedla = $tmp["budovavedla"];
 //echo($budovavedla);
-$meno = $tmp["meno"];
+$meno = $tmp[$GLOBALS["name"]];
 $drevo = $tmp["drevo"]+$ppol;
 $kamen = $tmp["kamen"];
 $casovac2 = $tmp["casovac2"];
@@ -102,7 +102,7 @@ $d = hnet("towns2","SELECT obrazok FROM towns2 WHERE cas = '1' AND vlastnik=".$_
 //echo($budovavedla);
 //echo($a." / ".$b." / ".$c." / ".$d);
 $budovavedla = hnet("towns2_uni","SELECT budovavedla FROM towns2_uni WHERE obrazok='".$row."'");
-$budovavedla2 = hnet("towns2_uni","SELECT meno FROM towns2_uni WHERE obrazok='".$budovavedla."'");
+$budovavedla2 = hnet("towns2_uni","SELECT " . $GLOBALS["name"] . " FROM towns2_uni WHERE obrazok='".$budovavedla."'");
 if($budovavedla != $a AND $budovavedla != $b AND $budovavedla != $c AND $budovavedla != $d AND $budovavedla != "0"){
 $stav = $GLOBALS["dragzprac15"] . " $budovavedla2.";
 $stav2 = "";
@@ -111,7 +111,7 @@ $stav2 = "";
 
 $budovap = hnet("towns2_uni","SELECT budovap FROM towns2_uni WHERE obrazok='".$row."'");
 if($budovap){
-$budovap2 = hnet("towns2_uni","SELECT meno FROM towns2_uni WHERE obrazok='".$budovap."'");
+$budovap2 = hnet("towns2_uni","SELECT " . $GLOBALS["name"] . " FROM towns2_uni WHERE obrazok='".$budovap."'");
 $budoval = hnet("towns2_uni","SELECT budoval FROM towns2_uni WHERE obrazok='".$row."'");
 $budoval2 = budoval($budovap);
 if($budoval > $budoval2){
